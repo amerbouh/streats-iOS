@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  streats-iOS
+
+  Created by Anas Merbouh on 2019-05-20.
+  Copyright © 2019 Anas Merbouh. All rights reserved.
+*/
+
+VENDORS = "Voir cuisines de rue";
+TODAY_VENDORS = "Ouvertes aujourd'hui";
+NSLocationWhenInUseUsageDescription = "Cela vous permettra de repérer les événements et la cuisines de rue les plus proches de votre position actuelle.";

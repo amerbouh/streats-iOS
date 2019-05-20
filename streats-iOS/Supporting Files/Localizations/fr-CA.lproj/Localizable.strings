@@ -1,0 +1,61 @@
+/* 
+  Localizable.strings
+  streats-iOS
+
+  Created by Anas Merbouh on 2019-05-14.
+  Copyright © 2019 Anas Merbouh. All rights reserved.
+*/
+
+// MARK: - Shared
+
+"oops" = "Oups";
+"name" = "Nom";
+"price" = "Prix";
+"vendors" = "Camions";
+"ingredients" = "Ingrédients";
+"tryAgain" = "Réessayer";
+
+// MARK: - Tab bar VC
+
+"map" = "Carte";
+"list" = "Liste";
+
+// MARK: - Lot Detail VC
+
+"attendees" = "Participants";
+"information" = "Informations";
+"hostTruckName" = "Nom du camion de l'organisateur";
+"eventLocationAddress" = "Adresse du lieu de l'événement";
+"eventManagerEmailAddress" = "Courriel du gestionnaire";
+"eventManagerPhoneNumber" = "Numéro de téléphone du gestionnaire";
+
+// MARK: - Vendors List VC
+
+"today" = "Aujourd'hui";
+"tomorrow" = "Demain";
+"thisWeek" = "Semaine";
+"noAttendee" = "Aucun participant";
+"noAttendeeDescription" = "Il semble que cet événement ne compte aucun participant pour le moment.";
+
+// MARK: - Vendor Detail VC
+
+"details" = "Informations";
+"menu" = "Menu";
+"events" = "Événements";
+"showMore" = "Plus";
+"location" = "Position";
+"directions" = "Itinéraire";
+"cuisineType" = "Type de nourriture";
+"phoneNumber" = "Téléphone";
+"address" = "Adresse";
+"emailAddress" = "Courriel";
+"website" = "Site web";
+"usefulData" = "Informations utiles";
+"description" = "Description";
+"noPhoneNumber" = "Aucun numéro de téléphone";
+"noEmailAddress" = "Aucune adresse courriel";
+"noWebsite" = "Aucun site web";
+"noDescription" = "Aucune description disponible.";
+"cashOnly" = "Argent comptant seulement";
+"mayAcceptCashOnly" = "Risque d'accepter l'argent comptant seulement";
+"acceptsCardPayments" = "Accepte les paiements par cartes";

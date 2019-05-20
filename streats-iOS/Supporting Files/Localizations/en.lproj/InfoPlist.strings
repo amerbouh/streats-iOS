@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  streats-iOS
+
+  Created by Anas Merbouh on 2019-05-20.
+  Copyright © 2019 Anas Merbouh. All rights reserved.
+*/
+
+VENDORS = "Vendors";
+TODAY_VENDORS = "Today's vendors";
+NSLocationWhenInUseUsageDescription = "This allows you to find the nearest events and food trucks based on your current location.";

@@ -1,0 +1,61 @@
+/* 
+  Localizable.strings
+  streats-iOS
+
+  Created by Anas Merbouh on 2019-05-14.
+  Copyright © 2019 Anas Merbouh. All rights reserved.
+*/
+
+// MARK: - Shared
+
+"oops" = "Oops";
+"name" = "Name";
+"price" = "Price";
+"vendors" = "Vendors";
+"ingredients" = "Ingredients";
+"tryAgain" = "Try again";
+
+// MARK: - Tab bar VC
+
+"map" = "Map";
+"list" = "List";
+
+// MARK: - Lot Detail VC
+
+"attendees" = "Attendees";
+"information" = "Information";
+"hostTruckName" = "Host truck name";
+"eventLocationAddress" = "Event's location address";
+"eventManagerEmailAddress" = "Event's manager email address";
+"eventManagerPhoneNumber" = "Event's manager phone number";
+
+// MARK: - Vendors List VC
+
+"today" = "Today";
+"tomorrow" = "Tomorrow";
+"thisWeek" = "This week";
+"noAttendee" = "No attendee";
+"noAttendeeDescription" = "It looks like this event does not have any attendee at the moment.";
+
+// MARK: - Vendor Detail VC
+
+"details" = "Details";
+"menu" = "Menu";
+"events" = "Events";
+"showMore" = "Show more";
+"location" = "Location";
+"directions" = "Directions";
+"cuisineType" = "Cuisine type";
+"phoneNumber" = "Phone number";
+"address" = "Address";
+"emailAddress" = "Email address";
+"website" = "Website";
+"usefulData" = "Useful information";
+"description" = "Description";
+"noPhoneNumber" = "No phone number";
+"noEmailAddress" = "No email address";
+"noWebsite" = "No website";
+"noDescription" = "No description provided";
+"cashOnly" = "Accepts cash only";
+"mayAcceptCashOnly" = "May accept cash only";
+"acceptsCardPayments" = "Accepts card payments";
