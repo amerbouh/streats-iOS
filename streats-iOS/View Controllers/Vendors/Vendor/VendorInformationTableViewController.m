@@ -183,7 +183,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if (section == 2) {
-        return @"Note that the position indicated above does not mean that the vendor is currently open and located here.";
+        return NSLocalizedString(@"latestLocationDisclaimer", NULL);
     }
     
     return NULL;

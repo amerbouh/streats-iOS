@@ -76,3 +76,4 @@
 "fromTo" = "De %@ à %@";
 "imageUploadErrorMessage" = "Une erreur est survenue lors de la tentative de téléversement de l'image : %@";
 "menuItemImageUploadDisclaimer" = "Notez que la photo que vous téléversez est vérifée par notre équipe avant d'être affichée aux utilisateurs.";
+"latestLocationDisclaimer" = "Notez que la position indiquée ci-dessus ne signifie pas que la cuisine de rue est ouverte et se situe à cette position présentement.";

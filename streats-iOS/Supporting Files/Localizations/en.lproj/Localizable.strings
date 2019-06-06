@@ -76,3 +76,4 @@
 "fromTo" = "From %@ to %@";
 "imageUploadErrorMessage" = "An error occured while trying to upload your image : %@";
 "menuItemImageUploadDisclaimer" = "Note that the picture you upload is verified by our team before being displayed to the users.";
+"latestLocationDisclaimer" = "Note that the position indicated above does not mean that the vendor is currently open and located here.";
