@@ -6,39 +6,54 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuItemTableViewCell" customModule="streats_iOS"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="DFR-ZH-k8f" detailTextLabel="tx2-tO-8mi" rowHeight="50" style="IBUITableViewCellStyleValue1" id="amU-KN-SYc" customClass="MenuItemTableViewCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" rowHeight="50" id="pPT-WK-roS" customClass="MenuItemTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="amU-KN-SYc" id="28q-of-54j">
-                <rect key="frame" x="0.0" y="0.0" width="376" height="49.5"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pPT-WK-roS" id="5mr-vl-v7y">
+                <rect key="frame" x="0.0" y="0.0" width="362" height="49.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DFR-ZH-k8f">
-                        <rect key="frame" x="20" y="15" width="45" height="20.5"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tx2-tO-8mi">
-                        <rect key="frame" x="337" y="15" width="39" height="20.5"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="qP0-6e-FEb" userLabel="Content Container Stack View">
+                        <rect key="frame" x="20" y="14.5" width="342" height="20.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1zy-h3-ayz">
+                                <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ygb-zG-ukB">
+                                <rect key="frame" x="303" y="0.0" width="39" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="qP0-6e-FEb" secondAttribute="trailing" id="KNl-pY-zb0"/>
+                    <constraint firstItem="qP0-6e-FEb" firstAttribute="leading" secondItem="5mr-vl-v7y" secondAttribute="leading" constant="20" id="dah-Pt-lPG"/>
+                    <constraint firstItem="qP0-6e-FEb" firstAttribute="centerY" secondItem="5mr-vl-v7y" secondAttribute="centerY" id="nL2-yK-65w"/>
+                </constraints>
             </tableViewCellContentView>
+            <color key="tintColor" name="Primary"/>
             <connections>
-                <outlet property="nameLabel" destination="DFR-ZH-k8f" id="Kq7-j6-4n9"/>
-                <outlet property="priceLabel" destination="tx2-tO-8mi" id="zG0-7G-aPR"/>
+                <outlet property="nameLabel" destination="1zy-h3-ayz" id="vqo-Y0-7dZ"/>
+                <outlet property="priceLabel" destination="Ygb-zG-ukB" id="cTg-hP-LvF"/>
             </connections>
-            <point key="canvasLocation" x="103" y="107"/>
+            <point key="canvasLocation" x="-42" y="120"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="Primary">
+            <color red="0.83137254901960789" green="0.16470588235294117" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

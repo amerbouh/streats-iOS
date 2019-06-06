@@ -7,9 +7,11 @@
 //
 
 #import "VendorsService.h"
+#import "Lot.h"
 #import "Event.h"
 #import "Vendor.h"
 #import "MenuItem.h"
+#import "Position.h"
 #import <FirebaseFirestore/FirebaseFirestore.h>
 
 /** @brief The base URL of the API used the retrieve the vendor's schedule. */
@@ -18,7 +20,7 @@ static const NSString *BASE_URL = @"https://montreal.bestfoodtrucks.com/api";
 @implementation VendorsService
 
 + (void)getVendorsForTime:(NSString *)time completionHandler:(void (^)(NSArray<Vendor*> * _Nullable, NSError * _Nullable))completionHandler {
-    NSString *URLString = [NSString stringWithFormat:@"%@/events/events?when=%@", BASE_URL, time];
+    NSString *URLString = [NSString stringWithFormat:@"%@/events/events?when=%@&where=68", BASE_URL, time];
     NSURL *requestURL = [[NSURL alloc] initWithString:URLString];
         
     // Check if the passed URL is valid.
@@ -32,26 +34,30 @@ static const NSString *BASE_URL = @"https://montreal.bestfoodtrucks.com/api";
             completionHandler(NULL, error);
         } else {
             NSError* serializationError = NULL;
-            NSArray<NSDictionary<NSString*, id>*>* lots = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            NSArray<NSDictionary<NSString *, id> *> *lots = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
             
             // Make sure that the data could be serialized to JSON.
             if (serializationError != NULL) {
                 completionHandler(NULL, serializationError);
             } else {
-                NSMutableArray<Vendor*>* vendors = [[NSMutableArray alloc] init];
+                NSMutableArray<Vendor *> *vendors = [[NSMutableArray alloc] init];
                 
                 // Loop through each lot and add each one of its attendees to the vendors array.
                 for (int index = 0; index < lots.count; index++) {
-                    NSDictionary<NSString*, id>* lot = [lots objectAtIndex:index];
-                    NSArray<NSDictionary<NSString*, id>*>* attendees = [lot objectForKey:@"attending"];
+                    NSDictionary<NSString *, id> *lotDictionnary = [lots objectAtIndex:index];
+                    NSArray<NSDictionary<NSString *, id> *> *attendees = [lotDictionnary objectForKey:@"attending"];
                     
                     for (int index = 0; index < attendees.count; index++) {
-                        NSDictionary<NSString*, id>* attendee = [attendees objectAtIndex:index];
+                        NSDictionary<NSString *, id> *attendee = [attendees objectAtIndex:index];
                         Vendor* vendor = [[Vendor alloc] initWithJSON:attendee];
+    
+                        // Initialize the Lot object.
+                        Lot *lot = [[Lot alloc] initWithDictionary:lotDictionnary];
                         
                         // Initialize other properties.
-                        vendor.openingHours = [lot objectForKey:@"formatted_date"];
-                        vendor.openiningDate = [lot objectForKey:@"date"];
+                        vendor.openingHours = [lotDictionnary objectForKey:@"formatted_date"];
+                        vendor.openiningDate = [lotDictionnary objectForKey:@"date"];
+                        vendor.lastPosition = [[Position alloc] initWithAddress:lot.address latitude:lot.latitude longitude:lot.longitude];
                         
                         // Add the vendor to the vendors array, if applicable.
                         if (![vendors containsObject:vendor]) {
@@ -111,6 +117,10 @@ static const NSString *BASE_URL = @"https://montreal.bestfoodtrucks.com/api";
             // the document's data and add it to the menu items array.
             for (FIRDocumentSnapshot *document in documents) {
                 MenuItem *menuItem = [[MenuItem alloc] initWithJSON:document.data];
+                
+                // Set the menu item identifier manually.
+                menuItem.identifier = document.documentID;
+                
                 [menuItems addObject:menuItem];
             }
             

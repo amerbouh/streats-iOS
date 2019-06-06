@@ -12,7 +12,7 @@
 @implementation LotsService
 
 + (void)getLotsForTime:(NSString *)time completionHandler:(void (^)(NSArray<Lot *> * _Nullable, NSError * _Nullable))completionHandler {
-    NSString *URLString = [NSString stringWithFormat:@"https://montreal.bestfoodtrucks.com/api/events/events?when=%@", time];
+    NSString *URLString = [NSString stringWithFormat:@"https://montreal.bestfoodtrucks.com/api/events/events?when=%@&where=68", time];
     NSURL *requestURL = [[NSURL alloc] initWithString:URLString];
     
     // Check if the passed URL is valid.

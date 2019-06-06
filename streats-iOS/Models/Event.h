@@ -13,9 +13,9 @@
 // Properties
 
 @property(assign) BOOL lastsAllDay;
-@property(strong, nonatomic, nonnull) NSString* title;
-@property(strong, nonatomic, nonnull) NSString* startDate;
-@property(strong, nonatomic, nonnull) NSString* endDate;
+@property(strong, nonatomic, nonnull) NSString *title;
+@property(strong, nonatomic, nonnull) NSString *startDate;
+@property(strong, nonatomic, nonnull) NSString *endDate;
 
 // Methods
 

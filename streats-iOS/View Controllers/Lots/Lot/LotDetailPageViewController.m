@@ -7,7 +7,7 @@
 //
 
 #import "LotDetailPageViewController.h"
-#import "LotAttendeesListTableViewController.h"
+#import "VendorsListTableViewController.h"
 #import "LotInformationTableViewController.h"
 #import "Lot.h"
 
@@ -40,14 +40,14 @@
 #pragma mark - Methods
 
 - (void)initializePages {
-    LotAttendeesListTableViewController* attendesListVC = [[LotAttendeesListTableViewController alloc] initWithAttendees:self.lot.attendees];
-    LotInformationTableViewController* informationVC = (LotInformationTableViewController *) [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"LotInformationTableViewController"];
+    VendorsListTableViewController *vendorsListVC = [[VendorsListTableViewController alloc] initWithLot:self.lot];
+    LotInformationTableViewController *informationVC = (LotInformationTableViewController *) [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"LotInformationTableViewController"];
     
     // Pass the Lot object.
     [informationVC setLot:self.lot];
     
     // Initialize the arrays of pages.
-    self.pages = [[NSArray alloc] initWithObjects:attendesListVC, informationVC, nil];
+    self.pages = [[NSArray alloc] initWithObjects:vendorsListVC, informationVC, nil];
 }
 
 #pragma mark - Page view controller data source

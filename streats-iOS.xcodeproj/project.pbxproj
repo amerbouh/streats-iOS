@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		138CD11E38AF4696001DB36F /* libPods-streats-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 355A34B7D39C9A4C2A6537D3 /* libPods-streats-iOS.a */; };
 		BC0514DC2292F69D003AB27E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC0514DE2292F69D003AB27E /* InfoPlist.strings */; };
 		BC0FB8B7228BA54000CB830D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC0FB8B6228BA53F00CB830D /* GoogleService-Info.plist */; };
 		BC14EF542290BB2700D9670B /* LotDetailContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC14EF532290BB2700D9670B /* LotDetailContainerViewController.m */; };
 		BC14EF572290BE5A00D9670B /* LotDetailPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC14EF562290BE5A00D9670B /* LotDetailPageViewController.m */; };
-		BC14EF5A2290C59100D9670B /* LotAttendeesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC14EF592290C59100D9670B /* LotAttendeesListTableViewController.m */; };
+		BC17257522930A0A000C5264 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC17257422930A0A000C5264 /* EventTableViewCell.xib */; };
+		BC17257822930B5B000C5264 /* VendorDetailContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC17257722930B5B000C5264 /* VendorDetailContainerViewController.m */; };
+		BC17257B22930C6D000C5264 /* VendorDetailPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC17257A22930C6D000C5264 /* VendorDetailPageViewController.m */; };
 		BC30136C228B3ECD0067B765 /* ImagesService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC30136B228B3ECD0067B765 /* ImagesService.m */; };
 		BC30136F228B4F120067B765 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = BC30136E228B4F120067B765 /* Event.m */; };
 		BC301374228B58500067B765 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC301376228B58500067B765 /* Localizable.strings */; };
@@ -21,14 +22,22 @@
 		BC5CCE8E228DB99C00728E02 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5CCE8D228DB99C00728E02 /* MenuItem.m */; };
 		BC5CCE93228DC48200728E02 /* MenuItemsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5CCE92228DC48200728E02 /* MenuItemsListTableViewController.m */; };
 		BC5CCE96228DCB3200728E02 /* MenuItemDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5CCE95228DCB3200728E02 /* MenuItemDetailTableViewController.m */; };
+		BC6B12AC22931BAA00286865 /* VendorDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6B12AB22931BAA00286865 /* VendorDescriptionViewController.m */; };
+		BC6B12AD22931DC500286865 /* libPods-streats-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 355A34B7D39C9A4C2A6537D3 /* libPods-streats-iOS.a */; };
+		BC6B12B1229324E600286865 /* EventsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6B12B0229324E600286865 /* EventsListTableViewController.m */; };
+		BC6B12B4229327C000286865 /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6B12B3229327C000286865 /* EventTableViewCell.m */; };
 		BC7D1E76228B74B800EB0299 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7D1E75228B74B800EB0299 /* ErrorView.xib */; };
 		BC7D1E79228B755200EB0299 /* ErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7D1E78228B755200EB0299 /* ErrorView.m */; };
-		BC7D1E7C228B847700EB0299 /* VendorDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7D1E7B228B847700EB0299 /* VendorDetailTableViewController.m */; };
+		BC7D1E7C228B847700EB0299 /* VendorInformationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7D1E7B228B847700EB0299 /* VendorInformationTableViewController.m */; };
 		BC9225AD228EEBC30084255E /* EmptyTableBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9225AC228EEBC30084255E /* EmptyTableBackgroundView.xib */; };
 		BC9225B0228EECA90084255E /* EmptyTableBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9225AF228EECA90084255E /* EmptyTableBackgroundView.m */; };
 		BC9225B2228F02630084255E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9225B1228F02630084255E /* MapKit.framework */; };
 		BC9225BB228F06170084255E /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9225BA228F06170084255E /* TabBarViewController.m */; };
+		BC92271C22A2C4CD00658D34 /* LotsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC92271B22A2C4CD00658D34 /* LotsListTableViewController.m */; };
+		BC92271E22A2C59000658D34 /* LotTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC92271D22A2C59000658D34 /* LotTableViewCell.xib */; };
+		BC92272122A2C5C800658D34 /* LotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC92272022A2C5C800658D34 /* LotTableViewCell.m */; };
 		BC9AEB97228D8D3F009E988E /* MenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9AEB96228D8D3F009E988E /* MenuItemTableViewCell.xib */; };
+		BCABEA8C22A635610067C4FD /* StorageController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCABEA8B22A635610067C4FD /* StorageController.m */; };
 		BCCB515E2289EC540079A959 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCB515D2289EC540079A959 /* AppDelegate.m */; };
 		BCCB51612289EC540079A959 /* VendorsListContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCB51602289EC540079A959 /* VendorsListContainerViewController.m */; };
 		BCCB51642289EC540079A959 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCCB51622289EC540079A959 /* Main.storyboard */; };
@@ -45,7 +54,9 @@
 		BCE2AB6E22906FB2004A1146 /* LotsService.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE2AB6D22906FB2004A1146 /* LotsService.m */; };
 		BCE2AB7122907058004A1146 /* Lot.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE2AB7022907058004A1146 /* Lot.m */; };
 		BCE2AB7A22907435004A1146 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE2AB7922907435004A1146 /* MapViewController.m */; };
-		BCF9D2E3228E660800662631 /* CarouselCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF9D2E2228E660800662631 /* CarouselCollectionViewController.m */; };
+		BCF0714322A7762D00070B4D /* MenuItemsService.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF0714222A7762D00070B4D /* MenuItemsService.m */; };
+		BCF0714622A7768400070B4D /* MenuItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF0714522A7768400070B4D /* MenuItemController.m */; };
+		BCF7962022A87D8A00CA05DB /* Position.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF7961F22A87D8A00CA05DB /* Position.m */; };
 		BCF9D2E5228E69FA00662631 /* CarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF9D2E4228E69FA00662631 /* CarouselCollectionViewCell.xib */; };
 		BCF9D2E8228E6A2800662631 /* CarouselCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF9D2E7228E6A2800662631 /* CarouselCollectionViewCell.m */; };
 /* End PBXBuildFile section */
@@ -61,8 +72,11 @@
 		BC14EF532290BB2700D9670B /* LotDetailContainerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LotDetailContainerViewController.m; sourceTree = "<group>"; };
 		BC14EF552290BE5A00D9670B /* LotDetailPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LotDetailPageViewController.h; sourceTree = "<group>"; };
 		BC14EF562290BE5A00D9670B /* LotDetailPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LotDetailPageViewController.m; sourceTree = "<group>"; };
-		BC14EF582290C59100D9670B /* LotAttendeesListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LotAttendeesListTableViewController.h; sourceTree = "<group>"; };
-		BC14EF592290C59100D9670B /* LotAttendeesListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LotAttendeesListTableViewController.m; sourceTree = "<group>"; };
+		BC17257422930A0A000C5264 /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
+		BC17257622930B5B000C5264 /* VendorDetailContainerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VendorDetailContainerViewController.h; sourceTree = "<group>"; };
+		BC17257722930B5B000C5264 /* VendorDetailContainerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VendorDetailContainerViewController.m; sourceTree = "<group>"; };
+		BC17257922930C6D000C5264 /* VendorDetailPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VendorDetailPageViewController.h; sourceTree = "<group>"; };
+		BC17257A22930C6D000C5264 /* VendorDetailPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VendorDetailPageViewController.m; sourceTree = "<group>"; };
 		BC30136A228B3ECD0067B765 /* ImagesService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImagesService.h; sourceTree = "<group>"; };
 		BC30136B228B3ECD0067B765 /* ImagesService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImagesService.m; sourceTree = "<group>"; };
 		BC30136D228B4F120067B765 /* Event.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
@@ -79,18 +93,31 @@
 		BC5CCE92228DC48200728E02 /* MenuItemsListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuItemsListTableViewController.m; sourceTree = "<group>"; };
 		BC5CCE94228DCB3200728E02 /* MenuItemDetailTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuItemDetailTableViewController.h; sourceTree = "<group>"; };
 		BC5CCE95228DCB3200728E02 /* MenuItemDetailTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuItemDetailTableViewController.m; sourceTree = "<group>"; };
+		BC6B12AA22931BAA00286865 /* VendorDescriptionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VendorDescriptionViewController.h; sourceTree = "<group>"; };
+		BC6B12AB22931BAA00286865 /* VendorDescriptionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VendorDescriptionViewController.m; sourceTree = "<group>"; };
+		BC6B12AF229324E600286865 /* EventsListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventsListTableViewController.h; sourceTree = "<group>"; };
+		BC6B12B0229324E600286865 /* EventsListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventsListTableViewController.m; sourceTree = "<group>"; };
+		BC6B12B2229327C000286865 /* EventTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventTableViewCell.h; sourceTree = "<group>"; };
+		BC6B12B3229327C000286865 /* EventTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventTableViewCell.m; sourceTree = "<group>"; };
 		BC7D1E75228B74B800EB0299 /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
 		BC7D1E77228B755200EB0299 /* ErrorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ErrorView.h; sourceTree = "<group>"; };
 		BC7D1E78228B755200EB0299 /* ErrorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ErrorView.m; sourceTree = "<group>"; };
-		BC7D1E7A228B847700EB0299 /* VendorDetailTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VendorDetailTableViewController.h; sourceTree = "<group>"; };
-		BC7D1E7B228B847700EB0299 /* VendorDetailTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VendorDetailTableViewController.m; sourceTree = "<group>"; };
+		BC7D1E7A228B847700EB0299 /* VendorInformationTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VendorInformationTableViewController.h; sourceTree = "<group>"; };
+		BC7D1E7B228B847700EB0299 /* VendorInformationTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VendorInformationTableViewController.m; sourceTree = "<group>"; };
 		BC9225AC228EEBC30084255E /* EmptyTableBackgroundView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableBackgroundView.xib; sourceTree = "<group>"; };
 		BC9225AE228EECA90084255E /* EmptyTableBackgroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyTableBackgroundView.h; sourceTree = "<group>"; };
 		BC9225AF228EECA90084255E /* EmptyTableBackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyTableBackgroundView.m; sourceTree = "<group>"; };
 		BC9225B1228F02630084255E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BC9225B9228F06170084255E /* TabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		BC9225BA228F06170084255E /* TabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		BC92271A22A2C4CD00658D34 /* LotsListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LotsListTableViewController.h; sourceTree = "<group>"; };
+		BC92271B22A2C4CD00658D34 /* LotsListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LotsListTableViewController.m; sourceTree = "<group>"; };
+		BC92271D22A2C59000658D34 /* LotTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LotTableViewCell.xib; sourceTree = "<group>"; };
+		BC92271F22A2C5C800658D34 /* LotTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LotTableViewCell.h; sourceTree = "<group>"; };
+		BC92272022A2C5C800658D34 /* LotTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LotTableViewCell.m; sourceTree = "<group>"; };
 		BC9AEB96228D8D3F009E988E /* MenuItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemTableViewCell.xib; sourceTree = "<group>"; };
+		BCABEA8A22A635610067C4FD /* StorageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageController.h; sourceTree = "<group>"; };
+		BCABEA8B22A635610067C4FD /* StorageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StorageController.m; sourceTree = "<group>"; };
 		BCCB51592289EC540079A959 /* streats-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "streats-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCB515C2289EC540079A959 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BCCB515D2289EC540079A959 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -119,8 +146,12 @@
 		BCE2AB7022907058004A1146 /* Lot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Lot.m; sourceTree = "<group>"; };
 		BCE2AB7822907435004A1146 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		BCE2AB7922907435004A1146 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		BCF9D2E1228E660800662631 /* CarouselCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselCollectionViewController.h; sourceTree = "<group>"; };
-		BCF9D2E2228E660800662631 /* CarouselCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselCollectionViewController.m; sourceTree = "<group>"; };
+		BCF0714122A7762D00070B4D /* MenuItemsService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuItemsService.h; sourceTree = "<group>"; };
+		BCF0714222A7762D00070B4D /* MenuItemsService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuItemsService.m; sourceTree = "<group>"; };
+		BCF0714422A7768400070B4D /* MenuItemController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuItemController.h; sourceTree = "<group>"; };
+		BCF0714522A7768400070B4D /* MenuItemController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuItemController.m; sourceTree = "<group>"; };
+		BCF7961E22A87D8A00CA05DB /* Position.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
+		BCF7961F22A87D8A00CA05DB /* Position.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Position.m; sourceTree = "<group>"; };
 		BCF9D2E4228E69FA00662631 /* CarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselCollectionViewCell.xib; sourceTree = "<group>"; };
 		BCF9D2E6228E6A2800662631 /* CarouselCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselCollectionViewCell.h; sourceTree = "<group>"; };
 		BCF9D2E7228E6A2800662631 /* CarouselCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselCollectionViewCell.m; sourceTree = "<group>"; };
@@ -131,8 +162,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC6B12AD22931DC500286865 /* libPods-streats-iOS.a in Frameworks */,
 				BC9225B2228F02630084255E /* MapKit.framework in Frameworks */,
-				138CD11E38AF4696001DB36F /* libPods-streats-iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +193,8 @@
 			children = (
 				BCE2AB7822907435004A1146 /* MapViewController.h */,
 				BCE2AB7922907435004A1146 /* MapViewController.m */,
+				BC92271A22A2C4CD00658D34 /* LotsListTableViewController.h */,
+				BC92271B22A2C4CD00658D34 /* LotsListTableViewController.m */,
 				BC14EF4E22909D5600D9670B /* Lot */,
 			);
 			path = Lots;
@@ -174,8 +207,6 @@
 				BC14EF532290BB2700D9670B /* LotDetailContainerViewController.m */,
 				BC14EF552290BE5A00D9670B /* LotDetailPageViewController.h */,
 				BC14EF562290BE5A00D9670B /* LotDetailPageViewController.m */,
-				BC14EF582290C59100D9670B /* LotAttendeesListTableViewController.h */,
-				BC14EF592290C59100D9670B /* LotAttendeesListTableViewController.m */,
 				BC3BD73522911A350008BE88 /* LotInformationTableViewController.h */,
 				BC3BD73622911A350008BE88 /* LotInformationTableViewController.m */,
 			);
@@ -189,6 +220,26 @@
 				BC0514DE2292F69D003AB27E /* InfoPlist.strings */,
 			);
 			path = Localizations;
+			sourceTree = "<group>";
+		};
+		BC6B12AE229324D700286865 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				BC6B12AF229324E600286865 /* EventsListTableViewController.h */,
+				BC6B12B0229324E600286865 /* EventsListTableViewController.m */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		BCABEA8922A635500067C4FD /* Other Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BCABEA8A22A635610067C4FD /* StorageController.h */,
+				BCABEA8B22A635610067C4FD /* StorageController.m */,
+				BCF0714422A7768400070B4D /* MenuItemController.h */,
+				BCF0714522A7768400070B4D /* MenuItemController.m */,
+			);
+			path = "Other Controllers";
 			sourceTree = "<group>";
 		};
 		BCCB51502289EC540079A959 = {
@@ -217,6 +268,7 @@
 				BCCB518F228A63F20079A959 /* Models */,
 				BCCB5181228A05CD0079A959 /* Views */,
 				BCCB51772289EF2C0079A959 /* View Controllers */,
+				BCABEA8922A635500067C4FD /* Other Controllers */,
 				BCCB518B228A61FB0079A959 /* Services */,
 				BCCB51752289EF1D0079A959 /* Supporting Files */,
 				BCCB51652289EC550079A959 /* Assets.xcassets */,
@@ -253,6 +305,7 @@
 				BCE2AB76229073F3004A1146 /* Main */,
 				BC14EF4D22909D4B00D9670B /* Lots */,
 				BCE2AB72229073B4004A1146 /* Vendors */,
+				BC6B12AE229324D700286865 /* Events */,
 				BCE2AB74229073DB004A1146 /* Menu Items */,
 			);
 			path = "View Controllers";
@@ -263,6 +316,10 @@
 			children = (
 				BC7D1E77228B755200EB0299 /* ErrorView.h */,
 				BC7D1E78228B755200EB0299 /* ErrorView.m */,
+				BC92271F22A2C5C800658D34 /* LotTableViewCell.h */,
+				BC92272022A2C5C800658D34 /* LotTableViewCell.m */,
+				BC6B12B2229327C000286865 /* EventTableViewCell.h */,
+				BC6B12B3229327C000286865 /* EventTableViewCell.m */,
 				BCCB5182228A05E00079A959 /* VendorTableViewCell.h */,
 				BCCB5183228A05E00079A959 /* VendorTableViewCell.m */,
 				BC5CCE89228DB05100728E02 /* MenuItemTableViewCell.h */,
@@ -279,6 +336,8 @@
 			isa = PBXGroup;
 			children = (
 				BC7D1E75228B74B800EB0299 /* ErrorView.xib */,
+				BC92271D22A2C59000658D34 /* LotTableViewCell.xib */,
+				BC17257422930A0A000C5264 /* EventTableViewCell.xib */,
 				BCCB5186228A05EF0079A959 /* VendorTableViewCell.xib */,
 				BC9AEB96228D8D3F009E988E /* MenuItemTableViewCell.xib */,
 				BCF9D2E4228E69FA00662631 /* CarouselCollectionViewCell.xib */,
@@ -296,6 +355,8 @@
 				BCCB518D228A62130079A959 /* VendorsService.m */,
 				BC30136A228B3ECD0067B765 /* ImagesService.h */,
 				BC30136B228B3ECD0067B765 /* ImagesService.m */,
+				BCF0714122A7762D00070B4D /* MenuItemsService.h */,
+				BCF0714222A7762D00070B4D /* MenuItemsService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -311,6 +372,8 @@
 				BCCB5191228A63FD0079A959 /* Vendor.m */,
 				BC5CCE8C228DB99C00728E02 /* MenuItem.h */,
 				BC5CCE8D228DB99C00728E02 /* MenuItem.m */,
+				BCF7961E22A87D8A00CA05DB /* Position.h */,
+				BCF7961F22A87D8A00CA05DB /* Position.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -332,10 +395,14 @@
 		BCE2AB73229073C9004A1146 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				BC7D1E7A228B847700EB0299 /* VendorDetailTableViewController.h */,
-				BC7D1E7B228B847700EB0299 /* VendorDetailTableViewController.m */,
-				BCF9D2E1228E660800662631 /* CarouselCollectionViewController.h */,
-				BCF9D2E2228E660800662631 /* CarouselCollectionViewController.m */,
+				BC17257622930B5B000C5264 /* VendorDetailContainerViewController.h */,
+				BC17257722930B5B000C5264 /* VendorDetailContainerViewController.m */,
+				BC17257922930C6D000C5264 /* VendorDetailPageViewController.h */,
+				BC17257A22930C6D000C5264 /* VendorDetailPageViewController.m */,
+				BC7D1E7A228B847700EB0299 /* VendorInformationTableViewController.h */,
+				BC7D1E7B228B847700EB0299 /* VendorInformationTableViewController.m */,
+				BC6B12AA22931BAA00286865 /* VendorDescriptionViewController.h */,
+				BC6B12AB22931BAA00286865 /* VendorDescriptionViewController.m */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -445,6 +512,8 @@
 				BC9AEB97228D8D3F009E988E /* MenuItemTableViewCell.xib in Resources */,
 				BCCB51642289EC540079A959 /* Main.storyboard in Resources */,
 				BCCB5187228A05EF0079A959 /* VendorTableViewCell.xib in Resources */,
+				BC17257522930A0A000C5264 /* EventTableViewCell.xib in Resources */,
+				BC92271E22A2C59000658D34 /* LotTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,12 +551,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-streats-iOS/Pods-streats-iOS-resources.sh",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/gRPCCertificates.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,12 +573,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC6B12B4229327C000286865 /* EventTableViewCell.m in Sources */,
 				BC9225BB228F06170084255E /* TabBarViewController.m in Sources */,
-				BC14EF5A2290C59100D9670B /* LotAttendeesListTableViewController.m in Sources */,
 				BCF9D2E8228E6A2800662631 /* CarouselCollectionViewCell.m in Sources */,
 				BCE2AB6E22906FB2004A1146 /* LotsService.m in Sources */,
 				BC30136F228B4F120067B765 /* Event.m in Sources */,
 				BC14EF572290BE5A00D9670B /* LotDetailPageViewController.m in Sources */,
+				BCF7962022A87D8A00CA05DB /* Position.m in Sources */,
 				BCCB51612289EC540079A959 /* VendorsListContainerViewController.m in Sources */,
 				BC5CCE8B228DB05100728E02 /* MenuItemTableViewCell.m in Sources */,
 				BC5CCE8E228DB99C00728E02 /* MenuItem.m in Sources */,
@@ -516,19 +588,27 @@
 				BC3BD73722911A350008BE88 /* LotInformationTableViewController.m in Sources */,
 				BCCB518E228A62130079A959 /* VendorsService.m in Sources */,
 				BCCB516C2289EC550079A959 /* main.m in Sources */,
+				BC6B12B1229324E600286865 /* EventsListTableViewController.m in Sources */,
+				BCF0714322A7762D00070B4D /* MenuItemsService.m in Sources */,
 				BCE2AB7122907058004A1146 /* Lot.m in Sources */,
 				BCCB5184228A05E00079A959 /* VendorTableViewCell.m in Sources */,
 				BCE2AB7A22907435004A1146 /* MapViewController.m in Sources */,
 				BC14EF542290BB2700D9670B /* LotDetailContainerViewController.m in Sources */,
-				BCF9D2E3228E660800662631 /* CarouselCollectionViewController.m in Sources */,
 				BC5CCE93228DC48200728E02 /* MenuItemsListTableViewController.m in Sources */,
+				BCF0714622A7768400070B4D /* MenuItemController.m in Sources */,
 				BC9225B0228EECA90084255E /* EmptyTableBackgroundView.m in Sources */,
+				BC92272122A2C5C800658D34 /* LotTableViewCell.m in Sources */,
+				BC17257B22930C6D000C5264 /* VendorDetailPageViewController.m in Sources */,
 				BCCB517A2289F01B0079A959 /* VendorsListTableViewController.m in Sources */,
-				BC7D1E7C228B847700EB0299 /* VendorDetailTableViewController.m in Sources */,
+				BC7D1E7C228B847700EB0299 /* VendorInformationTableViewController.m in Sources */,
 				BC5CCE96228DCB3200728E02 /* MenuItemDetailTableViewController.m in Sources */,
 				BCCB515E2289EC540079A959 /* AppDelegate.m in Sources */,
 				BC30136C228B3ECD0067B765 /* ImagesService.m in Sources */,
+				BC6B12AC22931BAA00286865 /* VendorDescriptionViewController.m in Sources */,
+				BC92271C22A2C4CD00658D34 /* LotsListTableViewController.m in Sources */,
 				BC7D1E79228B755200EB0299 /* ErrorView.m in Sources */,
+				BC17257822930B5B000C5264 /* VendorDetailContainerViewController.m in Sources */,
+				BCABEA8C22A635610067C4FD /* StorageController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,6 +771,7 @@
 			baseConfigurationReference = 0658D815DD3EFCC9955A6984 /* Pods-streats-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "streats-iOS/streats-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VWKUK9SSFL;
 				INFOPLIST_FILE = "streats-iOS/Info.plist";
@@ -710,6 +791,7 @@
 			baseConfigurationReference = 1161D61B57B550417ABD6F9B /* Pods-streats-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "streats-iOS/streats-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VWKUK9SSFL;
 				INFOPLIST_FILE = "streats-iOS/Info.plist";

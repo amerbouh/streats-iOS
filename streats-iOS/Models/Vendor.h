@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class Position;
+
 @interface Vendor : NSObject
 
 // Properties
@@ -27,6 +29,8 @@
 
 @property(strong, nonatomic, nullable) NSString *openingHours;
 @property(strong, nonatomic, nullable) NSString *openiningDate;
+
+@property(strong, nonatomic, nullable) Position *lastPosition;
 
 // Methods
 

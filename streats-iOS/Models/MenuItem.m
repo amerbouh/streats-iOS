@@ -8,39 +8,38 @@
 
 #import "MenuItem.h"
 
-@interface MenuItem ()
-
-+ (NSString *)formatCurrencyFromPrice:(NSNumber *)price;
-
-@end
 
 @implementation MenuItem
 
-- (instancetype)initWithName:(NSString *)name price:(NSNumber *)price ingredients:(NSString *)ingredients {
+
+- (instancetype)initWithIdentifier:(NSString *)identifier name:(NSString *)name price:(NSNumber *)price ingredients:(NSArray<NSString *> *)ingredients {
     if ((self = [super init])) {
+        _identifier = identifier;
         _name = name;
         _price = price;
         _ingredients = ingredients;
-        _priceString = [MenuItem formatCurrencyFromPrice:price];
     }
     
     return self;
 }
 
 - (instancetype)initWithJSON:(NSDictionary<NSString *,id> *)JSON {
+    NSString *identifier = [JSON objectForKey:@"id"];
     NSString *name = [JSON objectForKey:@"name"];
     NSNumber *price = [JSON objectForKey:@"price"];
-    NSString *ingredients = [JSON objectForKey:@"ingredients"];
+    NSArray<NSString *> *ingredients = [JSON objectForKey:@"ingredients"];
     
-    return [self initWithName:name price:price  ingredients:ingredients];
+    return [self initWithIdentifier:identifier name:name price:price  ingredients:ingredients];
 }
 
-+ (NSString *)formatCurrencyFromPrice:(NSNumber *)price {
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    [numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
-    
-    return [numberFormatter stringFromNumber:price];
-}
+#pragma mark - Methods
 
+- (NSString *)priceString {
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setCurrencyCode:@"CAD"];
+    [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    
+    return [formatter stringFromNumber:self.price];
+}
 
 @end

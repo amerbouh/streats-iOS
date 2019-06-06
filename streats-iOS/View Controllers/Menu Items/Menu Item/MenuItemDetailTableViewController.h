@@ -10,15 +10,9 @@
 
 @class MenuItem;
 
-@interface MenuItemDetailTableViewController : UITableViewController
+@interface MenuItemDetailTableViewController : UITableViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-// Properties
-
-@property(assign) BOOL shouldShowBarButtonItems;
 @property(strong, nonatomic, nonnull) MenuItem *menuItem;
-
-// Methods
-
-- (void)handleDoneBarButtonItemTaped:(UIBarButtonItem * _Nonnull)sender;
+@property(strong, nonatomic, nonnull) NSNumber *vendorIdentifier;
 
 @end

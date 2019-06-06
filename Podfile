@@ -6,7 +6,9 @@ target 'streats-iOS' do
   # use_frameworks!
 
   # Pods for streats-iOS
+    pod 'SVProgressHUD'
     pod 'Firebase/Core'
+    pod 'Firebase/Storage'
     pod 'Firebase/Firestore'
 
 end

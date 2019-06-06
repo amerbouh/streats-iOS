@@ -12,8 +12,17 @@
 "name" = "Name";
 "price" = "Price";
 "vendors" = "Vendors";
+"addPicture" = "Add a picture";
 "ingredients" = "Ingredients";
 "tryAgain" = "Try again";
+"unavailableData" = "Unavailable data";
+"noVendors" = "No vendors to display.";
+"noVendorsDescription" = "It looks like there is no vendor at the moment for the selected time.";
+"noMenuItems" = "No menu to display.";
+"noMenuItemsDescription" = "It looks like we do not have the menu of this vendor.";
+"noEvents" = "No events to display";
+"noEventsDescription" = "It looks like this vendor does not attend to any event in the next days.";
+"cameraNotAvailableOnDevice" = "It seems like your device's camera is not available at the moment.";
 
 // MARK: - Tab bar VC
 
@@ -40,9 +49,12 @@
 // MARK: - Vendor Detail VC
 
 "details" = "Details";
+"schedule" = "Schedule";
+"latestPosition" = "Latest position";
 "menu" = "Menu";
 "events" = "Events";
 "showMore" = "Show more";
+"readMore" = "Read more";
 "location" = "Location";
 "directions" = "Directions";
 "cuisineType" = "Cuisine type";
@@ -56,6 +68,11 @@
 "noEmailAddress" = "No email address";
 "noWebsite" = "No website";
 "noDescription" = "No description provided";
+"noIngredientsData" = "Missing ingredients data";
 "cashOnly" = "Accepts cash only";
 "mayAcceptCashOnly" = "May accept cash only";
 "acceptsCardPayments" = "Accepts card payments";
+"priceSubjectToChange" = "Note that the displayed price is subject to change.";
+"fromTo" = "From %@ to %@";
+"imageUploadErrorMessage" = "An error occured while trying to upload your image : %@";
+"menuItemImageUploadDisclaimer" = "Note that the picture you upload is verified by our team before being displayed to the users.";

@@ -42,6 +42,7 @@
     NSString *emailAddress = [dictionary objectForKey:@"email"];
     NSNumber *latitude = [dictionary objectForKey:@"lat"];
     NSNumber *longitude = [dictionary objectForKey:@"lng"];
+    NSString *hostTruckName = [dictionary objectForKey:@"truck_name"];
     NSArray<NSDictionary<NSString *, id> *> *attendeesDictionaries = [dictionary objectForKey:@"attending"];
     
     // Initalize the banner download URL.
@@ -62,6 +63,7 @@
     
     // Initialize the attendees array and add the vendors to it.
     _attendees = [[NSArray alloc] initWithArray:vendors];
+    _hostTruckName = hostTruckName;
     
     return [self initWithIdentifier:identifier name:name emailAddress:emailAddress address:address latitude:latitude longitude:longitude];
 }

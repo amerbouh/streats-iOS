@@ -10,7 +10,8 @@
 
 @implementation Event
 
-- (instancetype)initWithTitle:(NSString *)title startDate:(NSString *)startDate endDate:(NSString *)endDate lastsAllDay:(BOOL)lastsAllDay {
+
+- (instancetype)initWithTitle:(NSString *)title startDate:(NSString *)startDate endDate:(NSString * _Nonnull)endDate lastsAllDay:(BOOL)lastsAllDay {
     if ((self = [super init])) {
         _title = title;
         _startDate = startDate;

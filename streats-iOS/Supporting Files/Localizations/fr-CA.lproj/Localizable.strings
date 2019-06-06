@@ -12,8 +12,17 @@
 "name" = "Nom";
 "price" = "Prix";
 "vendors" = "Camions";
+"addPicture" = "Ajouter une photo";
 "ingredients" = "Ingrédients";
 "tryAgain" = "Réessayer";
+"unavailableData" = "Donnée non-disponible";
+"noVendors" = "Aucune cuisine de rue à afficher.";
+"noVendorsDescription" = "Il semble qu'il n'y aucune cuisine de rue ouverte pour la période sélectionnée.";
+"noMenuItems" = "Aucun menu à afficher.";
+"noMenuItemsDescription" = "Il semble que nous ne possédons pas le menu de cette cuisine de rue.";
+"noEvents" = "Aucun événement à afficher";
+"noEventsDescription" = "Il semble que cette cuisine de rue ne participe à aucun événement dans les prochains jours.";
+"cameraNotAvailableOnDevice" = "Il semble que la caméra de votre appareil n'est pas disponible pour le moment.";
 
 // MARK: - Tab bar VC
 
@@ -40,9 +49,12 @@
 // MARK: - Vendor Detail VC
 
 "details" = "Informations";
+"schedule" = "Horaire";
+"latestPosition" = "Dernière position";
 "menu" = "Menu";
 "events" = "Événements";
 "showMore" = "Plus";
+"readMore" = "Lire plus";
 "location" = "Position";
 "directions" = "Itinéraire";
 "cuisineType" = "Type de nourriture";
@@ -55,7 +67,12 @@
 "noPhoneNumber" = "Aucun numéro de téléphone";
 "noEmailAddress" = "Aucune adresse courriel";
 "noWebsite" = "Aucun site web";
-"noDescription" = "Aucune description disponible.";
+"noDescription" = "Aucune description disponible";
+"noIngredientsData" = "Non disponibles";
 "cashOnly" = "Argent comptant seulement";
 "mayAcceptCashOnly" = "Risque d'accepter l'argent comptant seulement";
 "acceptsCardPayments" = "Accepte les paiements par cartes";
+"priceSubjectToChange" = "Veuillez noter que le prix affiché est sous réserve de modification.";
+"fromTo" = "De %@ à %@";
+"imageUploadErrorMessage" = "Une erreur est survenue lors de la tentative de téléversement de l'image : %@";
+"menuItemImageUploadDisclaimer" = "Notez que la photo que vous téléversez est vérifée par notre équipe avant d'être affichée aux utilisateurs.";

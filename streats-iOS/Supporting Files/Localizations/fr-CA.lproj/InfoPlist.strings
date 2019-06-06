@@ -8,4 +8,5 @@
 
 VENDORS = "Voir cuisines de rue";
 TODAY_VENDORS = "Ouvertes aujourd'hui";
+NSCameraUsageDescription = "";
 NSLocationWhenInUseUsageDescription = "Cela vous permettra de repérer les événements et la cuisines de rue les plus proches de votre position actuelle.";

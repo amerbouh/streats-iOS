@@ -22,6 +22,8 @@
 @property(strong, nonatomic, nonnull) NSNumber *latitude;
 @property(strong, nonatomic, nonnull) NSNumber *longitude;
 @property(strong, nonatomic, nonnull) NSString *bannerDownloadURL;
+
+@property(strong, nonatomic, nullable) NSString *hostTruckName;
 @property(strong, nonatomic, nullable) NSArray<Vendor *> *attendees;
 
 // Methods

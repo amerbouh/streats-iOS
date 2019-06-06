@@ -13,7 +13,7 @@
 
 // Properties
 
-@property (strong, nonatomic) NSArray<VendorsListTableViewController *>* pages;
+@property (strong, nonatomic) NSArray<VendorsListTableViewController *> *pages;
 
 // Methods
 
@@ -33,7 +33,7 @@
     [self setDelegate:self];
     [self setDataSource:self];
 
-    NSArray<UIViewController *>* startViewControllers = [[NSArray alloc] initWithObjects:self.pages.firstObject, nil];
+    NSArray<UIViewController *> *startViewControllers = [[NSArray alloc] initWithObjects:self.pages.firstObject, nil];
     [self setViewControllers:startViewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];
 }
 
@@ -42,9 +42,9 @@
 - (void)initializePages {
     VendorsListTableViewController* todayVendorsListVC = [[VendorsListTableViewController alloc] initWithFilter:@"today"];
     VendorsListTableViewController* tomorrowVendorsListVC = [[VendorsListTableViewController alloc] initWithFilter:@"tomorrow"];
-    VendorsListTableViewController* weekVendorsListVC = [[VendorsListTableViewController alloc] initWithFilter:@"anytime"];
+    VendorsListTableViewController* weekVendorsListVC = [[VendorsListTableViewController alloc] initWithFilter:@"This%20Week"];
     
-    // Initialize the arrays of pages.
+    // Initialize the array of pages.
     self.pages = [[NSArray alloc] initWithObjects:todayVendorsListVC, tomorrowVendorsListVC, weekVendorsListVC, nil];
 }
 
@@ -82,7 +82,7 @@
     // Only notify the delegate if the used completed the page-turn
     // gesture.
     if (completed) {
-        VendorsListTableViewController* visibleViewController = pageViewController.viewControllers.firstObject;
+        VendorsListTableViewController *visibleViewController = pageViewController.viewControllers.firstObject;
         NSUInteger visibleViewControllerIndex = [self.pages indexOfObject:visibleViewController];
         
         // Figure out the index of the page the used navigated to based

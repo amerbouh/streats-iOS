@@ -12,14 +12,15 @@
 
 // Properties
 
+@property(strong, nonatomic, nonnull) NSString *identifier;
 @property(strong, nonatomic, nonnull) NSString *name;
 @property(strong, nonatomic, nonnull) NSNumber *price;
-@property(strong, nonatomic, nullable) NSString *ingredients;
-@property(strong, nonatomic, nonnull, readonly) NSString *priceString;
+@property(strong, nonatomic, nullable) NSArray<NSString *> *ingredients;
 
 // Methods
 
-- (instancetype _Nullable)initWithName:(NSString *_Nonnull)name price:(NSNumber *_Nonnull)price ingredients:(NSString *_Nullable)ingredients;
+- (instancetype _Nullable)initWithIdentifier:(NSString *_Nonnull)identifier name:(NSString *_Nonnull)name price:(NSNumber *_Nonnull)price ingredients:(NSArray<NSString *> *_Nullable)ingredients;
 - (instancetype _Nullable)initWithJSON:(NSDictionary<NSString *, id> *_Nonnull)JSON;
+-(NSString * _Nonnull)priceString;
 
 @end

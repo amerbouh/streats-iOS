@@ -7,7 +7,11 @@
 //
 
 #import "VendorsListTableViewController.h"
+#import "MenuItemsListTableViewController.h"
+#import "VendorDetailContainerViewController.h"
+#import "EmptyTableBackgroundView.h"
 #import "VendorTableViewCell.h"
+#import "Lot.h"
 #import "Vendor.h"
 #import "VendorsService.h"
 #import "ImagesService.h"
@@ -16,7 +20,8 @@
 
 // Properties
 
-@property (strong, nonatomic) NSArray<Vendor*>* vendors;
+@property(strong, nonatomic, nullable) Lot *lot;
+@property(strong, nonatomic, nullable) NSArray<Vendor *> *vendors;
 
 // Methods
 
@@ -24,6 +29,7 @@
 - (void)showActivityIndicator;
 - (void)hideActivityIndicator;
 - (void)showErrorMessage:(NSString*)message;
+- (void)showEmptyDataSetView;
 
 @end
 
@@ -46,17 +52,23 @@
     
     // Do any additional setup after loading the view.
     [self loadVendors];
+    [self registerForPreviewingWithDelegate:self sourceView:self.tableView];
 }
 
 #pragma mark - Methods
 
-- (instancetype)initWithFilter:(NSString *)filter {
-    if (!(self = [super init])) {
-        return NULL;
+- (instancetype)initWithLot:(Lot *)lot {
+    if ((self = [super init])) {
+        _lot = lot;
     }
     
-    // Initialize the day filter.
-    _dayFilter = filter;
+    return self;
+}
+
+- (instancetype)initWithFilter:(NSString *)filter {
+    if ((self = [super init])) {
+        _dayFilter = filter;
+    }
     
     return self;
 }
@@ -75,8 +87,16 @@
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
 }
 
+- (void)showEmptyDataSetView {
+    EmptyTableBackgroundView *emptyTableBackgroundView = [[EmptyTableBackgroundView alloc] initWithMessage:NSLocalizedString(@"noVendors", NULL) andDescription:NSLocalizedString(@"noVendorsDescription", NULL)];
+    
+    // Set the empty table background view as the background of the table view.
+    [self.tableView setBackgroundView:emptyTableBackgroundView];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+}
+
 - (void)showErrorMessage:(NSString *)message {
-    ErrorView* errorView = [[ErrorView alloc] initWithMessage:message];
+    ErrorView *errorView = [[ErrorView alloc] initWithMessage:message];
     
     // Configure the error view...
     [errorView setDelegate:self];
@@ -88,6 +108,14 @@
 }
 
 - (void)loadVendors {
+    if (self.lot != NULL) {
+        self.vendors = self.lot.attendees;
+        [self.tableView reloadData];
+        
+        return;
+    }
+    
+    // Show the activity indicator.
     [self showActivityIndicator];
     
     // Fetch the vendors.
@@ -98,10 +126,12 @@
             if (error != NULL) {
                 [self showErrorMessage:error.localizedDescription];
             } else {
-                self.vendors = vendors;
-                
-                // Reload the table view.
-                [self.tableView reloadData];
+                if (vendors.count > 0) {
+                    self.vendors = vendors;
+                    [self.tableView reloadData];
+                } else {
+                    [self showEmptyDataSetView];
+                }
             }
         });
     }];
@@ -137,12 +167,38 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Vendor* selectedVendor = [self.vendors objectAtIndex:indexPath.row];
-    VendorDetailTableViewController* vendorDetailVC = (VendorDetailTableViewController *) [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"VendorDetailTableViewController"];
+    VendorDetailContainerViewController *vendorDetailVC = (VendorDetailContainerViewController *) [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"VendorDetailContainerViewController"];
     
     // Pass the selected vendor to the destination.
     [vendorDetailVC setVendor:selectedVendor];
     
     [self.navigationController pushViewController:vendorDetailVC animated:YES];
+}
+
+#pragma mark - View Controller Previewing Delegate
+
+- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
+    VendorDetailContainerViewController *vendorDetailVC = (VendorDetailContainerViewController *) [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"VendorDetailContainerViewController"];
+    
+    // Set te VC's vendor.
+    CGPoint pressureLocation = previewingContext.sourceRect.origin;
+    NSIndexPath *pressedCellIndexPath = [self.tableView indexPathForRowAtPoint:pressureLocation];
+    vendorDetailVC.vendor = [self.vendors objectAtIndex:pressedCellIndexPath.row];
+    
+    [self showViewController:vendorDetailVC sender:NULL];
+}
+
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
+    MenuItemsListTableViewController *menuItemsListVC = [[MenuItemsListTableViewController alloc] init];
+    
+    // Set the VC's vendor identifier.
+    NSIndexPath *pressedCellIndexPath = [self.tableView indexPathForRowAtPoint:location];
+    menuItemsListVC.vendorIdentifier = [self.vendors objectAtIndex:pressedCellIndexPath.row].identifier;
+    
+    // Set the source rect.
+    previewingContext.sourceRect = [self.tableView cellForRowAtIndexPath:pressedCellIndexPath].frame;
+    
+    return menuItemsListVC;
 }
 
 #pragma mark - Error view delegate

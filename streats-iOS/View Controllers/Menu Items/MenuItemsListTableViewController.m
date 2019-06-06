@@ -79,7 +79,7 @@
 }
 
 - (void)showEmptyTableBackgroundView {
-    EmptyTableBackgroundView *backgroundView = [[EmptyTableBackgroundView alloc] initWithMessage:@"No menu to display." andDescription:@"It looks like we do not have the menu of this vendor."];
+    EmptyTableBackgroundView *backgroundView = [[EmptyTableBackgroundView alloc] initWithMessage:NSLocalizedString(@"noMenuItems", NULL) andDescription:NSLocalizedString(@"noMenuItemsDescription", NULL)];
     
     // Set the background as the table view's background.
     [self.tableView setBackgroundView:backgroundView];
@@ -126,6 +126,7 @@
     // Configure the cell...
     MenuItem *menuItem = [self.menuItems objectAtIndex:indexPath.row];
     [cell populateCellWithMenuItem:menuItem];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;
 }
@@ -136,7 +137,7 @@
     return 50;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     MenuItem *selectedMenuItem = [self.menuItems objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"ShowMenuItemDetailVCSegue" sender:selectedMenuItem];
 }
@@ -145,8 +146,12 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if (([segue.identifier isEqualToString:@"ShowMenuItemDetailVCSegue"])) {
-        MenuItemDetailTableViewController *itemDetailVC = (MenuItemDetailTableViewController *) segue.destinationViewController;
+        UINavigationController *navigationController = (UINavigationController *) segue.destinationViewController;
+        MenuItemDetailTableViewController *itemDetailVC = (MenuItemDetailTableViewController *) navigationController.visibleViewController;
+        
+        // Pass the selected menu item to the view controller.
         itemDetailVC.menuItem = (MenuItem *) sender;
+        itemDetailVC.vendorIdentifier = self.vendorIdentifier;
     }
 }
 
