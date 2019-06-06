@@ -20,7 +20,7 @@
 
 // Properties
 
-@property(assign) BOOL descriptionRowExpanded;
+@property (strong, nonatomic, nonnull) Position *lastPosition;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
@@ -38,9 +38,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *emailAddresslabel;
 @property (weak, nonatomic) IBOutlet UILabel *websiteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usefulDataLabel;
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UILabel *placeNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cityNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countryNameLabel;
 
 // Methods
 - (void)populateViews;
@@ -68,6 +70,7 @@
     if (self.vendor == NULL) {
         [NSException raise:@"null pointer" format:@"You must initialize the Vendor object in order to use the Vendor Detail View Controller."];
     } else {
+        [self setLastPosition:self.vendor.lastPosition];
         [self.nameLabel setText:self.vendor.name];
         [self.readMoreButton setHidden:YES];
         [self completeVendorData];
@@ -104,21 +107,18 @@
 - (void)configureMapView {
     CLLocationCoordinate2D latestPositionCoordinate = [self.vendor.lastPosition getCoordinate];
     
-    // Initialize the point annotation.
-    MKPointAnnotation *latestPositionAnnotation;
+    // Initialize and configure the point annotation.
+    MKPointAnnotation *latestPositionAnnotation = [[MKPointAnnotation alloc] init];
+    latestPositionAnnotation.coordinate = latestPositionCoordinate;
     
-    // Create an annotation view.
-    if (@available(iOS 13.0, *)) {
-        latestPositionAnnotation = [[MKPointAnnotation alloc] initWithCoordinate:latestPositionCoordinate];
-    } else {
-        latestPositionAnnotation = [[MKPointAnnotation alloc] init];
-        latestPositionAnnotation.coordinate = latestPositionCoordinate;
-    }
+    // Configure the visible region.
+    MKCoordinateRegion visibleRegion = MKCoordinateRegionMakeWithDistance(latestPositionCoordinate, 300, 300);
     
     // Set the center coordinate of the map view and add the annotation indicating the latest position
     // of the currently viewed vendor.
     [self.mapView addAnnotation:latestPositionAnnotation];
     [self.mapView setCenterCoordinate:latestPositionCoordinate];
+    [self.mapView setRegion:visibleRegion];
 }
 
 - (void)populateViews {
@@ -158,6 +158,17 @@
     if (self.vendor.paymentMethods == NULL) {
         [self.usefulDataLabel setText:NSLocalizedString(@"mayAcceptCashOnly", NULL)];
     }
+    
+    // Set the address.
+    [self.lastPosition getAddressWithCompletionHandler:^(CLPlacemark * _Nullable placemark, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (placemark != NULL) {
+                [self.placeNameLabel setText:placemark.name];
+                [self.cityNameLabel setText:[NSString stringWithFormat:@"%@, %@", placemark.subLocality, placemark.postalCode]];
+                [self.countryNameLabel setText:placemark.country];
+            }
+        });
+    }];
 }
 
 #pragma mark - Table view delegate
@@ -168,6 +179,14 @@
     }
     
     return _sectionTitles[section - 1];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    if (section == 2) {
+        return @"Note that the position indicated above does not mean that the vendor is currently open and located here.";
+    }
+    
+    return NULL;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {

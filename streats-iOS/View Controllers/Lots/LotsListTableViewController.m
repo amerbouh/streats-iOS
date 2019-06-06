@@ -119,6 +119,12 @@
     return 80;
 }
 
+#pragma mark - Error view delegate
+
+- (void)tryAgainButtonTaped:(ErrorView * _Nonnull)errorView {
+    [self loadLots];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

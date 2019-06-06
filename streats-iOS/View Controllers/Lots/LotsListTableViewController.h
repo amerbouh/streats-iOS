@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ErrorView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LotsListTableViewController : UITableViewController
+@interface LotsListTableViewController : UITableViewController <ErrorViewDelegate>
 
 @end
 

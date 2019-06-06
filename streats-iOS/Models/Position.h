@@ -11,13 +11,10 @@
 
 @interface Position : NSObject
 
-// Properties
-
-@property(strong, nonatomic, nonnull) NSString *address;
-
 // Methods
 
-- (instancetype _Nullable)initWithAddress:(NSString *_Nonnull)address latitude:(NSNumber *_Nonnull)latitude longitude:(NSNumber *_Nonnull)longitude;
+- (instancetype _Nullable)initWithLatitude:(NSNumber *_Nonnull)latitude longitude:(NSNumber *_Nonnull)longitude;
 - (CLLocationCoordinate2D)getCoordinate;
+- (void)getAddressWithCompletionHandler:(void (^_Nullable)(CLPlacemark * _Nullable placemark, NSError * _Nullable error))completionHandler;
 
 @end

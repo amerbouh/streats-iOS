@@ -57,7 +57,7 @@ static const NSString *BASE_URL = @"https://montreal.bestfoodtrucks.com/api";
                         // Initialize other properties.
                         vendor.openingHours = [lotDictionnary objectForKey:@"formatted_date"];
                         vendor.openiningDate = [lotDictionnary objectForKey:@"date"];
-                        vendor.lastPosition = [[Position alloc] initWithAddress:lot.address latitude:lot.latitude longitude:lot.longitude];
+                        vendor.lastPosition = [[Position alloc] initWithLatitude:lot.latitude longitude:lot.longitude];
                         
                         // Add the vendor to the vendors array, if applicable.
                         if (![vendors containsObject:vendor]) {

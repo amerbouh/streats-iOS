@@ -18,9 +18,8 @@
 
 @implementation Position
 
-- (instancetype)initWithAddress:(NSString *)address latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude {
+- (instancetype)initWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude {
     if ((self = [super init])) {
-        _address = address;
         _latitude = latitude;
         _longitude = longitude;
     }
@@ -30,6 +29,21 @@
 
 - (CLLocationCoordinate2D)getCoordinate {
     return CLLocationCoordinate2DMake([self.latitude doubleValue], [self.longitude doubleValue]);
+}
+
+- (void)getAddressWithCompletionHandler:(void (^)(CLPlacemark * _Nullable, NSError * _Nullable))completionHandler {
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:[self.latitude doubleValue] longitude:[self.longitude doubleValue]];
+    
+    // Get the address from the position's coordinate
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        if (error != NULL) {
+            completionHandler(NULL, error);
+        } else {
+            CLPlacemark *placemark = [placemarks objectAtIndex:0];
+            completionHandler(placemark, NULL);
+        }
+    }];
 }
 
 @end
