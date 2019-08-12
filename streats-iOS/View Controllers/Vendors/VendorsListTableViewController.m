@@ -7,14 +7,18 @@
 //
 
 #import "VendorsListTableViewController.h"
+#import "TabViewController.h"
 #import "MenuItemsListTableViewController.h"
-#import "VendorDetailContainerViewController.h"
+#import "VendorInformationTableViewController.h"
+#import "MenuItemsListTableViewController.h"
+#import "EventsListTableViewController.h"
 #import "EmptyTableBackgroundView.h"
 #import "VendorTableViewCell.h"
 #import "Lot.h"
 #import "Vendor.h"
 #import "VendorsService.h"
 #import "ImagesService.h"
+#import "TabBarItem.h"
 
 @interface VendorsListTableViewController ()
 
@@ -28,8 +32,8 @@
 - (void)loadVendors;
 - (void)showActivityIndicator;
 - (void)hideActivityIndicator;
-- (void)showErrorMessage:(NSString*)message;
 - (void)showEmptyDataSetView;
+- (void)showErrorMessage:(NSString*)message;
 
 @end
 
@@ -167,33 +171,41 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Vendor* selectedVendor = [self.vendors objectAtIndex:indexPath.row];
-    VendorDetailContainerViewController *vendorDetailVC = (VendorDetailContainerViewController *) [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"VendorDetailContainerViewController"];
     
-    // Pass the selected vendor to the destination.
-    [vendorDetailVC setVendor:selectedVendor];
+    // Get an instance of the necessary view controllers.
+    VendorInformationTableViewController *vendorInformationVC = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"VendorInformationTableViewController"];
+    MenuItemsListTableViewController *menuItemsListVC = [[MenuItemsListTableViewController alloc] initWithVendor:selectedVendor];
+    EventsListTableViewController *eventsListVC = [[EventsListTableViewController alloc] initWithVendor:selectedVendor];
     
-    [self.navigationController pushViewController:vendorDetailVC animated:YES];
+    // Configure the view controllers, if applicable.
+    [vendorInformationVC setVendor:selectedVendor];
+    
+    // Prepare the Vendor Details VC.
+    NSArray<TabBarItem *> *items = @[
+                                 [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"information", NULL) controller:vendorInformationVC],
+                                 [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"menu", NULL) controller:menuItemsListVC],
+                                 [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"events", NULL) controller:eventsListVC]
+                                 ];
+    
+    // Get an instance of the Tab View Controller.
+    TabViewController *vendorDetailsTabViewController = [[TabViewController alloc] initWithItems:items];
+    
+    // Present the Tab View Controller.
+    [self.navigationController pushViewController:vendorDetailsTabViewController animated:YES];
 }
 
 #pragma mark - View Controller Previewing Delegate
 
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
-    VendorDetailContainerViewController *vendorDetailVC = (VendorDetailContainerViewController *) [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"VendorDetailContainerViewController"];
-    
-    // Set te VC's vendor.
-    CGPoint pressureLocation = previewingContext.sourceRect.origin;
-    NSIndexPath *pressedCellIndexPath = [self.tableView indexPathForRowAtPoint:pressureLocation];
-    vendorDetailVC.vendor = [self.vendors objectAtIndex:pressedCellIndexPath.row];
-    
-    [self showViewController:vendorDetailVC sender:NULL];
 }
 
 - (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
-    MenuItemsListTableViewController *menuItemsListVC = [[MenuItemsListTableViewController alloc] init];
-    
-    // Set the VC's vendor identifier.
+    // Get the pressed vendor.
     NSIndexPath *pressedCellIndexPath = [self.tableView indexPathForRowAtPoint:location];
-    menuItemsListVC.vendorIdentifier = [self.vendors objectAtIndex:pressedCellIndexPath.row].identifier;
+    Vendor *pressedVendor = [self.vendors objectAtIndex:pressedCellIndexPath.row];
+    
+    // Get an instance of the Menu items table view controller.
+    MenuItemsListTableViewController *menuItemsListVC = [[MenuItemsListTableViewController alloc] initWithVendor:pressedVendor];
     
     // Set the source rect.
     previewingContext.sourceRect = [self.tableView cellForRowAtIndexPath:pressedCellIndexPath].frame;

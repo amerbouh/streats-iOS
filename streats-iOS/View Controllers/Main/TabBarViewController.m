@@ -7,8 +7,17 @@
 //
 
 #import "TabBarViewController.h"
+#import "TabViewController.h"
+#import "MapViewController.h"
+#import "BaseNavigationController.h"
+#import "VendorsListTableViewController.h"
+#import "TabBarItem.h"
 
 @interface TabBarViewController ()
+
++ (UIViewController *)createTabBarItemWithTitle:(NSString *)title image:(UIImage *)image controller:(UIViewController *)controller;
++ (UIViewController *)createTabBarItemWithLocalizedTitle:(NSString *)title image:(UIImage *)image controller:(UIViewController *)controller;
+
 
 @end
 
@@ -18,18 +27,48 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
-    [self.viewControllers[0] setTitle:NSLocalizedString(@"map", NULL)];
-    [self.viewControllers[1] setTitle:NSLocalizedString(@"list", NULL)];
+    MapViewController *mapViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"MapViewController"];
+    TabViewController *vendorsListViewController = [[TabViewController alloc] initWithItems:@[
+                                                                                     [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"today", NULL) controller:[[VendorsListTableViewController alloc] initWithFilter:@"today"]],
+                                                                                     [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"tomorrow", NULL) controller:[[VendorsListTableViewController alloc] initWithFilter:@"tomorrow"]],
+                                                                                     [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"thisWeek", NULL) controller:[[VendorsListTableViewController alloc] initWithFilter:@"This%20Week"]],
+                                                                                     ]];
+    
+    // Create the contained view controllers.
+    BaseNavigationController *mapNavigationController = (BaseNavigationController *) [TabBarViewController createTabBarItemWithLocalizedTitle:@"map" image:[UIImage imageNamed:@"Tab bar icons/ic_map"] controller:[[BaseNavigationController alloc] init]];
+    BaseNavigationController *vendorsListNavigationController = (BaseNavigationController *) [TabBarViewController createTabBarItemWithLocalizedTitle:@"list" image:[UIImage imageNamed:@"Tab bar icons/ic_list"] controller:[[BaseNavigationController alloc] init]];
+    
+    [vendorsListViewController.navigationItem setTitle:NSLocalizedString(@"vendors", NULL)];
+    [vendorsListNavigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    
+    // Configure the contained view controllers.
+    [mapNavigationController setViewControllers:[NSArray arrayWithObjects:mapViewController, nil]];
+    [vendorsListNavigationController setViewControllers:[NSArray arrayWithObjects:vendorsListViewController, nil]];
+    
+    // Add the contained view controllers.
+    [self setViewControllers:[NSArray arrayWithObjects:mapNavigationController, vendorsListNavigationController, nil]];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Methods
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
++ (UIViewController *)createTabBarItemWithTitle:(NSString *)title image:(UIImage *)image controller:(UIViewController *)controller {
+    [controller setTitle:title];
+    
+    // Configure the controller's tab bar item.
+    [controller.tabBarItem setTitle:title];
+    [controller.tabBarItem setImage:image];
+    
+    return controller;
 }
-*/
+
++ (UIViewController *)createTabBarItemWithLocalizedTitle:(NSString *)title image:(UIImage *)image controller:(UIViewController *)controller {
+    [controller setTitle:title];
+    
+    // Configure the controller's tab bar item.
+    [controller.tabBarItem setTitle:NSLocalizedString(title, NULL)];
+    [controller.tabBarItem setImage:image];
+    
+    return controller;
+}
 
 @end

@@ -11,6 +11,7 @@
 #import "EmptyTableBackgroundView.h"
 #import "MenuItemTableViewCell.h"
 #import "ErrorView.h"
+#import "Vendor.h"
 #import "MenuItem.h"
 #import "VendorsService.h"
 
@@ -19,6 +20,7 @@
 
 // Properties
 
+@property(strong, nonatomic, nonnull) Vendor *vendor;
 @property(strong, nonatomic, nullable) NSArray<MenuItem *> *menuItems;
 
 // Methods
@@ -34,6 +36,18 @@
 @implementation MenuItemsListTableViewController {
     NSString *_reuseIdentifier;
 }
+
+#pragma mark - Initialization
+
+- (instancetype)initWithVendor:(Vendor *)vendor {
+    if ((self = [super init])) {
+        _vendor = vendor;
+    }
+    
+    return self;
+}
+
+#pragma mark - View's lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,12 +69,8 @@
 - (void)loadMenuItems {
     [self showActivityIndicator];
     
-    if (self.vendorIdentifier == NULL) {
-        return;
-    }
-    
     // Fetch the vendor's menu items.
-    [VendorsService getMenuItemsForVendorWithIdentifier:[self.vendorIdentifier stringValue] completionHandler:^(NSArray<MenuItem *> * _Nullable menuItems, NSError * _Nullable error) {
+    [VendorsService getMenuItemsForVendorWithIdentifier:[self.vendor.identifier stringValue] completionHandler:^(NSArray<MenuItem *> * _Nullable menuItems, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideActivityIndicator];
            
@@ -151,7 +161,7 @@
         
         // Pass the selected menu item to the view controller.
         itemDetailVC.menuItem = (MenuItem *) sender;
-        itemDetailVC.vendorIdentifier = self.vendorIdentifier;
+        itemDetailVC.vendorIdentifier = self.vendor.identifier;
     }
 }
 

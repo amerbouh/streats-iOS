@@ -12,6 +12,12 @@
 
 @interface VendorInformationTableViewController : UITableViewController
 
+// Properties
+
 @property(strong, nonatomic, nonnull) Vendor* vendor;
+
+// Methods
+
+- (instancetype _Nullable)initWithVendor:(Vendor * _Nonnull)vendor;
 
 @end

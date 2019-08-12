@@ -18,6 +18,8 @@
 
 @implementation Position
 
+#pragma mark - Initialization
+
 - (instancetype)initWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude {
     if ((self = [super init])) {
         _latitude = latitude;
@@ -26,6 +28,8 @@
     
     return self;
 }
+
+#pragma mark - Methods
 
 - (CLLocationCoordinate2D)getCoordinate {
     return CLLocationCoordinate2DMake([self.latitude doubleValue], [self.longitude doubleValue]);

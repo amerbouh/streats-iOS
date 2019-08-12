@@ -56,6 +56,16 @@
     NSArray<NSString *> *_sectionTitles;
 }
 
+#pragma mark - Initialization
+
+- (instancetype)initWithVendor:(Vendor *)vendor {
+    if ((self = [super init])) {
+        _vendor = vendor;
+    }
+    
+    return self;
+}
+
 #pragma mark - View's lifecycle
 
 - (void)viewDidLoad {
@@ -67,16 +77,12 @@
                       NSLocalizedString(@"latestPosition", NULL), nil];
     
     // Do any additional setup after loading the view.
-    if (self.vendor == NULL) {
-        [NSException raise:@"null pointer" format:@"You must initialize the Vendor object in order to use the Vendor Detail View Controller."];
-    } else {
-        [self setLastPosition:self.vendor.lastPosition];
-        [self.nameLabel setText:self.vendor.name];
-        [self.readMoreButton setHidden:YES];
-        [self completeVendorData];
-        [self configureMapView];
-        [self configureTitleLabels];
-    }
+    [self setLastPosition:self.vendor.lastPosition];
+    [self.nameLabel setText:self.vendor.name];
+    [self.readMoreButton setHidden:YES];
+    [self completeVendorData];
+    [self configureMapView];
+    [self configureTitleLabels];
 }
 
 #pragma mark - Methods
@@ -193,7 +199,7 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 60)];
     
     // Configure the header view...
-    NSString *title = _sectionTitles[section - 1];
+    NSString *title = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 0, headerView.bounds.size.width, headerView.bounds.size.height * 1/2)];
     
     [titleLabel setFont:[UIFont systemFontOfSize:24 weight:UIFontWeightBold]];

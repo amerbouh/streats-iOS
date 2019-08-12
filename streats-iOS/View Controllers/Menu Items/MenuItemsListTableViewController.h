@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class Vendor;
+
 @interface MenuItemsListTableViewController : UITableViewController
 
-@property(strong, nonatomic, nonnull) NSNumber *vendorIdentifier;
+- (instancetype)initWithVendor:(Vendor *)vendor;
 
 @end

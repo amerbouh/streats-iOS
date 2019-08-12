@@ -11,12 +11,14 @@
 #import "EventTableViewCell.h"
 #import "ErrorView.h"
 #import "Event.h"
+#import "Vendor.h"
 #import "VendorsService.h"
 
 @interface EventsListTableViewController ()
 
 // Properties
 
+@property(strong, nonatomic, nonnull) Vendor *vendor;
 @property(strong, nonatomic, nullable) NSArray<Event *> *events;
 
 // Methods
@@ -32,6 +34,18 @@
 @implementation EventsListTableViewController
 
 static const NSString *reuseIdentifier = @"EventTableViewCell";
+
+#pragma mark - Initialization
+
+- (instancetype)initWithVendor:(Vendor *)vendor {
+    if ((self = [super init])) {
+        _vendor = vendor;
+    }
+    
+    return self;
+}
+
+#pragma mark - View's lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,7 +64,7 @@ static const NSString *reuseIdentifier = @"EventTableViewCell";
     [self showActivityIndicator];
     
     // Fetch the vendor's events.
-    [VendorsService getEventsForVendorWithIdentifier:[self.vendorIdentifier stringValue] completionHandler:^(NSArray<Event *> * _Nullable events, NSError * _Nullable error) {
+    [VendorsService getEventsForVendorWithIdentifier:[self.vendor.identifier stringValue] completionHandler:^(NSArray<Event *> * _Nullable events, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             // Hide the activity indicator.
             [self hideActivityIndicator];

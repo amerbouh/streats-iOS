@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ErrorView.h"
 
+@class Vendor;
+
 @interface EventsListTableViewController : UITableViewController <ErrorViewDelegate>
 
-@property(strong, nonatomic, nonnull) NSNumber *vendorIdentifier;
+- (instancetype)initWithVendor:(Vendor *)vendor;
 
 @end

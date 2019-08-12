@@ -11,9 +11,12 @@
 
 @interface Position : NSObject
 
-// Methods
+// Initialization
 
 - (instancetype _Nullable)initWithLatitude:(NSNumber *_Nonnull)latitude longitude:(NSNumber *_Nonnull)longitude;
+
+// Methods
+
 - (CLLocationCoordinate2D)getCoordinate;
 - (void)getAddressWithCompletionHandler:(void (^_Nullable)(CLPlacemark * _Nullable placemark, NSError * _Nullable error))completionHandler;
 
