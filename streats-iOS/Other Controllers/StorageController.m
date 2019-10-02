@@ -29,7 +29,8 @@
     return self;
 }
 
-- (void)uploadImage:(UIImage *)image atLocation:(FIRStorageReference *)location completionHandler:(void (^)(NSURL * _Nullable, NSError * _Nullable))completionHandler {
+- (void)uploadImage:(UIImage *)image atLocation:(FIRStorageReference *)location completionHandler:(void (^)(NSURL * _Nullable, NSError * _Nullable))completionHandler
+{
     NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
     
     // Create and send the upload task.

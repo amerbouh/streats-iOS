@@ -11,25 +11,26 @@
 
 @interface LotTableViewCell ()
 
+/**
+ * A label that displays a string representing the amount of attendees at
+ * the given lot.
+ */
 @property (weak, nonatomic) IBOutlet UILabel *attendeesCountLabel;
+
+/** A label that displays a string representing the name of the lot. */
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+/** A label that displays a string representing the address of the lot. */
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 
 @end
 
 @implementation LotTableViewCell
 
-#pragma mark - View's lifecycle
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    // Initialization code
-}
-
 #pragma mark - Methods
 
-- (void)populateWithLot:(Lot *)lot {
+- (void)populateWithLot:(Lot *)lot
+{
     [self.nameLabel setText:lot.name];
     [self.addressLabel setText:lot.address];
 }

@@ -45,6 +45,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *countryNameLabel;
 
 // Methods
+
 - (void)populateViews;
 - (void)configureMapView;
 - (void)completeVendorData;
@@ -175,6 +176,10 @@
             }
         });
     }];
+}
+
++ (VendorInformationTableViewController *)instanciateFromStoryboard {
+    return [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"VendorInformationTableViewController"];
 }
 
 #pragma mark - Table view delegate

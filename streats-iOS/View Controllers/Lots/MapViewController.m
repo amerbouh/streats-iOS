@@ -10,6 +10,7 @@
 #import "LotDetailContainerViewController.h"
 #import "Lot.h"
 #import "LotsService.h"
+#import "BaseNavigationController.h"
 
 @interface MapViewController ()
 
@@ -32,7 +33,8 @@
 
 #pragma mark - View's lifecycle
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
     // Do any additional setup after loading the view.
@@ -49,7 +51,8 @@
 
 #pragma mark - Methods
 
-- (void)loadLots {
+- (void)loadLots
+{
     [LotsService getLotsForTime:@"today" completionHandler:^(NSArray<Lot *> * _Nullable lots, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error != NULL) {
@@ -64,7 +67,8 @@
     }];
 }
 
-- (void)configureMapView {
+- (void)configureMapView
+{
     self.locationManager = [[CLLocationManager alloc] init];
     
     // Configure the location manager.
@@ -76,12 +80,14 @@
     }
 }
 
-- (void)zoomMapOnMontreal {
+- (void)zoomMapOnMontreal
+{
     CLLocationCoordinate2D montrealCenterCoordinate = CLLocationCoordinate2DMake(45.5017, -73.5673);
     [self zoomMapOnCoordinate:montrealCenterCoordinate withDistance:19000];
 }
 
-- (void)showErrorMessage:(NSString *)message {
+- (void)showErrorMessage:(NSString *)message
+{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"oops", NULL) message:message preferredStyle:UIAlertControllerStyleAlert];
     
     // Configure the alert controller...
@@ -104,7 +110,8 @@
 
 #pragma mark - Map view delegate
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
     if (![annotation isKindOfClass:[Lot class]]) {
         return NULL;
     }
@@ -128,14 +135,23 @@
     return annotationView;
 }
 
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
     Lot *lot = (Lot *) view.annotation;
-    [self performSegueWithIdentifier:@"ShowLotDetailVCSegue" sender:lot];
+    
+    // Get an instance of the Lot Detail Container View Controller.
+    LotDetailContainerViewController *lotDetailContainerVC = [[LotDetailContainerViewController alloc] initWithLot:lot];
+    
+    // Get an instance of the Base Navigation Controller.
+    BaseNavigationController *navigationController = [[BaseNavigationController alloc] initWithRootViewController:lotDetailContainerVC];
+    
+    [self.navigationController presentViewController:navigationController animated:YES completion:NULL];
 }
 
 #pragma mark - Core location delegate
 
-- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
     [self.mapView setShowsUserLocation:status == kCLAuthorizationStatusAuthorizedWhenInUse];
     
     // If the user has not allowed us to access his location, zoom on Montreal.
@@ -146,7 +162,8 @@
     }
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
+{
     [manager stopUpdatingLocation];
     
     // Make sure the array contains 1 or more elements.
@@ -157,18 +174,6 @@
     // Retrieve the first element of the array and zoom on the user location.
     CLLocation *currentUserLocation = locations.firstObject;
     [self zoomMapOnCoordinate:currentUserLocation.coordinate withDistance:500];
-}
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"ShowLotDetailVCSegue"]) {
-        UINavigationController *navigationController = (UINavigationController *) segue.destinationViewController;
-        LotDetailContainerViewController *lotDetailPageVC = (LotDetailContainerViewController *) navigationController.visibleViewController;
-        
-        // Pass the lot to the Lot Detial Page View Controller.
-        [lotDetailPageVC setLot:(Lot *) sender];
-    }
 }
 
 @end

@@ -10,18 +10,21 @@
 
 @implementation Event
 
-- (instancetype)initWithTitle:(NSString *)title startDate:(NSString *)startDate endDate:(NSString * _Nonnull)endDate lastsAllDay:(BOOL)lastsAllDay {
+#pragma mark - Initialization
+
+- (instancetype)initWithTitle:(NSString *)title startDate:(NSString *)startDate endDate:(NSString * _Nonnull)endDate lastsAllDay:(BOOL)lastsAllDay
+{
     if ((self = [super init])) {
         _title = title;
         _startDate = startDate;
         _endDate = endDate;
         _lastsAllDay = lastsAllDay;
     }
-    
     return self;
 }
 
-- (instancetype)initWithDictionary:(NSDictionary<NSString *,id> *)dictionary {
+- (instancetype)initWithDictionary:(NSDictionary<NSString *,id> *)dictionary
+{
     NSString *title = [dictionary objectForKey:@"title"];
     NSString *startDate = [dictionary objectForKey:@"start"];
     NSString *endDate = [dictionary objectForKey:@"end"];

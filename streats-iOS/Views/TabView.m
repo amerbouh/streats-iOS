@@ -11,18 +11,20 @@
 
 @interface TabView ()
 
-// Properties
-
+/** An array of string representing the titles displayed by the view. */
 @property (strong, nonatomic, nonnull) NSArray<NSString *> *titles;
-@property (strong, nonatomic, nonnull) NSNumber *selectedTabIndex;
 
+/** A view displayed underneath the currenlty selected title. */
 @property (strong, nonatomic, nonnull) UIView *selectedTabIndicatorView;
+
+/** A horizontal stack view containing all the titles displayed by the view. */
 @property (strong, nonatomic, nonnull) UIStackView *titleLabelsContainerStackView;
 
-// Methopds
-
+/**
+ * Creates a label for each title displayed by the view and adds it to the
+ * views hierarchy.
+ */
 - (void)configureTitleLabels;
-- (void)configureSelectedTabIndicatorView;
 
 @end
 
@@ -30,17 +32,48 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithTitles:(NSArray<NSString *> *)titles {
+- (instancetype)initWithTitles:(NSArray<NSString *> *)titles
+{
     if ((self = [super initWithFrame:CGRectZero])) {
         _titles = titles;
-        _selectedTabIndex = 0;
         _selectedTabIndicatorView = [[UIView alloc] init];
         _titleLabelsContainerStackView = [[UIStackView alloc] init];
         _selectedTabIndicatorViewBackgroundColor = UIColor.whiteColor;
         
-        // Set the tab background color.
-        UIColor *backgroundColor = [UIColor colorNamed:@"Primary"];
+        // Add the subviews.
+        [self addSubview:self.selectedTabIndicatorView];
+        [self addSubview:self.titleLabelsContainerStackView];
+        
+        // Configure the title labels.
+        [self configureTitleLabels];
+        
+        // Configure the selected tab indicator view.
+        [self configureSelectedTabIndicatorView];
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithTitles:(NSArray<NSString *> *)titles backgroundColor:(UIColor *)backgroundColor
+{
+    if ((self = [super initWithFrame:CGRectZero])) {
+        _titles = titles;
+        _selectedTabIndicatorView = [[UIView alloc] init];
+        _titleLabelsContainerStackView = [[UIStackView alloc] init];
+        _selectedTabIndicatorViewBackgroundColor = UIColor.whiteColor;
+        
+        // Configure the background color.
         [self setBackgroundColor:backgroundColor];
+        
+        // Add the subviews.
+        [self addSubview:self.selectedTabIndicatorView];
+        [self addSubview:self.titleLabelsContainerStackView];
+        
+        // Configure the title labels.
+        [self configureTitleLabels];
+        
+        // Configure the selected tab indicator view.
+        [self configureSelectedTabIndicatorView];
     }
     
     return self;
@@ -48,20 +81,19 @@
 
 #pragma mark - Methods
 
-- (void)layoutSubviews {
+- (void)layoutSubviews
+{
     [super layoutSubviews];
     
-    // Configure the title labels and the tab indicator view.
-    [self configureTitleLabels];
-    [self configureSelectedTabIndicatorView];
+    // Configure the title labels container stack view frame.
+    [self.titleLabelsContainerStackView setFrame:self.bounds];
     
-    // Add the tab indicator view to the view's hierarchy.
-    [self addSubview:self.selectedTabIndicatorView];
-    [self addSubview:self.titleLabelsContainerStackView];
+    // Configure the tab indicator view's frame.
+    [self configureSelectedTabIndicatorView];
 }
 
-- (void)configureTitleLabels {
-    [self.titleLabelsContainerStackView setFrame:self.bounds];
+- (void)configureTitleLabels
+{
     [self.titleLabelsContainerStackView setAxis:UILayoutConstraintAxisHorizontal];
     [self.titleLabelsContainerStackView setDistribution:UIStackViewDistributionFillEqually];
     
@@ -69,31 +101,43 @@
     // stack view.
     for (NSString *title in self.titles) {
         TabViewItemLabel *titleLabel = [[TabViewItemLabel alloc] initWithTitle:title];
-        
         // Add the title label to the labels container stack view if it was successfully
         // instanciated.
         if (titleLabel != nil) {
             [self.titleLabelsContainerStackView addArrangedSubview:(UIView *) titleLabel];
+            
+            // Get the index of the inserted label.
+            NSUInteger *labelIndex = [self.titleLabelsContainerStackView.arrangedSubviews indexOfObject:titleLabel];
+            
+            // Get the label's text.
+            NSString *labelText = [self.titles objectAtIndex:labelIndex];
+            
+            // Set the label's text.
+            [titleLabel setText:labelText];
         }
     }
 }
 
-- (void)configureSelectedTabIndicatorView {
-    int tabIndicatorViewHeight = 3;
-    CGRect tabIndicatorViewFrame = CGRectMake(0, (self.bounds.size.height - tabIndicatorViewHeight), (self.bounds.size.width / self.titles.count), tabIndicatorViewHeight);
+- (void)configureSelectedTabIndicatorView
+{
+    CGFloat selectedTabIndicatorViewWidth = self.frame.size.width / self.titles.count;
+    CGFloat selectedTabIndicatorViewHeight = 3;
+    CGRect selectedTabIndicatorViewFrame = CGRectMake(0, (self.frame.size.height - selectedTabIndicatorViewHeight), selectedTabIndicatorViewWidth, selectedTabIndicatorViewHeight);
     
-    // Configure the tab indicator view's background color and frame.
+    // Configure the tab indicator view's frame and background color.
+    [self.selectedTabIndicatorView setFrame:selectedTabIndicatorViewFrame];
     [self.selectedTabIndicatorView setBackgroundColor:self.selectedTabIndicatorViewBackgroundColor];
-    [self.selectedTabIndicatorView setFrame:tabIndicatorViewFrame];
+   
 }
 
-- (void)selectTabAtIndex:(NSUInteger)index {
+- (void)selectTabAtIndex:(NSUInteger)index
+{
     TabViewItemLabel *selectedTabTitleLabel = (TabViewItemLabel *) [self.titleLabelsContainerStackView.arrangedSubviews objectAtIndex:index];
     
     // Re-position the selected tab indicator below the selected tab and
     // animate the changes.
     [UIView animateWithDuration:0.2 animations:^{
-        CGPoint tabIndicatorViewCenter = CGPointMake(selectedTabTitleLabel.center.x, self.bounds.size.height);
+        CGPoint tabIndicatorViewCenter = CGPointMake(selectedTabTitleLabel.center.x, self.selectedTabIndicatorView.center.y);
         [self.selectedTabIndicatorView setCenter:tabIndicatorViewCenter];
     }];
 }

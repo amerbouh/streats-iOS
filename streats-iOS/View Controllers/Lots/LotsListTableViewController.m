@@ -33,7 +33,8 @@
 
 #pragma mark - View's lifecycle
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     // Initialize the reuse identifier.
@@ -49,7 +50,8 @@
 
 #pragma mark - Methods
 
-- (void)loadLots {
+- (void)loadLots
+{
     [self showActivityIndicator];
     
     // Fetch the lots.
@@ -66,7 +68,8 @@
     }];
 }
 
-- (void)showActivityIndicator {
+- (void)showActivityIndicator
+{
     UIActivityIndicatorView* activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
     // Set the activity indicator as the background of the table view and start animating it.
@@ -75,7 +78,8 @@
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
-- (void)hideActivityIndicator {
+- (void)hideActivityIndicator
+{
     [self.tableView setBackgroundView:NULL];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
 }
@@ -94,16 +98,19 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.lots.count;
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     LotTableViewCell *cell = (LotTableViewCell *) [tableView dequeueReusableCellWithIdentifier:_reuseIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
@@ -115,22 +122,16 @@
 
 #pragma mark - Table view delegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return 80;
 }
 
 #pragma mark - Error view delegate
 
-- (void)tryAgainButtonTaped:(ErrorView * _Nonnull)errorView {
+- (void)tryAgainButtonTaped:(ErrorView * _Nonnull)errorView
+{
     [self loadLots];
-}
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 
 @end

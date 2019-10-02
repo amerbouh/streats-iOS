@@ -23,4 +23,5 @@
 - (instancetype _Nullable)initWithJSON:(NSDictionary<NSString *, id> *_Nonnull)JSON;
 -(NSString * _Nonnull)priceString;
 
+
 @end

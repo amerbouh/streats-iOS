@@ -10,12 +10,15 @@
 
 @implementation TabBarItem
 
-- (instancetype)initWithTitle:(NSString *)title controller:(UIViewController *)viewController {
-    if ((self = [super init])) {
+#pragma mark - Initialization
+
+- (instancetype)initWithTitle:(NSString *)title controller:(UIViewController *)viewController
+{
+    self = [super init];
+    if (self) {
         _title = title;
         _viewController = viewController;
     }
-    
     return self;
 }
 

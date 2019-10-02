@@ -11,19 +11,21 @@
 
 @implementation MenuItem
 
+#pragma mark - Initialization
 
 - (instancetype)initWithIdentifier:(NSString *)identifier name:(NSString *)name price:(NSNumber *)price ingredients:(NSArray<NSString *> *)ingredients {
-    if ((self = [super init])) {
+    self = [super init];
+    if (self) {
         _identifier = identifier;
         _name = name;
         _price = price;
         _ingredients = ingredients;
     }
-    
     return self;
 }
 
-- (instancetype)initWithJSON:(NSDictionary<NSString *,id> *)JSON {
+- (instancetype)initWithJSON:(NSDictionary<NSString *,id> *)JSON
+{
     NSString *identifier = [JSON objectForKey:@"id"];
     NSString *name = [JSON objectForKey:@"name"];
     NSNumber *price = [JSON objectForKey:@"price"];
@@ -34,7 +36,8 @@
 
 #pragma mark - Methods
 
-- (NSString *)priceString {
+- (NSString *)priceString
+{
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setCurrencyCode:@"CAD"];
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];

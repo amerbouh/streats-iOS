@@ -30,7 +30,8 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithItems:(NSArray<TabBarItem *> *)items {
+- (instancetype)initWithItems:(NSArray<TabBarItem *> *)items
+{
     if ((self = [super init])) {
         NSMutableArray<NSString *> *titles = [[NSMutableArray alloc] init];
         NSMutableArray<UIViewController *> *pages = [[NSMutableArray alloc] init];
@@ -42,7 +43,7 @@
             [pages addObject:item.viewController];
         }
         
-        _tabView = [[TabView alloc] initWithTitles:titles];
+        _tabView = [[TabView alloc] initWithTitles:titles backgroundColor:[UIColor colorNamed:@"Primary"]];
         _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:NULL];
         _pageViewControllerManager = [[HorizontalPageViewControllerManager alloc] initWithPages:pages managedPageViewController:_pageViewController];
     }
@@ -53,7 +54,8 @@
 
 #pragma mark - View's lifecycle
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
@@ -63,7 +65,8 @@
 
 #pragma mark - Methods
 
-- (void)viewWillLayoutSubviews {
+- (void)viewWillLayoutSubviews
+{
     [super viewWillLayoutSubviews];
     
     // Configure the views' hierarchy
@@ -79,7 +82,8 @@
     [self layoutPageViewController];
 }
 
-- (void)layoutTabView {
+- (void)layoutTabView
+{
     [self.tabView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     // Set the tab view's constraints.
@@ -89,7 +93,8 @@
     [[self.tabView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor] setActive:YES];
 }
 
-- (void)layoutPageViewController {
+- (void)layoutPageViewController
+{
     [self.pageViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     // Get the page view controller's view.
@@ -104,7 +109,8 @@
 
 #pragma mark - Horizontal page view controller manager delegate
 
-- (void)didTransitionToPage:(UIViewController *)pageViewController atIndex:(NSUInteger)index {
+- (void)didTransitionToPage:(UIViewController *)pageViewController atIndex:(NSUInteger)index
+{
     [self.tabView selectTabAtIndex:index];
 }
 

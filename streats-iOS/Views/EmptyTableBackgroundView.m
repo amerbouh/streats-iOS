@@ -21,6 +21,8 @@
 
 @implementation EmptyTableBackgroundView
 
+#pragma mark - Initialization
+
 - (instancetype)init
 {
     self = [super init];

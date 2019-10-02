@@ -16,6 +16,8 @@
 
 @implementation CarouselCollectionViewCell
 
+#pragma mark - Methods
+
 - (void)setImage:(UIImage *)image {
     [self.imageView setImage:image];
 }

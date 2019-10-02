@@ -10,8 +10,16 @@
 
 @class Event;
 
+/**
+ * A subclass of UITableViewCell used to display the details of an Event instance.
+ */
 @interface EventTableViewCell : UITableViewCell
 
+/**
+ * Populates the views of the cell with the details of the provided Event instance. 
+ *
+ * @param event An Event instance.
+ */
 - (void)populateWithEvent:(Event *)event;
 
 @end

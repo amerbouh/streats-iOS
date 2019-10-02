@@ -7,23 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VendorTableViewCellDelegate.h"
 
 @class Vendor;
 @class VendorTableViewCell;
 
 /**
- * @brief The protocol used to interact with the Vendor Table View Cell.
+ * A subclass of UITableViewCell used to display the details of a Vendor instance.
  */
-@protocol VendorTableViewCellDelegate <NSObject>
-
-- (void)didRequestResourceWithURL:(NSURL*_Nonnull)URL from:(VendorTableViewCell*_Nonnull)requestor;
-
-@end
-
 @interface VendorTableViewCell : UITableViewCell
 
-// Properties
-
+/***/
 @property(weak, nonatomic, nullable) id <VendorTableViewCellDelegate> delegate;
 
 // Methods

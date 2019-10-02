@@ -12,14 +12,17 @@
 #import "Vendor.h"
 #import "MenuItem.h"
 #import "Position.h"
-#import <FirebaseFirestore/FirebaseFirestore.h>
 
 /** @brief The base URL of the API used the retrieve the vendor's schedule. */
 static const NSString *BASE_URL = @"https://montreal.bestfoodtrucks.com/api";
 
+/** @brief The base URL of the Server.  */
+static const NSString *BASE_SERVER_URL = @"https://streats-app-api.herokuapp.com/v1";
+
 @implementation VendorsService
 
-+ (void)getVendorsForTime:(NSString *)time completionHandler:(void (^)(NSArray<Vendor*> * _Nullable, NSError * _Nullable))completionHandler {
++ (void)getVendorsForTime:(NSString *)time completionHandler:(void (^)(NSArray<Vendor*> * _Nullable, NSError * _Nullable))completionHandler
+{
     NSString *URLString = [NSString stringWithFormat:@"%@/events/events?when=%@&where=68", BASE_URL, time];
     NSURL *requestURL = [[NSURL alloc] initWithString:URLString];
         
@@ -49,7 +52,7 @@ static const NSString *BASE_URL = @"https://montreal.bestfoodtrucks.com/api";
                     
                     for (int index = 0; index < attendees.count; index++) {
                         NSDictionary<NSString *, id> *attendee = [attendees objectAtIndex:index];
-                        Vendor* vendor = [[Vendor alloc] initWithJSON:attendee];
+                        Vendor* vendor = [[Vendor alloc] initWithDictionary:attendee];
     
                         // Initialize the Lot object.
                         Lot *lot = [[Lot alloc] initWithDictionary:lotDictionnary];
@@ -76,61 +79,81 @@ static const NSString *BASE_URL = @"https://montreal.bestfoodtrucks.com/api";
     [task resume];
 }
 
-+ (void)getDetailsForVendorWithIdentifier:(NSString *)identifier completionHandler:(void (^)(Vendor * _Nullable, NSError * _Nullable))completionHandler {
-    FIRCollectionReference *vendorsRef = [[FIRFirestore firestore] collectionWithPath:@"vendors"];
-    FIRDocumentReference *vendorDoc = [vendorsRef documentWithPath:identifier];
++ (void)getDetailsForVendorWithIdentifier:(NSString *)identifier completionHandler:(void (^)(Vendor * _Nullable, NSError * _Nullable))completionHandler
+{
+    NSURL *requestURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/vendors/vendor?id=%@", BASE_SERVER_URL, identifier]];
     
-    // Get the content of the vendor's document.
-    [vendorDoc getDocumentWithCompletion:^(FIRDocumentSnapshot * _Nullable snapshot, NSError * _Nullable error) {
+    // Make sure that the request URL is not NULL.
+    if (requestURL == NULL) {
+        return;
+    }
+    
+    // Create the request.
+    NSURLSessionDataTask *task = [NSURLSession.sharedSession dataTaskWithURL:requestURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error != NULL) {
             completionHandler(NULL, error);
         } else {
-            if (snapshot.exists) {
-                Vendor *vendor = [[Vendor alloc] initWithJSON:snapshot.data];
-                
-                // Cast the banners download URLs.
-                NSArray<NSString *> *banners = [snapshot.data objectForKey:@"banners"];
-                [vendor setBanners:banners];
-                
-                completionHandler(vendor, NULL);
+            NSError* serializationError = NULL;
+            NSDictionary<NSString *, id> *vendorDetailDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            
+            // Make sure that the data could be serialized to JSON.
+            if (serializationError != NULL) {
+                completionHandler(NULL, serializationError);
             } else {
-                NSError *error = [[NSError alloc] initWithDomain:NSCocoaErrorDomain code:404 userInfo:NULL];
-                completionHandler(NULL, error);
+                Vendor *vendor = [[Vendor alloc] initWithDictionary:vendorDetailDict];
+                completionHandler(vendor, NULL);
             }
         }
     }];
+    
+    // Send the request.
+    [task resume];
 }
 
-+ (void)getMenuItemsForVendorWithIdentifier:(NSString *)identifier completionHandler:(void (^)(NSArray<MenuItem *> * _Nullable, NSError * _Nullable))completionHandler {
-    FIRDocumentReference *vendorDoc = [[[FIRFirestore firestore] collectionWithPath:@"vendors"] documentWithPath:identifier];
-    FIRQuery *menuItemsRef = [[vendorDoc collectionWithPath:@"menu_items"] queryOrderedByField:@"price"];
++ (void)getMenuItemsForVendorWithIdentifier:(NSString *)identifier completionHandler:(void (^)(NSArray<MenuItem *> * _Nullable, NSError * _Nullable))completionHandler
+{
+    NSURL *requestURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/vendors/menu?id=%@", BASE_SERVER_URL, identifier]];
     
-    // Get the content of the menu items document.
-    [menuItemsRef getDocumentsWithCompletion:^(FIRQuerySnapshot * _Nullable snapshot, NSError * _Nullable error) {
+    // Make sure that the request URL is not NULL.
+    if (requestURL == NULL) {
+        return;
+    }
+    
+    // Create the requet.
+    NSURLSessionDataTask *task = [NSURLSession.sharedSession dataTaskWithURL:requestURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error != NULL) {
             completionHandler(NULL, error);
         } else {
-            NSMutableArray<MenuItem *> *menuItems = [[NSMutableArray alloc] init];
-            NSArray<FIRQueryDocumentSnapshot *> *documents = snapshot.documents;
+            NSError* serializationError = NULL;
+            NSArray<NSDictionary<NSString *, id> *> *vendorMenuDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
             
-            // Loop through each document, initialize a Menu Item object from
-            // the document's data and add it to the menu items array.
-            for (FIRDocumentSnapshot *document in documents) {
-                MenuItem *menuItem = [[MenuItem alloc] initWithJSON:document.data];
+            // Make sure that the data could be serialized to JSON.
+            if (serializationError != NULL) {
+                completionHandler(NULL, serializationError);
+            } else {
+                NSMutableArray<MenuItem *> *vendorMenu = [[NSMutableArray alloc] init];
                 
-                // Set the menu item identifier manually.
-                menuItem.identifier = document.documentID;
+                // Loop through each menu item and add each one to the vendor's menu.
+                for (int i = 0; i < vendorMenuDict.count; i++) {
+                    NSDictionary<NSString *, id> *menuItemDict = [vendorMenuDict objectAtIndex:i];
+                    MenuItem *menuItem = [[MenuItem alloc] initWithJSON:menuItemDict];
+                    
+                    // Add the menu item to the array.
+                    [vendorMenu addObject:menuItem];
+                }
                 
-                [menuItems addObject:menuItem];
+                // Call the completion handler and pass the vendor's menu.
+                completionHandler(vendorMenu, NULL);
             }
-            
-            // Call the compmletion handler and pass the given menu items.
-            completionHandler(menuItems, NULL);
         }
     }];
+    
+    // Send the request.
+    [task resume];
 }
 
-+ (void)getEventsForVendorWithIdentifier:(NSString *)identifier completionHandler:(void (^)(NSArray<Event *> * _Nullable, NSError * _Nullable))completionHandler {
++ (void)getEventsForVendorWithIdentifier:(NSString *)identifier completionHandler:(void (^)(NSArray<Event *> * _Nullable, NSError * _Nullable))completionHandler
+{
     NSString* URLString = [NSString stringWithFormat:@"%@/trucks/truck_events/%@", BASE_URL, identifier];
     NSURL* requestURL = [[NSURL alloc] initWithString:URLString];
     

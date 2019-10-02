@@ -16,8 +16,12 @@
 
 @property(strong, nonatomic, nonnull) Vendor* vendor;
 
-// Methods
+// Initialization
 
 - (instancetype _Nullable)initWithVendor:(Vendor * _Nonnull)vendor;
+
+// Methods
+
++ (VendorInformationTableViewController * _Nonnull)instanciateFromStoryboard;
 
 @end

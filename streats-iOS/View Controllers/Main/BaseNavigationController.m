@@ -10,13 +10,18 @@
 
 @interface BaseNavigationController ()
 
+// Methods
+
 - (void)configureAppearance;
 
 @end
 
 @implementation BaseNavigationController
 
-- (void)viewDidLoad {
+#pragma mark - View's lifecycle
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
@@ -25,10 +30,23 @@
 
 #pragma mark - Methods
 
-- (void)configureAppearance {
+- (void)prepareForInterfaceBuilder
+{
+    [super prepareForInterfaceBuilder];
+    
+    // Configure the navigation bar's appearance.
+    [self configureAppearance];
+}
+
+- (void)configureAppearance
+{
     [self.navigationBar setTranslucent:NO];
-    [self.navigationBar setBarStyle:UIBarStyleBlack];
+    [self.navigationBar setTintColor:[UIColor colorNamed:@"Navigation Bar Tint Color"]];
     [self.navigationBar setBarTintColor:[UIColor colorNamed:@"Primary"]];
+    
+    // Set the title's text attributes.
+    NSDictionary<NSAttributedStringKey, id> *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorNamed:@"Secondary"], NSForegroundColorAttributeName, nil];
+    [self.navigationBar setTitleTextAttributes:attributes];
 }
 
 @end

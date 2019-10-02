@@ -10,6 +10,9 @@
 
 @interface TabViewItemLabel ()
 
+/**
+ * Configures the appearance of the label used to display the title.
+ */
 - (void)configureLabelWithTitle:(NSString *)title;
 
 @end
@@ -18,17 +21,19 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithTitle:(NSString *)title {
-    if ((self = [super init])) {
+- (instancetype)initWithTitle:(NSString *)title
+{
+    self =  [super init];
+    if (self) {
         [self configureLabelWithTitle:title];
     }
-    
     return self;
 }
 
 #pragma mark - Methods
 
-- (void)configureLabelWithTitle:(NSString *)title {
+- (void)configureLabelWithTitle:(NSString *)title
+{
     [self setText:title];
     [self setTextColor:UIColor.whiteColor];
     [self setTextAlignment:NSTextAlignmentCenter];

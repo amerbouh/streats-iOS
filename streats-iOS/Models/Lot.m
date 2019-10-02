@@ -15,9 +15,10 @@
 @synthesize subtitle;
 @synthesize coordinate;
 
-#pragma mark - Methods
+#pragma mark - Intialization
 
-- (instancetype)initWithIdentifier:(NSString *)identifier name:(NSString *)name emailAddress:(NSString *)emailAddress address:(NSString *)address latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude {
+- (instancetype)initWithIdentifier:(NSString *)identifier name:(NSString *)name emailAddress:(NSString *)emailAddress address:(NSString *)address latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude
+{
     if ((self = [super init])) {
         _identifier = identifier;
         _name = name;
@@ -31,11 +32,11 @@
         subtitle = address;
         coordinate = CLLocationCoordinate2DMake([latitude doubleValue], [longitude doubleValue]);
     }
-    
     return self;
 }
 
-- (instancetype)initWithDictionary:(NSDictionary<NSString *,id> *)dictionary {
+- (instancetype)initWithDictionary:(NSDictionary<NSString *,id> *)dictionary
+{
     NSString *identifier = [dictionary objectForKey:@"id"];
     NSString *name = [dictionary objectForKey:@"name"];
     NSString *address = [dictionary objectForKey:@"address"];
@@ -57,7 +58,7 @@
     
     // Loop through each attendee dictionary and create a Vendor from it.
     for (NSDictionary<NSString *, id> *attendeeDictionary in attendeesDictionaries) {
-        Vendor *vendor = [[Vendor alloc] initWithJSON:attendeeDictionary];
+        Vendor *vendor = [[Vendor alloc] initWithDictionary:attendeeDictionary];
         [vendors addObject:vendor];
     }
     

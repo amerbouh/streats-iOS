@@ -10,10 +10,12 @@
 
 @implementation Vendor
 
-#pragma mark - Methods
+#pragma mark - Initialization
 
-- (instancetype)initWithIdentifier:(NSNumber *)identifier name:(NSString *)name cuisineType:(NSString *)cuisineType shortDescription:(NSString *)shortDescription emailAddress:(NSString *)emailAddress phoneNumber:(NSString *)phoneNumber website:(NSString *)website iconDownloadURLSuffix:(NSString *)suffix banners:(NSArray<NSString *> *)banners {
-    if ((self = [super init])) {
+- (instancetype)initWithIdentifier:(NSNumber *)identifier name:(NSString *)name cuisineType:(NSString *)cuisineType shortDescription:(NSString *)shortDescription emailAddress:(NSString *)emailAddress phoneNumber:(NSString *)phoneNumber website:(NSString *)website iconDownloadURLSuffix:(NSString *)suffix banners:(NSArray<NSString *> *)banners
+{
+    self = [super init];
+    if (self) {
         _name = [[name lowercaseString] capitalizedString];
         _identifier = identifier;
         _cuisineType = cuisineType;
@@ -23,11 +25,11 @@
         _website = website;
         _iconDownloadURL = [NSString stringWithFormat:@"https://lotmom.imgix.net/%@", suffix];
     }
-    
     return self;
 }
 
-- (instancetype)initWithJSON:(NSDictionary<NSString *,id> *)JSON {
+- (instancetype)initWithDictionary:(NSDictionary<NSString *,id> *)JSON
+{
     NSString *name = [JSON objectForKey:@"name"];
     NSNumber *identifier = [JSON objectForKey:@"id"];
     NSString *cuisineType = [JSON objectForKey:@"cuisine_type"];
@@ -41,7 +43,10 @@
     return [self initWithIdentifier:identifier name:name cuisineType:cuisineType shortDescription:shortDescription emailAddress:emailAddress phoneNumber:phoneNumber website:website iconDownloadURLSuffix:iconDownloadURLSuffix banners:banners];
 }
 
-- (BOOL)isEqual:(id)object {
+#pragma mark - Methods
+
+- (BOOL)isEqual:(id)object
+{
     if ([object class] == [Vendor class]) {
         Vendor* comparedVendor = (Vendor*) object;
         

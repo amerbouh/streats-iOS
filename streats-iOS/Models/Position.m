@@ -20,22 +20,25 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude {
-    if ((self = [super init])) {
+- (instancetype)initWithLatitude:(NSNumber *)latitude longitude:(NSNumber *)longitude
+{
+    self = [super init];
+    if (self) {
         _latitude = latitude;
         _longitude = longitude;
     }
-    
     return self;
 }
 
 #pragma mark - Methods
 
-- (CLLocationCoordinate2D)getCoordinate {
+- (CLLocationCoordinate2D)getCoordinate
+{
     return CLLocationCoordinate2DMake([self.latitude doubleValue], [self.longitude doubleValue]);
 }
 
-- (void)getAddressWithCompletionHandler:(void (^)(CLPlacemark * _Nullable, NSError * _Nullable))completionHandler {
+- (void)getAddressWithCompletionHandler:(void (^)(CLPlacemark * _Nullable, NSError * _Nullable))completionHandler
+{
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     CLLocation *location = [[CLLocation alloc] initWithLatitude:[self.latitude doubleValue] longitude:[self.longitude doubleValue]];
     

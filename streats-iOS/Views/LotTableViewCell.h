@@ -10,8 +10,16 @@
 
 @class Lot;
 
+/**
+ * A subclass of UITableViewCell used to display the details of a Lot instance.
+ */
 @interface LotTableViewCell : UITableViewCell
 
+/**
+ * Populates the views of the cell with the details of the provided Lot instance. 
+ *
+ * @param lot A Lot instance.
+ */
 - (void)populateWithLot:(Lot *)lot;
 
 @end

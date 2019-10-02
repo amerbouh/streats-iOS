@@ -7,32 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ErrorViewDelegate.h"
 
 @class ErrorView;
 
 /**
- * @brief The protocol used to receive touch-related events from the Error View.
+ * A subclass of UIView used to display an error.
  */
-@protocol ErrorViewDelegate <NSObject>
-
-- (void)tryAgainButtonTaped:(ErrorView*_Nonnull)errorView;
-
-@end
-
 @interface ErrorView : UIView
 
 /**
- * @brief Holds a reference to the object that touch-related events from the view.
+ * Holds a reference to the object that sends touch-related events from the view.
  */
 @property(weak, nonatomic, nullable) id <ErrorViewDelegate> delegate;
 
 /**
- * @brief Sets the error message displayed by the view to the user.
+ * Sets the error message displayed by the view to the user.
+ *
+ * @param message A string that represents the message to display.
  */
 - (void)setMessage:(NSString*_Nonnull)message;
 
 /**
- * @brief Creates an new instance of the Error View with the given message.
+ * Initializes and returns an Error View object using the provided message.
+ *
  * @param message The error message to display to the user.
  */
 - (instancetype _Nullable)initWithMessage:(NSString*_Nonnull)message;

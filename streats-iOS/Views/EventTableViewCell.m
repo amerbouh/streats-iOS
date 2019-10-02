@@ -11,7 +11,10 @@
 
 @interface EventTableViewCell ()
 
+/** A label that displays a string representing the title of the event. */
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
+/** A label that displays a string representing the duration of the event. */
 @property (weak, nonatomic) IBOutlet UILabel *durationLabel;
 
 @end
@@ -20,7 +23,8 @@
 
 #pragma mark - Methods
 
-- (void)populateWithEvent:(Event *)event {
+- (void)populateWithEvent:(Event *)event
+{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"YYYY-MM-d HH:mm"];
     

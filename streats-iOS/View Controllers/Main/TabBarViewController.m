@@ -15,60 +15,77 @@
 
 @interface TabBarViewController ()
 
-+ (UIViewController *)createTabBarItemWithTitle:(NSString *)title image:(UIImage *)image controller:(UIViewController *)controller;
-+ (UIViewController *)createTabBarItemWithLocalizedTitle:(NSString *)title image:(UIImage *)image controller:(UIViewController *)controller;
+/* The View Controller object used to display the position of the lots. */
+@property (strong, nonatomic, nonnull) MapViewController *mapViewController;
 
+/* The View Controller object used to present a list of vendors. */
+@property (strong, nonatomic, nonnull) TabViewController *vendorsListViewController;
+
+/* Configures the appearance of the Tab Bar View Controller. */
+- (void)configureAppearance;
 
 @end
 
 @implementation TabBarViewController
 
-- (void)viewDidLoad {
+#pragma mark - Initialization
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        _mapViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"MapViewController"];
+        _vendorsListViewController = [[TabViewController alloc] initWithItems:@[
+            [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"today", NULL) controller:[[VendorsListTableViewController alloc] initWithFilter:@"today"]],
+            [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"tomorrow", NULL) controller:[[VendorsListTableViewController alloc] initWithFilter:@"tomorrow"]],
+            [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"thisWeek", NULL) controller:[[VendorsListTableViewController alloc] initWithFilter:@"This%20Week"]],
+        ]];
+    }
+    return self;
+}
+
+#pragma mark - View's lifecycle
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
-    MapViewController *mapViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"MapViewController"];
-    TabViewController *vendorsListViewController = [[TabViewController alloc] initWithItems:@[
-                                                                                     [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"today", NULL) controller:[[VendorsListTableViewController alloc] initWithFilter:@"today"]],
-                                                                                     [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"tomorrow", NULL) controller:[[VendorsListTableViewController alloc] initWithFilter:@"tomorrow"]],
-                                                                                     [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"thisWeek", NULL) controller:[[VendorsListTableViewController alloc] initWithFilter:@"This%20Week"]],
-                                                                                     ]];
+    BaseNavigationController *mapNavigationController = [[BaseNavigationController alloc] initWithRootViewController:self.mapViewController];
+    BaseNavigationController *vendorsListNavigationController = [[BaseNavigationController alloc] initWithRootViewController:self.vendorsListViewController];
     
-    // Create the contained view controllers.
-    BaseNavigationController *mapNavigationController = (BaseNavigationController *) [TabBarViewController createTabBarItemWithLocalizedTitle:@"map" image:[UIImage imageNamed:@"Tab bar icons/ic_map"] controller:[[BaseNavigationController alloc] init]];
-    BaseNavigationController *vendorsListNavigationController = (BaseNavigationController *) [TabBarViewController createTabBarItemWithLocalizedTitle:@"list" image:[UIImage imageNamed:@"Tab bar icons/ic_list"] controller:[[BaseNavigationController alloc] init]];
-    
-    [vendorsListViewController.navigationItem setTitle:NSLocalizedString(@"vendors", NULL)];
+    [self.vendorsListViewController.navigationItem setTitle:NSLocalizedString(@"vendors", NULL)];
     [vendorsListNavigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
     
     // Configure the contained view controllers.
-    [mapNavigationController setViewControllers:[NSArray arrayWithObjects:mapViewController, nil]];
-    [vendorsListNavigationController setViewControllers:[NSArray arrayWithObjects:vendorsListViewController, nil]];
+    [mapNavigationController setViewControllers:[NSArray arrayWithObjects:self.mapViewController, nil]];
+    [mapNavigationController.tabBarItem setTitle:NSLocalizedString(@"map", NULL)];
+    [mapNavigationController.tabBarItem setImage:[UIImage imageNamed:@"Tab bar icons/ic_map"]];
+    
+    [vendorsListNavigationController setViewControllers:[NSArray arrayWithObjects:self.vendorsListViewController, nil]];
+    [vendorsListNavigationController.tabBarItem setTitle:NSLocalizedString(@"list", NULL)];
+    [vendorsListNavigationController.tabBarItem setImage:[UIImage imageNamed:@"Tab bar icons/ic_list"]];
     
     // Add the contained view controllers.
-    [self setViewControllers:[NSArray arrayWithObjects:mapNavigationController, vendorsListNavigationController, nil]];
+    [self setViewControllers:@[
+        mapNavigationController,
+        vendorsListNavigationController
+    ]];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // Do any additional setup before the view appears.
+    [self configureAppearance];
 }
 
 #pragma mark - Methods
 
-+ (UIViewController *)createTabBarItemWithTitle:(NSString *)title image:(UIImage *)image controller:(UIViewController *)controller {
-    [controller setTitle:title];
-    
-    // Configure the controller's tab bar item.
-    [controller.tabBarItem setTitle:title];
-    [controller.tabBarItem setImage:image];
-    
-    return controller;
-}
-
-+ (UIViewController *)createTabBarItemWithLocalizedTitle:(NSString *)title image:(UIImage *)image controller:(UIViewController *)controller {
-    [controller setTitle:title];
-    
-    // Configure the controller's tab bar item.
-    [controller.tabBarItem setTitle:NSLocalizedString(title, NULL)];
-    [controller.tabBarItem setImage:image];
-    
-    return controller;
+- (void)configureAppearance
+{
+    [self.tabBar setTintColor:[UIColor colorNamed:@"Red"]];
 }
 
 @end

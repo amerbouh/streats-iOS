@@ -13,6 +13,11 @@
 
 @interface LotDetailContainerViewController : UIViewController <LotDetailPageViewControllerDelegate>
 
-@property(strong, nonatomic, nonnull) Lot *lot;
+/**
+* Initializes and returns a Lot Detail Container View Controller object using the provided lot instances.
+*
+* @param lot A lot object used by the View Controller to display relevant data to the user.
+*/
+- (instancetype)initWithLot:(Lot *)lot;
 
 @end

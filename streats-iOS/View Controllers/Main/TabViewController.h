@@ -13,6 +13,11 @@
 
 @interface TabViewController : UIViewController <HorizontalPageViewControllerManagerDelegate>
 
-- (instancetype)initWithItems:(NSArray<TabBarItem *> *)items;
+/**
+* Initializes and returns a Tab View View Controller object using the provided items instances.
+*
+* @param items An array of Tab Bar Item objects used by the View Controller to display views..
+*/
+- (instancetype _Nonnull)initWithItems:(NSArray<TabBarItem *> * _Nonnull)items;
 
 @end

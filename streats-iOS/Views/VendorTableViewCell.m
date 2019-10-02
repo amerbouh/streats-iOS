@@ -23,7 +23,8 @@
 
 #pragma mark - Methods
 
-- (void)prepareForReuse {
+- (void)prepareForReuse
+{
     [super prepareForReuse];
     
     // Reset the image view displaying the vendor's logo.
@@ -31,11 +32,13 @@
     [self.logoImageView setImage:defaultImage];
 }
 
-- (void)setVendorImage:(UIImage *)image {
+- (void)setVendorImage:(UIImage *)image
+{
     [self.logoImageView setImage:image];
 }
 
-- (void)populateWithVendor:(Vendor *)vendor {
+- (void)populateWithVendor:(Vendor *)vendor
+{
     [self.nameLabel setText:vendor.name];
     [self.cuisineTypeLabel setText:vendor.cuisineType];
     [self.descriptionLabel setText:vendor.shortDescription];

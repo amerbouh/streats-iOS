@@ -52,6 +52,7 @@
 		BCCB5187228A05EF0079A959 /* VendorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCB5186228A05EF0079A959 /* VendorTableViewCell.xib */; };
 		BCCB518E228A62130079A959 /* VendorsService.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCB518D228A62130079A959 /* VendorsService.m */; };
 		BCCB5192228A63FD0079A959 /* Vendor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCB5191228A63FD0079A959 /* Vendor.m */; };
+		BCCF04D723025C9E009DA0CA /* VendorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCF04D623025C9E009DA0CA /* VendorDetailViewController.m */; };
 		BCD53ECA22AC4DB200676A6E /* HorizontalPageViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD53EC922AC4DB200676A6E /* HorizontalPageViewControllerManager.m */; };
 		BCE2AB6E22906FB2004A1146 /* LotsService.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE2AB6D22906FB2004A1146 /* LotsService.m */; };
 		BCE2AB7122907058004A1146 /* Lot.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE2AB7022907058004A1146 /* Lot.m */; };
@@ -69,6 +70,7 @@
 		355A34B7D39C9A4C2A6537D3 /* libPods-streats-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-streats-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC0514DD2292F69D003AB27E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BC0514DF2292F6A0003AB27E /* fr-CA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fr-CA"; path = "fr-CA.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		BC0F363E23035CDD00A6A1C7 /* ErrorViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ErrorViewDelegate.h; sourceTree = "<group>"; };
 		BC0FB8B6228BA53F00CB830D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BC14EF522290BB2700D9670B /* LotDetailContainerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LotDetailContainerViewController.h; sourceTree = "<group>"; };
 		BC14EF532290BB2700D9670B /* LotDetailContainerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LotDetailContainerViewController.m; sourceTree = "<group>"; };
@@ -119,6 +121,8 @@
 		BC9AEB96228D8D3F009E988E /* MenuItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemTableViewCell.xib; sourceTree = "<group>"; };
 		BCABEA8A22A635610067C4FD /* StorageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageController.h; sourceTree = "<group>"; };
 		BCABEA8B22A635610067C4FD /* StorageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StorageController.m; sourceTree = "<group>"; };
+		BCADB137230388F4006D2B14 /* VendorTableViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VendorTableViewCellDelegate.h; sourceTree = "<group>"; };
+		BCB1D1D82305FC630047AA30 /* JSONObjectPayload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONObjectPayload.h; sourceTree = "<group>"; };
 		BCBAEDDD22ACDB2A00FDE3D7 /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		BCBAEDDE22ACDB2A00FDE3D7 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		BCC976812301E488008A3CCB /* TabBarItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarItem.h; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 		BCCB518D228A62130079A959 /* VendorsService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VendorsService.m; sourceTree = "<group>"; };
 		BCCB5190228A63FD0079A959 /* Vendor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vendor.h; sourceTree = "<group>"; };
 		BCCB5191228A63FD0079A959 /* Vendor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Vendor.m; sourceTree = "<group>"; };
+		BCCF04D523025C9E009DA0CA /* VendorDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VendorDetailViewController.h; sourceTree = "<group>"; };
+		BCCF04D623025C9E009DA0CA /* VendorDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VendorDetailViewController.m; sourceTree = "<group>"; };
 		BCD53EC822AC4DB200676A6E /* HorizontalPageViewControllerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HorizontalPageViewControllerManager.h; sourceTree = "<group>"; };
 		BCD53EC922AC4DB200676A6E /* HorizontalPageViewControllerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HorizontalPageViewControllerManager.m; sourceTree = "<group>"; };
 		BCE2AB6C22906FB2004A1146 /* LotsService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LotsService.h; sourceTree = "<group>"; };
@@ -192,6 +198,16 @@
 				355A34B7D39C9A4C2A6537D3 /* libPods-streats-iOS.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC0F363D23035CC600A6A1C7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BCB1D1D82305FC630047AA30 /* JSONObjectPayload.h */,
+				BC0F363E23035CDD00A6A1C7 /* ErrorViewDelegate.h */,
+				BCADB137230388F4006D2B14 /* VendorTableViewCellDelegate.h */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		BC14EF4D22909D4B00D9670B /* Lots */ = {
@@ -278,13 +294,14 @@
 				BCCB51772289EF2C0079A959 /* View Controllers */,
 				BCABEA8922A635500067C4FD /* Other Controllers */,
 				BCCB518B228A61FB0079A959 /* Services */,
+				BC0F363D23035CC600A6A1C7 /* Protocols */,
 				BCCB51752289EF1D0079A959 /* Supporting Files */,
 				BCCB51652289EC550079A959 /* Assets.xcassets */,
 				BCCB51732289ED800079A959 /* Colors.xcassets */,
+				BCCB516B2289EC550079A959 /* main.m */,
 				BC7EB81622F68E4500BE96A8 /* LaunchScreen.storyboard */,
 				BCCB516A2289EC550079A959 /* Info.plist */,
 				BC0FB8B6228BA53F00CB830D /* GoogleService-Info.plist */,
-				BCCB516B2289EC550079A959 /* main.m */,
 			);
 			path = "streats-iOS";
 			sourceTree = "<group>";
@@ -405,6 +422,8 @@
 		BCE2AB73229073C9004A1146 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				BCCF04D523025C9E009DA0CA /* VendorDetailViewController.h */,
+				BCCF04D623025C9E009DA0CA /* VendorDetailViewController.m */,
 				BC7D1E7A228B847700EB0299 /* VendorInformationTableViewController.h */,
 				BC7D1E7B228B847700EB0299 /* VendorInformationTableViewController.m */,
 				BC6B12AA22931BAA00286865 /* VendorDescriptionViewController.h */,
@@ -607,6 +626,7 @@
 				BCCB517A2289F01B0079A959 /* VendorsListTableViewController.m in Sources */,
 				BC7D1E7C228B847700EB0299 /* VendorInformationTableViewController.m in Sources */,
 				BCC976862301E7CF008A3CCB /* TabView.m in Sources */,
+				BCCF04D723025C9E009DA0CA /* VendorDetailViewController.m in Sources */,
 				BC5CCE96228DCB3200728E02 /* MenuItemDetailTableViewController.m in Sources */,
 				BCCB515E2289EC540079A959 /* AppDelegate.m in Sources */,
 				BCC976892301ED54008A3CCB /* TabViewItemLabel.m in Sources */,

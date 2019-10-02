@@ -189,6 +189,7 @@
     
     // Get an instance of the Tab View Controller.
     TabViewController *vendorDetailsTabViewController = [[TabViewController alloc] initWithItems:items];
+    [vendorDetailsTabViewController.navigationItem setTitle:selectedVendor.name];
     
     // Present the Tab View Controller.
     [self.navigationController pushViewController:vendorDetailsTabViewController animated:YES];
