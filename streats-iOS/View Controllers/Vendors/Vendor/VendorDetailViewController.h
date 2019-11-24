@@ -2,18 +2,16 @@
 //  VendorDetailViewController.h
 //  streats-iOS
 //
-//  Created by Anas Merbouh on 2019-08-12.
+//  Created by Anas Merbouh on 2019-11-14.
 //  Copyright © 2019 Anas Merbouh. All rights reserved.
 //
 
-#import "TabViewController.h"
+#import <UIKit/UIKit.h>
 
 @class Vendor;
 
-@interface VendorDetailViewController : TabViewController
+@interface VendorDetailViewController : UIViewController
 
-// Initialization
-
-- (instancetype _Nullable)initWithVendor:(Vendor * _Nonnull)vendor;
+- (instancetype)initWithVendor:(Vendor *)vendor;
 
 @end

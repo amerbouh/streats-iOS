@@ -49,7 +49,7 @@
 {
     if ([object class] == [Vendor class]) {
         Vendor* comparedVendor = (Vendor*) object;
-        
+                
         // Check if the vendors have the same identifier.
         return [comparedVendor.identifier isEqualToNumber:self.identifier];
     }

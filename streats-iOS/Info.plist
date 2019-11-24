@@ -22,6 +22,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MKDirectionsApplicationSupportedModes</key>
+	<array/>
 	<key>NSCameraUsageDescription</key>
 	<string>We need to access your camera in order to allow you to take and share pictures of the vendors' menu.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

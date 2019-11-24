@@ -16,6 +16,10 @@
  */
 @protocol ErrorViewDelegate <NSObject>
 
+/**
+ * @brief Notifies the conforming types of touch-related events within an Error View object.
+ * @param errorView The Error View instance on which the tap was registered.
+ */
 - (void)tryAgainButtonTaped:(ErrorView * _Nonnull)errorView;
 
 @end

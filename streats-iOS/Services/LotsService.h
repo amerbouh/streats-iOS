@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class Lot;
+@class ServiceError;
 
 @interface LotsService : NSObject
 
@@ -16,7 +17,7 @@
  * @brief Retrieves all the lots for the given time.
  * @param time The time range from which the lots will be fetched.
  * @param completionHandler The completion handler to call when the load request is complete.
- */
-+ (void)getLotsForTime:(NSString*_Nonnull)time completionHandler:(void (^_Nullable)(NSArray<Lot*> * _Nullable lots, NSError * _Nullable error))completionHandler;
+*/
+- (void)getLotsForTime:(NSString * _Nonnull)time completionHandler:(void (^_Nullable)(NSArray<Lot*> * _Nullable lots, ServiceError * _Nullable error))completionHandler;
 
 @end

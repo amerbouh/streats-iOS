@@ -8,7 +8,6 @@
 
 #import "MenuItem.h"
 
-
 @implementation MenuItem
 
 #pragma mark - Initialization
@@ -38,7 +37,9 @@
 
 - (NSString *)priceString
 {
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
+    
+    // Configure the number formatter.
     [formatter setCurrencyCode:@"CAD"];
     [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     

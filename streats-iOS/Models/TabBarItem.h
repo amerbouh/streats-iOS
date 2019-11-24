@@ -15,8 +15,12 @@
 @property (strong, nonatomic, nonnull) NSString *title;
 @property (strong, nonatomic, nonnull) UIViewController *viewController;
 
-// Initialization
+/**
+Initializes and returns a Tab Bar Item object using the provided parameters.
 
+@param title A string describing the title of the Tab Bar Item.
+@param viewController A View Controller object representing the View Controller instance the Tab Bar Item controls.
+*/
 - (instancetype _Nullable)initWithTitle:(NSString * _Nonnull)title controller:(UIViewController * _Nonnull)viewController;
 
 @end

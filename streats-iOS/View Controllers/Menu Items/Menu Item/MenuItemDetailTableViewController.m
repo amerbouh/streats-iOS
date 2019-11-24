@@ -13,8 +13,6 @@
 
 @interface MenuItemDetailTableViewController ()
 
-// Properties
-
 @property (weak, nonatomic) IBOutlet UILabel *nameTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ingredientsTitleLabel;
@@ -23,8 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UIStackView *ingredientsContainerStackView;
-
-// Methods
 
 - (void)openCamera;
 - (void)populateViews;
@@ -37,7 +33,10 @@
 
 @implementation MenuItemDetailTableViewController
 
-- (void)viewDidLoad {
+#pragma mark - View's lifecycle
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
@@ -48,7 +47,8 @@
 
 #pragma mark - Methods
 
-- (void)openCamera {
+- (void)openCamera
+{
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     
     // Configure the image picker.
@@ -60,7 +60,8 @@
     [self presentViewController:imagePickerController animated:YES completion:NULL];
 }
 
-- (void)populateViews {
+- (void)populateViews
+{
     [self.nameLabel setText:self.menuItem.name];
     [self.priceLabel setText:self.menuItem.priceString];
     
@@ -90,14 +91,16 @@
     }
 }
 
-- (void)configureTitleLabels {
+- (void)configureTitleLabels
+{
     [self.nameTitleLabel setText:NSLocalizedString(@"name", NULL)];
     [self.priceTitleLabel setText:NSLocalizedString(@"price", NULL)];
     [self.ingredientsTitleLabel setText:NSLocalizedString(@"ingredients", NULL)];
     [self.addPictureTitleLabel setText:NSLocalizedString(@"addPicture", NULL)];
 }
 
-- (void)showErrorAlertControllerWithMessage:(NSString *)message {
+- (void)showErrorAlertControllerWithMessage:(NSString *)message
+{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"oops", NULL) message:message preferredStyle:UIAlertControllerStyleAlert];
     
     // Configure the alert controller.
@@ -108,7 +111,8 @@
     [self presentViewController:alertController animated:YES completion:NULL];
 }
 
-- (void)showImageUploadErrorAlertControllerWithMessage:(NSString *)message {
+- (void)showImageUploadErrorAlertControllerWithMessage:(NSString *)message
+{
     NSString *fullMessage = [NSString stringWithFormat:NSLocalizedString(@"imageUploadErrorMessage", NULL), message];
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"oops", NULL) message:fullMessage preferredStyle:UIAlertControllerStyleAlert];
     
@@ -126,7 +130,8 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     if (indexPath.section == 1) {
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             [self openCamera];
@@ -138,7 +143,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
     if (section == 0) {
         return NSLocalizedString(@"priceSubjectToChange", NULL);
     } else if (section == 1) {
@@ -148,7 +154,8 @@
     return NULL;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     if (indexPath.row == 2) {
         return UITableViewAutomaticDimension;
     }
@@ -158,7 +165,8 @@
 
 #pragma mark - Image Picker Controller delegate
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info
+{
     UIImage *image = (UIImage *) [info objectForKey:UIImagePickerControllerEditedImage];
     
     // Show the activity indicator.

@@ -3,6 +3,16 @@
     {
       "idiom" : "universal",
       "filename" : "53676939_1043836179160509_7660651583524306944_n.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "logo.png",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

@@ -26,12 +26,7 @@
 
 @implementation ErrorView
 
-#pragma mark - Methods
-
-- (void)setMessage:(NSString *)message
-{
-    [self.messageLabel setText:message];
-}
+#pragma mark - Initialization
 
 - (instancetype)initWithMessage:(NSString *)message
 {
@@ -45,6 +40,13 @@
         [self.tryAgainButton setTitle:NSLocalizedString(@"tryAgain", @"") forState:UIControlStateNormal];
     }
     return self;
+}
+
+#pragma mark - Methods
+
+- (void)setMessage:(NSString *)message
+{
+    [self.messageLabel setText:message];
 }
 
 - (IBAction)tryAgainButtonTaped:(UIButton *)sender

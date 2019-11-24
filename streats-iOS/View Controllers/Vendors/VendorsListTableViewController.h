@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ErrorView.h"
-#import "VendorTableViewCell.h"
+#import "ErrorViewDelegate.h"
+#import "VendorTableViewCellDelegate.h"
 
 @class Lot;
 
 @interface VendorsListTableViewController : UITableViewController <UIViewControllerPreviewingDelegate, VendorTableViewCellDelegate, ErrorViewDelegate>
-
-// Methods
 
 - (instancetype _Nullable)initWithLot:(Lot *_Nonnull)lot;
 - (instancetype _Nullable)initWithFilter:(NSString *_Nonnull)filter;

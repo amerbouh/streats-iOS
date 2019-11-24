@@ -19,7 +19,10 @@
 
 @implementation MenuItemsService
 
-+ (void)uploadMenuItemImage:(UIImage *)image forMenuItemWithIdentifier:(NSString *)menuItemIdentifier andVendorWithIdentifier:(NSNumber *)vendorIdentifier completionHandler:(void (^)(NSError * _Nullable))completionHandler {
+#pragma mark - Methods
+
++ (void)uploadMenuItemImage:(UIImage *)image forMenuItemWithIdentifier:(NSString *)menuItemIdentifier andVendorWithIdentifier:(NSNumber *)vendorIdentifier completionHandler:(void (^)(NSError * _Nullable))completionHandler
+{
     StorageController *storageController  = [[StorageController alloc] init];
     
     // Generate the image's name.
@@ -41,7 +44,8 @@
     }];
 }
 
-+ (void)uploadImageDownloadURLForMenuItemWithIdentifier:(NSString *)menuItemIdentifier correspondingVendorIdentifier:(NSNumber *)vendorIdentifier downloadUrl:(NSURL *)downloadUrl completionHandler:(void (^)(NSError * _Nullable))completionHandler {
++ (void)uploadImageDownloadURLForMenuItemWithIdentifier:(NSString *)menuItemIdentifier correspondingVendorIdentifier:(NSNumber *)vendorIdentifier downloadUrl:(NSURL *)downloadUrl completionHandler:(void (^)(NSError * _Nullable))completionHandler
+{
     FIRDocumentReference *vendorDocumentRef = [[[FIRFirestore firestore] collectionWithPath:@"vendors"] documentWithPath:[vendorIdentifier stringValue]];
     FIRDocumentReference *menuItemRef = [[vendorDocumentRef collectionWithPath:@"menu_items"] documentWithPath:menuItemIdentifier];
     FIRCollectionReference *menuItemImagesRef = [menuItemRef collectionWithPath:@"item_images"];

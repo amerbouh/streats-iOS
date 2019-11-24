@@ -12,71 +12,57 @@
 #import "Vendor.h"
 #import "MenuItem.h"
 #import "Position.h"
+#import "ServiceError.h"
+#import "WebClientController.h"
+
+@interface VendorsService ()
+
+/**
+ * The Web Client Controller instance used to perform network requests.
+ */
+@property (strong, nonatomic, nonnull) WebClientController * webClientController;
+
+@end
 
 /** @brief The base URL of the API used the retrieve the vendor's schedule. */
-static const NSString *BASE_URL = @"https://montreal.bestfoodtrucks.com/api";
+static const NSString * BASE_URL = @"https://montreal.bestfoodtrucks.com/api";
 
 /** @brief The base URL of the Server.  */
-static const NSString *BASE_SERVER_URL = @"https://streats-app-api.herokuapp.com/v1";
+static const NSString * BASE_SERVER_URL = @"https://streats-app-api.herokuapp.com/v1";
 
 @implementation VendorsService
 
-+ (void)getVendorsForTime:(NSString *)time completionHandler:(void (^)(NSArray<Vendor*> * _Nullable, NSError * _Nullable))completionHandler
-{
-    NSString *URLString = [NSString stringWithFormat:@"%@/events/events?when=%@&where=68", BASE_URL, time];
-    NSURL *requestURL = [[NSURL alloc] initWithString:URLString];
-        
-    // Check if the passed URL is valid.
-    if (requestURL == NULL) {
-        return;
-    }
-    
-    // Configure the request.
-    NSURLSessionDataTask *task = [NSURLSession.sharedSession dataTaskWithURL:requestURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (error != NULL) {
-            completionHandler(NULL, error);
-        } else {
-            NSError* serializationError = NULL;
-            NSArray<NSDictionary<NSString *, id> *> *lots = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-            
-            // Make sure that the data could be serialized to JSON.
-            if (serializationError != NULL) {
-                completionHandler(NULL, serializationError);
-            } else {
-                NSMutableArray<Vendor *> *vendors = [[NSMutableArray alloc] init];
-                
-                // Loop through each lot and add each one of its attendees to the vendors array.
-                for (int index = 0; index < lots.count; index++) {
-                    NSDictionary<NSString *, id> *lotDictionnary = [lots objectAtIndex:index];
-                    NSArray<NSDictionary<NSString *, id> *> *attendees = [lotDictionnary objectForKey:@"attending"];
-                    
-                    for (int index = 0; index < attendees.count; index++) {
-                        NSDictionary<NSString *, id> *attendee = [attendees objectAtIndex:index];
-                        Vendor* vendor = [[Vendor alloc] initWithDictionary:attendee];
-    
-                        // Initialize the Lot object.
-                        Lot *lot = [[Lot alloc] initWithDictionary:lotDictionnary];
-                        
-                        // Initialize other properties.
-                        vendor.openingHours = [lotDictionnary objectForKey:@"formatted_date"];
-                        vendor.openiningDate = [lotDictionnary objectForKey:@"date"];
-                        vendor.lastPosition = [[Position alloc] initWithLatitude:lot.latitude longitude:lot.longitude];
-                        
-                        // Add the vendor to the vendors array, if applicable.
-                        if (![vendors containsObject:vendor]) {
-                            [vendors addObject:vendor];
-                        }
-                    }
-                }
-                
-                // Call the completion handler and pass the given vendors.
-                completionHandler(vendors, NULL);
-            }
-        }
-    }];
+#pragma mark - Initialization
 
-    // Send the request.
-    [task resume];
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _webClientController = [WebClientController new];
+    }
+    return self;
+}
+
+#pragma mark - Methods
+
+- (void)getVendorsForTime:(NSString *)time completionHandler:(void (^)(NSArray<Vendor*> * _Nullable, ServiceError * _Nullable))completionHandler
+{
+    NSString * requestURL = [NSString stringWithFormat:@"%@/events/events", BASE_URL];
+    NSDictionary<NSString *, id> * requestParams = @{
+        @"when": time,
+        @"where": @"68"
+    };
+        
+    // Load the resource for the given path.
+    [self.webClientController loadResourceForPath:requestURL withParams:requestParams completionHandler:^(id  _Nullable result, ServiceError * _Nullable serviceError) {
+        if (serviceError ) {
+            completionHandler(NULL, serviceError);
+            return;
+        }
+        
+        // Handle the response.
+        NSLog(@"%@", result);
+    }];
 }
 
 + (void)getDetailsForVendorWithIdentifier:(NSString *)identifier completionHandler:(void (^)(Vendor * _Nullable, NSError * _Nullable))completionHandler
@@ -112,7 +98,7 @@ static const NSString *BASE_SERVER_URL = @"https://streats-app-api.herokuapp.com
 
 + (void)getMenuItemsForVendorWithIdentifier:(NSString *)identifier completionHandler:(void (^)(NSArray<MenuItem *> * _Nullable, NSError * _Nullable))completionHandler
 {
-    NSURL *requestURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/vendors/menu?id=%@", BASE_SERVER_URL, identifier]];
+    NSURL *requestURL = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/menu?id=%@", BASE_SERVER_URL, identifier]];
     
     // Make sure that the request URL is not NULL.
     if (requestURL == NULL) {

@@ -15,40 +15,40 @@
 @interface Lot : NSObject <MKAnnotation>
 
 /** An integer representing the unique identifier of the lot. */
-@property(strong, nonatomic, nonnull) NSString *identifier;
+@property (strong, nonatomic, nonnull) NSString *identifier;
 
 /** A string representing the name of the lot. */
-@property(strong, nonatomic, nonnull) NSString *name;
+@property (strong, nonatomic, nonnull) NSString *name;
 
 /**
  * A string representing the address of the place where
  * the lot is currenlty located.
  */
-@property(strong, nonatomic, nonnull) NSString *address;
+@property (strong, nonatomic, nonnull) NSString *address;
 
 /** A string representing the email address of the lot's owner. */
-@property(strong, nonatomic, nonnull) NSString *emailAddress;
+@property (strong, nonatomic, nonnull) NSString *emailAddress;
 
 /**
  * A number representing the latitude of the place where
  * the lot is currenlty located.
  */
-@property(strong, nonatomic, nonnull) NSNumber *latitude;
+@property (strong, nonatomic, nonnull) NSNumber *latitude;
 
 /**
  * A number representing the longitude of the place where
  * the lot is currenlty located.
  */
-@property(strong, nonatomic, nonnull) NSNumber *longitude;
+@property (strong, nonatomic, nonnull) NSNumber *longitude;
 
 /** A string representing the downlnoad URL of the lot's banner. */
-@property(strong, nonatomic, nonnull) NSString *bannerDownloadURL;
+@property (strong, nonatomic, nonnull) NSString *bannerDownloadURL;
 
 /** A string representing the name of truck hosting the lot. */
-@property(strong, nonatomic, nullable) NSString *hostTruckName;
+@property (strong, nonatomic, nullable) NSString *hostTruckName;
 
 /** An array representing the vendors attending to the lot. */
-@property(strong, nonatomic, nullable) NSArray<Vendor *> *attendees;
+@property (strong, nonatomic, nullable) NSArray<Vendor *> *attendees;
 
 /**
 * Initializes and returns a Lot object using the provided parameters.

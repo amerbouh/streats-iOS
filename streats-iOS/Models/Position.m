@@ -11,8 +11,8 @@
 
 @interface Position ()
 
-@property(strong, nonatomic, nonnull) NSNumber *latitude;
-@property(strong, nonatomic, nonnull) NSNumber *longitude;
+@property (strong, nonatomic, nonnull) NSNumber *latitude;
+@property (strong, nonatomic, nonnull) NSNumber *longitude;
 
 @end
 

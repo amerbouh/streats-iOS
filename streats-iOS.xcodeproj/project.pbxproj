@@ -29,16 +29,18 @@
 		BC7D1E79228B755200EB0299 /* ErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7D1E78228B755200EB0299 /* ErrorView.m */; };
 		BC7D1E7C228B847700EB0299 /* VendorInformationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7D1E7B228B847700EB0299 /* VendorInformationTableViewController.m */; };
 		BC7EB81722F68E4500BE96A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7EB81622F68E4500BE96A8 /* LaunchScreen.storyboard */; };
+		BC88D302237DA4B500127590 /* WebClientController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC88D301237DA4B500127590 /* WebClientController.m */; };
+		BC88D305237DA4E700127590 /* ServiceError.m in Sources */ = {isa = PBXBuildFile; fileRef = BC88D304237DA4E700127590 /* ServiceError.m */; };
 		BC9225AD228EEBC30084255E /* EmptyTableBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9225AC228EEBC30084255E /* EmptyTableBackgroundView.xib */; };
 		BC9225B0228EECA90084255E /* EmptyTableBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9225AF228EECA90084255E /* EmptyTableBackgroundView.m */; };
 		BC9225B2228F02630084255E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9225B1228F02630084255E /* MapKit.framework */; };
 		BC9225BB228F06170084255E /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9225BA228F06170084255E /* TabBarViewController.m */; };
-		BC92271C22A2C4CD00658D34 /* LotsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC92271B22A2C4CD00658D34 /* LotsListTableViewController.m */; };
 		BC92271E22A2C59000658D34 /* LotTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC92271D22A2C59000658D34 /* LotTableViewCell.xib */; };
 		BC92272122A2C5C800658D34 /* LotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC92272022A2C5C800658D34 /* LotTableViewCell.m */; };
 		BC9AEB97228D8D3F009E988E /* MenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9AEB96228D8D3F009E988E /* MenuItemTableViewCell.xib */; };
 		BCABEA8C22A635610067C4FD /* StorageController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCABEA8B22A635610067C4FD /* StorageController.m */; };
 		BCBAEDDF22ACDB2A00FDE3D7 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAEDDE22ACDB2A00FDE3D7 /* BaseNavigationController.m */; };
+		BCC3D26423664A0E009BF29F /* ImageDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC3D26323664A0E009BF29F /* ImageDownloadOperation.m */; };
 		BCC976832301E488008A3CCB /* TabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC976822301E488008A3CCB /* TabBarItem.m */; };
 		BCC976862301E7CF008A3CCB /* TabView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC976852301E7CF008A3CCB /* TabView.m */; };
 		BCC976892301ED54008A3CCB /* TabViewItemLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC976882301ED54008A3CCB /* TabViewItemLabel.m */; };
@@ -107,14 +109,17 @@
 		BC7D1E7A228B847700EB0299 /* VendorInformationTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VendorInformationTableViewController.h; sourceTree = "<group>"; };
 		BC7D1E7B228B847700EB0299 /* VendorInformationTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VendorInformationTableViewController.m; sourceTree = "<group>"; };
 		BC7EB81622F68E4500BE96A8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BC88D300237DA4B400127590 /* WebClientController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebClientController.h; sourceTree = "<group>"; };
+		BC88D301237DA4B500127590 /* WebClientController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebClientController.m; sourceTree = "<group>"; };
+		BC88D303237DA4E700127590 /* ServiceError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceError.h; sourceTree = "<group>"; };
+		BC88D304237DA4E700127590 /* ServiceError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceError.m; sourceTree = "<group>"; };
+		BC88D306237DA5AF00127590 /* VendorDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VendorDetailViewController.h; sourceTree = "<group>"; };
 		BC9225AC228EEBC30084255E /* EmptyTableBackgroundView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableBackgroundView.xib; sourceTree = "<group>"; };
 		BC9225AE228EECA90084255E /* EmptyTableBackgroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyTableBackgroundView.h; sourceTree = "<group>"; };
 		BC9225AF228EECA90084255E /* EmptyTableBackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyTableBackgroundView.m; sourceTree = "<group>"; };
 		BC9225B1228F02630084255E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BC9225B9228F06170084255E /* TabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		BC9225BA228F06170084255E /* TabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
-		BC92271A22A2C4CD00658D34 /* LotsListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LotsListTableViewController.h; sourceTree = "<group>"; };
-		BC92271B22A2C4CD00658D34 /* LotsListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LotsListTableViewController.m; sourceTree = "<group>"; };
 		BC92271D22A2C59000658D34 /* LotTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LotTableViewCell.xib; sourceTree = "<group>"; };
 		BC92271F22A2C5C800658D34 /* LotTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LotTableViewCell.h; sourceTree = "<group>"; };
 		BC92272022A2C5C800658D34 /* LotTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LotTableViewCell.m; sourceTree = "<group>"; };
@@ -125,6 +130,8 @@
 		BCB1D1D82305FC630047AA30 /* JSONObjectPayload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONObjectPayload.h; sourceTree = "<group>"; };
 		BCBAEDDD22ACDB2A00FDE3D7 /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		BCBAEDDE22ACDB2A00FDE3D7 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		BCC3D26223664A0E009BF29F /* ImageDownloadOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageDownloadOperation.h; sourceTree = "<group>"; };
+		BCC3D26323664A0E009BF29F /* ImageDownloadOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageDownloadOperation.m; sourceTree = "<group>"; };
 		BCC976812301E488008A3CCB /* TabBarItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarItem.h; sourceTree = "<group>"; };
 		BCC976822301E488008A3CCB /* TabBarItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarItem.m; sourceTree = "<group>"; };
 		BCC976842301E7CF008A3CCB /* TabView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabView.h; sourceTree = "<group>"; };
@@ -148,7 +155,6 @@
 		BCCB518D228A62130079A959 /* VendorsService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VendorsService.m; sourceTree = "<group>"; };
 		BCCB5190228A63FD0079A959 /* Vendor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vendor.h; sourceTree = "<group>"; };
 		BCCB5191228A63FD0079A959 /* Vendor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Vendor.m; sourceTree = "<group>"; };
-		BCCF04D523025C9E009DA0CA /* VendorDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VendorDetailViewController.h; sourceTree = "<group>"; };
 		BCCF04D623025C9E009DA0CA /* VendorDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VendorDetailViewController.m; sourceTree = "<group>"; };
 		BCD53EC822AC4DB200676A6E /* HorizontalPageViewControllerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HorizontalPageViewControllerManager.h; sourceTree = "<group>"; };
 		BCD53EC922AC4DB200676A6E /* HorizontalPageViewControllerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HorizontalPageViewControllerManager.m; sourceTree = "<group>"; };
@@ -215,8 +221,6 @@
 			children = (
 				BCE2AB7822907435004A1146 /* MapViewController.h */,
 				BCE2AB7922907435004A1146 /* MapViewController.m */,
-				BC92271A22A2C4CD00658D34 /* LotsListTableViewController.h */,
-				BC92271B22A2C4CD00658D34 /* LotsListTableViewController.m */,
 				BC14EF4E22909D5600D9670B /* Lot */,
 			);
 			path = Lots;
@@ -256,6 +260,8 @@
 		BCABEA8922A635500067C4FD /* Other Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BC88D300237DA4B400127590 /* WebClientController.h */,
+				BC88D301237DA4B500127590 /* WebClientController.m */,
 				BCABEA8A22A635610067C4FD /* StorageController.h */,
 				BCABEA8B22A635610067C4FD /* StorageController.m */,
 				BCF0714422A7768400070B4D /* MenuItemController.h */,
@@ -386,6 +392,8 @@
 				BC30136B228B3ECD0067B765 /* ImagesService.m */,
 				BCF0714122A7762D00070B4D /* MenuItemsService.h */,
 				BCF0714222A7762D00070B4D /* MenuItemsService.m */,
+				BCC3D26223664A0E009BF29F /* ImageDownloadOperation.h */,
+				BCC3D26323664A0E009BF29F /* ImageDownloadOperation.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -405,6 +413,8 @@
 				BCF7961F22A87D8A00CA05DB /* Position.m */,
 				BCC976812301E488008A3CCB /* TabBarItem.h */,
 				BCC976822301E488008A3CCB /* TabBarItem.m */,
+				BC88D303237DA4E700127590 /* ServiceError.h */,
+				BC88D304237DA4E700127590 /* ServiceError.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -422,7 +432,7 @@
 		BCE2AB73229073C9004A1146 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				BCCF04D523025C9E009DA0CA /* VendorDetailViewController.h */,
+				BC88D306237DA5AF00127590 /* VendorDetailViewController.h */,
 				BCCF04D623025C9E009DA0CA /* VendorDetailViewController.m */,
 				BC7D1E7A228B847700EB0299 /* VendorInformationTableViewController.h */,
 				BC7D1E7B228B847700EB0299 /* VendorInformationTableViewController.m */,
@@ -622,17 +632,19 @@
 				BC5CCE93228DC48200728E02 /* MenuItemsListTableViewController.m in Sources */,
 				BCF0714622A7768400070B4D /* MenuItemController.m in Sources */,
 				BC9225B0228EECA90084255E /* EmptyTableBackgroundView.m in Sources */,
+				BC88D302237DA4B500127590 /* WebClientController.m in Sources */,
 				BC92272122A2C5C800658D34 /* LotTableViewCell.m in Sources */,
+				BC88D305237DA4E700127590 /* ServiceError.m in Sources */,
 				BCCB517A2289F01B0079A959 /* VendorsListTableViewController.m in Sources */,
 				BC7D1E7C228B847700EB0299 /* VendorInformationTableViewController.m in Sources */,
 				BCC976862301E7CF008A3CCB /* TabView.m in Sources */,
 				BCCF04D723025C9E009DA0CA /* VendorDetailViewController.m in Sources */,
+				BCC3D26423664A0E009BF29F /* ImageDownloadOperation.m in Sources */,
 				BC5CCE96228DCB3200728E02 /* MenuItemDetailTableViewController.m in Sources */,
 				BCCB515E2289EC540079A959 /* AppDelegate.m in Sources */,
 				BCC976892301ED54008A3CCB /* TabViewItemLabel.m in Sources */,
 				BC30136C228B3ECD0067B765 /* ImagesService.m in Sources */,
 				BC6B12AC22931BAA00286865 /* VendorDescriptionViewController.m in Sources */,
-				BC92271C22A2C4CD00658D34 /* LotsListTableViewController.m in Sources */,
 				BC7D1E79228B755200EB0299 /* ErrorView.m in Sources */,
 				BCABEA8C22A635610067C4FD /* StorageController.m in Sources */,
 			);

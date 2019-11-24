@@ -10,6 +10,7 @@
 #import "LotDetailContainerViewController.h"
 #import "Lot.h"
 #import "LotsService.h"
+#import "ServiceError.h"
 #import "BaseNavigationController.h"
 
 @interface MapViewController ()
@@ -42,7 +43,8 @@
     
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     
     // Do any additional setup before the view appears.
@@ -53,10 +55,10 @@
 
 - (void)loadLots
 {
-    [LotsService getLotsForTime:@"today" completionHandler:^(NSArray<Lot *> * _Nullable lots, NSError * _Nullable error) {
+    [[LotsService new] getLotsForTime:@"today" completionHandler:^(NSArray<Lot *> * _Nullable lots, ServiceError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error != NULL) {
-                [self showErrorMessage:error.localizedDescription];
+                [self showErrorMessage:error.title];
             } else {
                 // Add each lot as an annotation on the map.
                 for (Lot *lot in lots) {
@@ -166,7 +168,7 @@
 {
     [manager stopUpdatingLocation];
     
-    // Make sure the array contains 1 or more elements.
+    // Make sure the array of locations contains 1 or more locations.
     if (locations.count < 1) {
         return;
     }

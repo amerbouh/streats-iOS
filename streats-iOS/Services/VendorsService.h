@@ -11,6 +11,7 @@
 @class Event;
 @class Vendor;
 @class MenuItem;
+@class ServiceError;
 
 @interface VendorsService : NSObject
 
@@ -19,7 +20,7 @@
  * @param time The time range from which the vendors will be fetched.
  * @param completionHandler The completion handler to call when the load request is complete.
  */
-+ (void)getVendorsForTime:(NSString*_Nonnull)time completionHandler:(void (^_Nullable)(NSArray<Vendor*> * _Nullable vendors, NSError * _Nullable error))completionHandler;
+- (void)getVendorsForTime:(NSString*_Nonnull)time completionHandler:(void (^_Nullable)(NSArray<Vendor*> * _Nullable vendors, ServiceError * _Nullable error))completionHandler;
 
 /**
  * @brief Retrieves the details of the vendor with the given identifier.

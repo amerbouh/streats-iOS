@@ -20,8 +20,8 @@
 
 // Properties
 
-@property(strong, nonatomic, nonnull) Vendor *vendor;
-@property(strong, nonatomic, nullable) NSArray<MenuItem *> *menuItems;
+@property (strong, nonatomic, nonnull) Vendor *vendor;
+@property (strong, nonatomic, nullable) NSArray<MenuItem *> *menuItems;
 
 // Methods
 
