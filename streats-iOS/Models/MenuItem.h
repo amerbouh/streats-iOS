@@ -40,7 +40,7 @@
 - (instancetype _Nullable)initWithJSON:(NSDictionary<NSString *, id> * _Nonnull)JSON;
 
 /** Returns the price of the menu item in the canadian's currency format.  */
--(NSString * _Nonnull)priceString;
+- (NSString * _Nonnull)priceString;
 
 
 @end

@@ -59,7 +59,8 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithVendor:(Vendor *)vendor {
+- (instancetype)initWithVendor:(Vendor *)vendor
+{
     if ((self = [super init])) {
         _vendor = vendor;
     }
@@ -69,7 +70,8 @@
 
 #pragma mark - View's lifecycle
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     // Initialize the section titles array.
@@ -88,7 +90,8 @@
 
 #pragma mark - Methods
 
-- (void)completeVendorData {
+- (void)completeVendorData
+{
     [VendorsService getDetailsForVendorWithIdentifier:[self.vendor.identifier stringValue] completionHandler:^(Vendor * _Nullable vendor, NSError * _Nullable error) {
         if (error != NULL) {
             NSLog(@"An error occured while trying to complete the vendor's data : %@", error.localizedDescription);
@@ -101,7 +104,8 @@
     }];
 }
 
-- (void)configureTitleLabels {
+- (void)configureTitleLabels
+{
     [self.readMoreButton setTitle:NSLocalizedString(@"readMore", NULL) forState:UIControlStateNormal];
     [self.cuisineTypeTitleLabel setText:NSLocalizedString(@"cuisineType", NULL)];
     [self.phoneNumberTitleLabel setText:NSLocalizedString(@"phoneNumber", NULL)];
@@ -111,7 +115,8 @@
     [self.addressTitleLabel setText:NSLocalizedString(@"address", NULL)];
 }
 
-- (void)configureMapView {
+- (void)configureMapView
+{
     CLLocationCoordinate2D latestPositionCoordinate = [self.vendor.lastPosition getCoordinate];
     
     // Initialize and configure the point annotation.
@@ -128,7 +133,8 @@
     [self.mapView setRegion:visibleRegion];
 }
 
-- (void)populateViews {
+- (void)populateViews
+{
     [self.cuisineTypeLabel setText:self.vendor.cuisineType];
     
     // Set the description.
@@ -178,13 +184,15 @@
     }];
 }
 
-+ (VendorInformationTableViewController *)instanciateFromStoryboard {
++ (VendorInformationTableViewController *)instanciateFromStoryboard
+{
     return [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"VendorInformationTableViewController"];
 }
 
 #pragma mark - Table view delegate
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
     if (section == 0) {
         return NULL;
     }
@@ -192,7 +200,8 @@
     return _sectionTitles[section - 1];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
     if (section == 2) {
         return NSLocalizedString(@"latestLocationDisclaimer", NULL);
     }
@@ -200,7 +209,8 @@
     return NULL;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 60)];
     
     // Configure the header view...
@@ -217,7 +227,8 @@
 
 #pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     if ([segue.identifier isEqualToString:@"ShowVendorDescriptionVCSegue"]) {
         UINavigationController *navigationController = (UINavigationController *) segue.destinationViewController;
         VendorDescriptionViewController *descriptionViewController = (VendorDescriptionViewController *) navigationController.visibleViewController;
