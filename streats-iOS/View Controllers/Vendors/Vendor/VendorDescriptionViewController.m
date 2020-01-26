@@ -16,7 +16,10 @@
 
 @implementation VendorDescriptionViewController
 
-- (void)viewDidLoad {
+#pragma mark - View's lifecycle
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
@@ -27,7 +30,8 @@
 
 #pragma mark - Methods
 
-- (IBAction)doneBarButtonItemTaped:(UIBarButtonItem *)sender {
+- (IBAction)doneBarButtonItemTaped:(UIBarButtonItem *)sender
+{
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 

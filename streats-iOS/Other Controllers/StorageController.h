@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class FIRStorageReference;
 
 @interface StorageController : NSObject
@@ -15,3 +17,5 @@
 - (void)uploadImage:(UIImage * _Nonnull)image atLocation:(FIRStorageReference * _Nonnull)location completionHandler:(void (^_Nullable)(NSURL * _Nullable uploadedImageUrl, NSError * _Nullable error))completionHandler;
 
 @end
+
+NS_ASSUME_NONNULL_END

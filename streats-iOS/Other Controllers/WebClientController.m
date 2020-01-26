@@ -51,10 +51,14 @@
     NSURLComponents * components = [NSURLComponents componentsWithURL:requestURL resolvingAgainstBaseURL:NO];
     components.queryItems = [queryItems copy];
     
+    #if DEBUG
+    NSLog(@"The URL used to make the request is : %@", components.URL.absoluteString);
+    #endif
+    
     // Create the request.
     NSURLSessionDataTask * task = [NSURLSession.sharedSession dataTaskWithURL:components.URL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error != NULL) {
-            ServiceError *serviceError = [[ServiceError alloc] initWithError:error];
+            ServiceError * serviceError = [[ServiceError alloc] initWithError:error];
             completionHandler(NULL, serviceError);
         } else {
             NSError * serializationError;
@@ -77,10 +81,10 @@
             if (httpResponse.statusCode >= 200 && httpResponse.statusCode < 300) {
                 completionHandler(receivedObject, NULL);
             } else {
-                NSDictionary<NSString *, NSString *> *errorDict = (NSDictionary<NSString *, NSString *> *) receivedObject;
+                NSDictionary<NSString *, NSString *> * errorDict = (NSDictionary<NSString *, NSString *> *) receivedObject;
                 
                 // Get an instance of the Service Error object.
-                ServiceError *serviceError = [[ServiceError alloc] initWithJSON:errorDict];
+                ServiceError * serviceError = [[ServiceError alloc] initWithJSON:errorDict];
                 
                 // Call the completion hanlder and pass the Service Error instance.
                 completionHandler(NULL, serviceError);

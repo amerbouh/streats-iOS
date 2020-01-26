@@ -17,22 +17,26 @@
 
 @end
 
+#define CURRENT_DATETIME_TIMESTAMP [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000]
+
+struct entite {
+    float x, y;
+};
+
 @implementation MenuItemsService
 
 #pragma mark - Methods
 
 + (void)uploadMenuItemImage:(UIImage *)image forMenuItemWithIdentifier:(NSString *)menuItemIdentifier andVendorWithIdentifier:(NSNumber *)vendorIdentifier completionHandler:(void (^)(NSError * _Nullable))completionHandler
 {
-    StorageController *storageController  = [[StorageController alloc] init];
-    
+    StorageController * storageController  = [StorageController new];
+        
     // Generate the image's name.
-    NSDate *currentDate = [[NSDate alloc] init];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    NSString *imageName = [NSString stringWithFormat:@"menuItem_%@_%@", menuItemIdentifier, [dateFormatter stringFromDate:currentDate]];
+    NSString * imageName = [NSString stringWithFormat:@"menuItem_%@_%@", menuItemIdentifier, CURRENT_DATETIME_TIMESTAMP];
     
     // Create the reference to the image location.
-    FIRStorage *storage = [FIRStorage storage];
-    FIRStorageReference *imageLocation = [[storage reference] child:[NSString stringWithFormat:@"assets/%@/menu_items/%@/%@.png", vendorIdentifier, menuItemIdentifier, imageName]];
+    FIRStorage * storage = [FIRStorage storage];
+    FIRStorageReference * imageLocation = [[storage reference] child:[NSString stringWithFormat:@"assets/%@/menu_items/%@/%@.png", vendorIdentifier, menuItemIdentifier, imageName]];
     
     // Upload the menu item' image.
     [storageController uploadImage:image atLocation:imageLocation completionHandler:^(NSURL * _Nullable uploadedImageUrl, NSError * _Nullable error) {
@@ -46,12 +50,8 @@
 
 + (void)uploadImageDownloadURLForMenuItemWithIdentifier:(NSString *)menuItemIdentifier correspondingVendorIdentifier:(NSNumber *)vendorIdentifier downloadUrl:(NSURL *)downloadUrl completionHandler:(void (^)(NSError * _Nullable))completionHandler
 {
-    FIRDocumentReference *vendorDocumentRef = [[[FIRFirestore firestore] collectionWithPath:@"vendors"] documentWithPath:[vendorIdentifier stringValue]];
-    FIRDocumentReference *menuItemRef = [[vendorDocumentRef collectionWithPath:@"menu_items"] documentWithPath:menuItemIdentifier];
-    FIRCollectionReference *menuItemImagesRef = [menuItemRef collectionWithPath:@"item_images"];
-    
-    // Set the download URL of the menu item's image on its document.
-    [menuItemImagesRef addDocumentWithData:@{ @"image_download_url": downloadUrl.absoluteString, @"uploaded_at": [FIRTimestamp timestamp], @"approved_for_usage": @YES } completion:completionHandler];
+    NSLog(@"The image's download URL is %@", downloadUrl.absoluteString);
+    completionHandler(NULL);
 }
 
 @end

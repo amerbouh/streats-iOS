@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>982239250804-pue3dl8bnng9isqibcrhvb1sntsab2kg.apps.googleusercontent.com</string>
+	<string>16909778051-en8pd8d4ivubh22eaaoe2umoapkjl97i.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.982239250804-pue3dl8bnng9isqibcrhvb1sntsab2kg</string>
+	<string>com.googleusercontent.apps.16909778051-en8pd8d4ivubh22eaaoe2umoapkjl97i</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAbbPA27Vffnm4ZUpq2SwrdrPUykrD1ky4</string>
+	<string>AIzaSyDgiyR_D1VL5IlJcLMAqQHrYx4iiSai9D8</string>
 	<key>GCM_SENDER_ID</key>
-	<string>982239250804</string>
+	<string>16909778051</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.anasmerbouh.food-trucks-finder-iOS</string>
 	<key>PROJECT_ID</key>
-	<string>streats-1557682360161</string>
+	<string>streats-3d07a</string>
 	<key>STORAGE_BUCKET</key>
-	<string>streats-1557682360161.appspot.com</string>
+	<string>streats-3d07a.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:982239250804:ios:8d2f72a890242577</string>
+	<string>1:16909778051:ios:66535f3ff8c164bb86afb6</string>
 	<key>DATABASE_URL</key>
-	<string>https://streats-1557682360161.firebaseio.com</string>
+	<string>https://streats-3d07a.firebaseio.com</string>
 </dict>
 </plist>

@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 *
 * @param baseURL A string that represents the host to which the requests will be sent.
 */
-- (instancetype)initWithBaseURL:(NSString *)baseURL;
+- (instancetype)initWithBaseURL:(NSString * _Nonnull)baseURL;
 
 @end
 

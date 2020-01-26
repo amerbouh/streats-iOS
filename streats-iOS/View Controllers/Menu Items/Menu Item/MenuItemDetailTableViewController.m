@@ -66,23 +66,28 @@
     [self.priceLabel setText:self.menuItem.priceString];
     
     // Clear the ingredients container stack view.
-    for (UIView *view in self.ingredientsContainerStackView.arrangedSubviews) {
-        [self.ingredientsContainerStackView removeArrangedSubview:view];
-        [view removeFromSuperview];
+    for (UIView * arrangedSubview in self.ingredientsContainerStackView.arrangedSubviews) {
+        [self.ingredientsContainerStackView removeArrangedSubview:arrangedSubview];
+        [arrangedSubview removeFromSuperview];
     }
     
     // Check if we have the ingredients data and act accordingly.
     if (self.menuItem.ingredients != NULL) {
         for (NSString *ingredient in self.menuItem.ingredients) {
-            UILabel *ingredientLabel = [[UILabel alloc] init];
+            UILabel * ingredientLabel = [UILabel new];
+
+            // Configure the label...
             [ingredientLabel setText:ingredient];
+            [ingredientLabel setNumberOfLines:0];
             [ingredientLabel setTextAlignment:NSTextAlignmentRight];
             
             // Add the label to the ingredients stack view.
             [self.ingredientsContainerStackView addArrangedSubview:ingredientLabel];
         }
     } else {
-        UILabel *missingIngredientsLabel =[[UILabel alloc] init];
+        UILabel * missingIngredientsLabel =[[UILabel alloc] init];
+        
+        // Configure the label...
         [missingIngredientsLabel setText:NSLocalizedString(@"noIngredientsData", NULL)];
         [missingIngredientsLabel setTextAlignment:NSTextAlignmentRight];
         
@@ -101,10 +106,10 @@
 
 - (void)showErrorAlertControllerWithMessage:(NSString *)message
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"oops", NULL) message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"oops", NULL) message:message preferredStyle:UIAlertControllerStyleAlert];
     
     // Configure the alert controller.
-    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:NULL];
+    UIAlertAction * dismissAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:NULL];
     [alertController addAction:dismissAction];
     
     // Present the alert controller.
@@ -172,8 +177,10 @@
     // Show the activity indicator.
     [SVProgressHUD show];
     
+    // Get an instance of the MenuItemController class.
+    MenuItemController * menuItemController = [[MenuItemController alloc] initWithMenuItem:self.menuItem];
+    
     // Upload the image.
-    MenuItemController *menuItemController = [[MenuItemController alloc] initWithMenuItem:self.menuItem];
     [menuItemController uploadItemImage:image correspondingVendorIdentifier:self.vendorIdentifier completionHandler:^(NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [SVProgressHUD dismiss];

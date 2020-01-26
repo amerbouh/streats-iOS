@@ -12,7 +12,7 @@
 
 @interface MenuItemDetailTableViewController : UITableViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property(strong, nonatomic, nonnull) MenuItem *menuItem;
-@property(strong, nonatomic, nonnull) NSNumber *vendorIdentifier;
+@property(strong, nonatomic, nonnull) MenuItem * menuItem;
+@property(strong, nonatomic, nonnull) NSNumber * vendorIdentifier;
 
 @end

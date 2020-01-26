@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Period.h"
 #import "ErrorViewDelegate.h"
 #import "VendorTableViewCellDelegate.h"
 
@@ -15,6 +16,6 @@
 @interface VendorsListTableViewController : UITableViewController <UIViewControllerPreviewingDelegate, VendorTableViewCellDelegate, ErrorViewDelegate>
 
 - (instancetype _Nullable)initWithLot:(Lot *_Nonnull)lot;
-- (instancetype _Nullable)initWithFilter:(NSString *_Nonnull)filter;
+- (instancetype _Nullable)initWithPeriodFilter:(Period)filter;
 
 @end

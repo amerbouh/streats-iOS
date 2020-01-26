@@ -12,21 +12,29 @@
 #import "ErrorView.h"
 #import "Event.h"
 #import "Vendor.h"
+#import "ServiceError.h"
 #import "VendorsService.h"
 
 @interface EventsListTableViewController ()
 
 // Properties
 
-@property(strong, nonatomic, nonnull) Vendor *vendor;
-@property(strong, nonatomic, nullable) NSArray<Event *> *events;
+@property(strong, nonatomic, nonnull) Vendor * vendor;
+@property(strong, nonatomic, nullable) NSArray<Event *> * events;
 
-// Methods
-
+/** Loads the events displayed by the table view. */
 - (void)loadEvents;
+
+/** Configures the view's hierarchy to accomodate an activity indicator and displays it. */
 - (void)showActivityIndicator;
+
+/** Configure the view's hierarchy to accomodate the regular UI and hides the activity indicator. */
 - (void)hideActivityIndicator;
+
+/** Displays an a view describing the provided error message. */
 - (void)showErrorViewWithMessage:(NSString *)message;
+
+/** Displays a view indicating that there is no event to displayed. */
 - (void)showEmptyTableBackgroundView;
 
 @end
@@ -38,10 +46,10 @@ static const NSString *reuseIdentifier = @"EventTableViewCell";
 #pragma mark - Initialization
 
 - (instancetype)initWithVendor:(Vendor *)vendor {
-    if ((self = [super init])) {
+    self = [super init];
+    if (self) {
         _vendor = vendor;
     }
-    
     return self;
 }
 
@@ -64,13 +72,13 @@ static const NSString *reuseIdentifier = @"EventTableViewCell";
     [self showActivityIndicator];
     
     // Fetch the vendor's events.
-    [VendorsService getEventsForVendorWithIdentifier:[self.vendor.identifier stringValue] completionHandler:^(NSArray<Event *> * _Nullable events, NSError * _Nullable error) {
+    [VendorsService getEventsForVendorWithIdentifier:[self.vendor.identifier stringValue] completionHandler:^(NSArray<Event *> * _Nullable events, ServiceError * _Nullable serviceError) {
         dispatch_async(dispatch_get_main_queue(), ^{
             // Hide the activity indicator.
             [self hideActivityIndicator];
             
-            if (error != NULL) {
-                [self showErrorViewWithMessage:error.localizedDescription];
+            if (serviceError != NULL) {
+                [self showErrorViewWithMessage:serviceError.detail];
             } else {
                 if (events.count > 0) {
                     [self setEvents:events];

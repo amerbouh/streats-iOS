@@ -20,15 +20,21 @@
 
 @implementation MenuItemController
 
-- (instancetype)initWithMenuItem:(MenuItem *)menuItem {
-    if ((self = [super init])) {
+#pragma mark - Initialization
+
+- (instancetype)initWithMenuItem:(MenuItem *)menuItem
+{
+    self = [super init];
+    if (self) {
         _menuItem = menuItem;
     }
-    
     return self;
 }
 
-- (void)uploadItemImage:(UIImage *)image correspondingVendorIdentifier:(NSNumber *)vendorIdentifier completionHandler:(void (^)(NSError * _Nullable))completionHandler {
+#pragma mark - Methods
+
+- (void)uploadItemImage:(UIImage *)image correspondingVendorIdentifier:(NSNumber *)vendorIdentifier completionHandler:(void (^)(NSError * _Nullable))completionHandler
+{
     [MenuItemsService uploadMenuItemImage:image forMenuItemWithIdentifier:self.menuItem.identifier andVendorWithIdentifier:vendorIdentifier completionHandler:completionHandler];
 }
 

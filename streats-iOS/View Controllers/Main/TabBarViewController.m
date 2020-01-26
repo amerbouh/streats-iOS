@@ -36,9 +36,9 @@
     if (self) {
         _mapViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"MapViewController"];
         _vendorsListViewController = [[TabViewController alloc] initWithItems:@[
-            [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"today", NULL) controller:[[VendorsListTableViewController alloc] initWithFilter:@"today"]],
-            [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"tomorrow", NULL) controller:[[VendorsListTableViewController alloc] initWithFilter:@"tomorrow"]],
-            [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"thisWeek", NULL) controller:[[VendorsListTableViewController alloc] initWithFilter:@"This%20Week"]],
+            [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"today", NULL) controller:[[VendorsListTableViewController alloc] initWithPeriodFilter:PeriodToday]],
+            [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"tomorrow", NULL) controller:[[VendorsListTableViewController alloc] initWithPeriodFilter:PeriodTomorrow]],
+            [[TabBarItem alloc] initWithTitle:NSLocalizedString(@"thisWeek", NULL) controller:[[VendorsListTableViewController alloc] initWithPeriodFilter:PeriodCurrentWeek]],
         ]];
     }
     return self;
@@ -51,8 +51,8 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
-    BaseNavigationController *mapNavigationController = [[BaseNavigationController alloc] initWithRootViewController:self.mapViewController];
-    BaseNavigationController *vendorsListNavigationController = [[BaseNavigationController alloc] initWithRootViewController:self.vendorsListViewController];
+    BaseNavigationController * mapNavigationController = [[BaseNavigationController alloc] initWithRootViewController:self.mapViewController];
+    BaseNavigationController * vendorsListNavigationController = [[BaseNavigationController alloc] initWithRootViewController:self.vendorsListViewController];
     
     [self.vendorsListViewController.navigationItem setTitle:NSLocalizedString(@"vendors", NULL)];
     [vendorsListNavigationController.navigationBar setShadowImage:[[UIImage alloc] init]];

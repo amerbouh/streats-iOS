@@ -12,13 +12,13 @@
 
 @interface StorageController ()
 
-@property(strong, nonatomic, nonnull) FIRStorage *storage;
+@property(strong, nonatomic, nonnull) FIRStorage * storage;
 
 @end
 
 @implementation StorageController
 
-#pragma mark - Methods
+#pragma mark - Initialization
 
 - (instancetype)init
 {
@@ -29,9 +29,11 @@
     return self;
 }
 
+#pragma mark - Methods
+
 - (void)uploadImage:(UIImage *)image atLocation:(FIRStorageReference *)location completionHandler:(void (^)(NSURL * _Nullable, NSError * _Nullable))completionHandler
 {
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+    NSData * imageData = UIImageJPEGRepresentation(image, 0.5);
     
     // Create and send the upload task.
     [location putData:imageData metadata:NULL completion:^(FIRStorageMetadata * _Nullable metadata, NSError * _Nullable error) {

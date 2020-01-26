@@ -37,6 +37,16 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BC8951C623DBF86000A19EC6"
+               BuildableName = "streats-iOSUITests.xctest"
+               BlueprintName = "streats-iOSUITests"
+               ReferencedContainer = "container:streats-iOS.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

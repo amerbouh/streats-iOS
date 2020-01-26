@@ -13,8 +13,8 @@
 #import "ErrorView.h"
 #import "Vendor.h"
 #import "MenuItem.h"
+#import "ServiceError.h"
 #import "VendorsService.h"
-
 
 @interface MenuItemsListTableViewController ()
 
@@ -33,23 +33,26 @@
 
 @end
 
-@implementation MenuItemsListTableViewController {
-    NSString *_reuseIdentifier;
+@implementation MenuItemsListTableViewController
+{
+    NSString * _reuseIdentifier;
 }
 
 #pragma mark - Initialization
 
-- (instancetype)initWithVendor:(Vendor *)vendor {
-    if ((self = [super init])) {
+- (instancetype)initWithVendor:(Vendor *)vendor
+{
+    self = [super init];
+    if (self) {
         _vendor = vendor;
     }
-    
     return self;
 }
 
 #pragma mark - View's lifecycle
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     // Initialize the reuse identifier.
@@ -66,16 +69,17 @@
 
 #pragma mark - Methods
 
-- (void)loadMenuItems {
+- (void)loadMenuItems
+{
     [self showActivityIndicator];
     
     // Fetch the vendor's menu items.
-    [VendorsService getMenuItemsForVendorWithIdentifier:[self.vendor.identifier stringValue] completionHandler:^(NSArray<MenuItem *> * _Nullable menuItems, NSError * _Nullable error) {
+    [VendorsService getMenuItemsForVendorWithIdentifier:[self.vendor.identifier stringValue] completionHandler:^(NSArray<MenuItem *> * _Nullable menuItems, ServiceError * _Nullable serviceError) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideActivityIndicator];
            
-            if (error != NULL) {
-                [self showErrorViewWithErrorMessage:error.localizedDescription];
+            if (serviceError != NULL) {
+                [self showErrorViewWithErrorMessage:serviceError.detail];
             } else {
                 if (menuItems.count < 1) {
                     [self showEmptyTableBackgroundView];
@@ -88,7 +92,8 @@
     }];
 }
 
-- (void)showEmptyTableBackgroundView {
+- (void)showEmptyTableBackgroundView
+{
     EmptyTableBackgroundView *backgroundView = [[EmptyTableBackgroundView alloc] initWithMessage:NSLocalizedString(@"noMenuItems", NULL) andDescription:NSLocalizedString(@"noMenuItemsDescription", NULL)];
     
     // Set the background as the table view's background.
@@ -96,7 +101,8 @@
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
-- (void)showErrorViewWithErrorMessage:(NSString *)errorMessage {
+- (void)showErrorViewWithErrorMessage:(NSString *)errorMessage
+{
     ErrorView *errorView = [[ErrorView alloc] initWithMessage:errorMessage];
     
     // Set the error view as the table view's background.
@@ -104,7 +110,8 @@
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
 }
 
-- (void)showActivityIndicator {
+- (void)showActivityIndicator
+{
     UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     
     [activityIndicator startAnimating];
@@ -115,22 +122,26 @@
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
-- (void)hideActivityIndicator {
+- (void)hideActivityIndicator
+{
     [self.tableView setBackgroundView:NULL];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.menuItems.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     MenuItemTableViewCell *cell = (MenuItemTableViewCell *) [tableView dequeueReusableCellWithIdentifier:_reuseIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
@@ -143,26 +154,24 @@
 
 #pragma mark - Table view delegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return 50;
 }
 
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    MenuItem *selectedMenuItem = [self.menuItems objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:@"ShowMenuItemDetailVCSegue" sender:selectedMenuItem];
-}
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if (([segue.identifier isEqualToString:@"ShowMenuItemDetailVCSegue"])) {
-        UINavigationController *navigationController = (UINavigationController *) segue.destinationViewController;
-        MenuItemDetailTableViewController *itemDetailVC = (MenuItemDetailTableViewController *) navigationController.visibleViewController;
-        
-        // Pass the selected menu item to the view controller.
-        itemDetailVC.menuItem = (MenuItem *) sender;
-        itemDetailVC.vendorIdentifier = self.vendor.identifier;
-    }
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    UINavigationController * menuItemDetailVCNavigationController = (UINavigationController *) [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"MenuItemDetailVCNavigationController"];
+    
+    // Get an instance of the MenuItemDetailTableViewController.
+    MenuItemDetailTableViewController * menuItemDetailTableViewController = (MenuItemDetailTableViewController *) [menuItemDetailVCNavigationController visibleViewController];
+    
+    // Initialize the MenuItemDetailTableViewController instance variables.
+    menuItemDetailTableViewController.menuItem = [self.menuItems objectAtIndex:indexPath.row];
+    menuItemDetailTableViewController.vendorIdentifier = self.vendor.identifier;
+    
+    // Present the details of the selected menu item.
+    [self presentViewController:menuItemDetailVCNavigationController animated:YES completion:NULL];
 }
 
 @end

@@ -12,7 +12,8 @@
 
 #pragma mark - Methods
 
-+ (void)downloadImageWithURL:(NSURL *)URL completionHandler:(void (^)(UIImage * _Nullable, NSError * _Nullable))completionHandler {
++ (void)downloadImageWithURL:(NSURL *)URL completionHandler:(void (^)(UIImage * _Nullable, NSError * _Nullable))completionHandler
+{
     NSURLSessionDataTask* task = [NSURLSession.sharedSession dataTaskWithURL:URL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error != NULL) {
             completionHandler(NULL, error);

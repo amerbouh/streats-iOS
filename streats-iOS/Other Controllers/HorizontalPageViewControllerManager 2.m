@@ -16,7 +16,8 @@
 
 @implementation HorizontalPageViewControllerManager
 
-- (instancetype)initWithPages:(NSArray<UIViewController *> *)pages managedPageViewController:(UIPageViewController *)managedPageViewController {
+- (instancetype)initWithPages:(NSArray<UIViewController *> *)pages managedPageViewController:(UIPageViewController *)managedPageViewController 
+{
     if ((self = [super init])) {
         _pages = pages;
         [managedPageViewController setDelegate:self];
@@ -28,7 +29,8 @@
 
 #pragma mark - Page view controller data source
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController 
+{
     NSInteger currentIndex = [self.pages indexOfObject: viewController];
     NSInteger nextIndex = currentIndex + 1;
     
@@ -41,7 +43,8 @@
     return [self.pages objectAtIndex:nextIndex];
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController 
+{
     NSUInteger currentIndex = [self.pages indexOfObject: viewController];
     
     // If the next index is greater than the pages count, it means that there is no
@@ -55,7 +58,8 @@
 
 #pragma mark - Page view controller delegate
 
-- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed {
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed 
+{	
     // Only notify the delegate if the used completed the page-turn
     // gesture.
     if (completed) {

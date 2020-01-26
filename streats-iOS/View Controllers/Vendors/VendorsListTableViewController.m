@@ -25,8 +25,8 @@
 
 // Properties
 
-@property(strong, nonatomic, nullable) Lot *lot;
-@property(strong, nonatomic, nullable) NSArray<Vendor *> *vendors;
+@property(strong, nonatomic, nullable) Lot * lot;
+@property(strong, nonatomic, nullable) NSArray<Vendor *> * vendors;
 
 // Methods
 
@@ -39,8 +39,8 @@
 @end
 
 @implementation VendorsListTableViewController {
-    NSString* _dayFilter;
-    NSString* _reuseIdentifier;
+    Period _periodFilter;
+    NSString * _reuseIdentifier;
 }
 
 #pragma mark - Initialization
@@ -54,10 +54,10 @@
     return self;
 }
 
-- (instancetype)initWithFilter:(NSString *)filter
+- (instancetype)initWithPeriodFilter:(Period)filter
 {
     if ((self = [super init])) {
-        _dayFilter = filter;
+        _periodFilter = filter;
     }
     
     return self;
@@ -125,7 +125,6 @@
     if (self.lot != NULL) {
         self.vendors = self.lot.attendees;
         [self.tableView reloadData];
-        
         return;
     }
         
@@ -133,7 +132,7 @@
     [self showActivityIndicator];
     
     // Fetch the vendors.
-    [[VendorsService new] getVendorsForTime:_dayFilter completionHandler:^(NSArray<Vendor *> * _Nullable vendors, ServiceError * _Nullable error) {
+    [[VendorsService new] getVendorsForPeriod:_periodFilter completionHandler:^(NSArray<Vendor *> * _Nullable vendors, ServiceError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideActivityIndicator];
             
@@ -165,10 +164,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    VendorTableViewCell *cell = (VendorTableViewCell *) [tableView dequeueReusableCellWithIdentifier:_reuseIdentifier forIndexPath:indexPath];
+    VendorTableViewCell * cell = (VendorTableViewCell *) [tableView dequeueReusableCellWithIdentifier:_reuseIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    Vendor* vendor = [self.vendors objectAtIndex:indexPath.row];
+    Vendor * vendor = [self.vendors objectAtIndex:indexPath.row];
     
     [cell setDelegate:self];
     [cell populateWithVendor:vendor];

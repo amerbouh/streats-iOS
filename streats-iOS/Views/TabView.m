@@ -107,10 +107,10 @@
             [self.titleLabelsContainerStackView addArrangedSubview:(UIView *) titleLabel];
             
             // Get the index of the inserted label.
-            NSUInteger *labelIndex = [self.titleLabelsContainerStackView.arrangedSubviews indexOfObject:titleLabel];
+            NSUInteger labelIndex = [self.titleLabelsContainerStackView.arrangedSubviews indexOfObject:titleLabel];
             
             // Get the label's text.
-            NSString *labelText = [self.titles objectAtIndex:labelIndex];
+            NSString * labelText = [self.titles objectAtIndex:labelIndex];
             
             // Set the label's text.
             [titleLabel setText:labelText];

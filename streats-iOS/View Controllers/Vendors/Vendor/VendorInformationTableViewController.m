@@ -13,8 +13,8 @@
 #import "VendorDescriptionViewController.h"
 #import "Vendor.h"
 #import "Position.h"
+#import "ServiceError.h"
 #import "VendorsService.h"
-#import <MapKit/MapKit.h>
 
 @interface VendorInformationTableViewController ()
 
@@ -61,10 +61,10 @@
 
 - (instancetype)initWithVendor:(Vendor *)vendor
 {
-    if ((self = [super init])) {
+    self = [super init];
+    if (self) {
         _vendor = vendor;
     }
-    
     return self;
 }
 
@@ -92,9 +92,9 @@
 
 - (void)completeVendorData
 {
-    [VendorsService getDetailsForVendorWithIdentifier:[self.vendor.identifier stringValue] completionHandler:^(Vendor * _Nullable vendor, NSError * _Nullable error) {
-        if (error != NULL) {
-            NSLog(@"An error occured while trying to complete the vendor's data : %@", error.localizedDescription);
+    [VendorsService getDetailsForVendorWithIdentifier:[self.vendor.identifier stringValue] completionHandler:^(Vendor * _Nullable vendor, ServiceError * _Nullable serviceError) {
+        if (serviceError != NULL) {
+            NSLog(@"An error occured while trying to complete the vendor's data : %@", serviceError.detail);
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self setVendor:vendor];
@@ -211,11 +211,11 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 60)];
+    UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 60)];
     
     // Configure the header view...
-    NSString *title = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 0, headerView.bounds.size.width, headerView.bounds.size.height * 1/2)];
+    NSString * title = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
+    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 0, headerView.bounds.size.width, headerView.bounds.size.height * 1/2)];
     
     [titleLabel setFont:[UIFont systemFontOfSize:24 weight:UIFontWeightBold]];
     [titleLabel setText:title];

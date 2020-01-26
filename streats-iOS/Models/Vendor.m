@@ -30,15 +30,15 @@
 
 - (instancetype)initWithDictionary:(NSDictionary<NSString *,id> *)JSON
 {
-    NSString *name = [JSON objectForKey:@"name"];
-    NSNumber *identifier = [JSON objectForKey:@"id"];
-    NSString *cuisineType = [JSON objectForKey:@"cuisine_type"];
-    NSString *shortDescription = [JSON objectForKey:@"description"];
-    NSString *emailAddress = [JSON objectForKey:@"email_address"];
-    NSString *phoneNumber = [JSON objectForKey:@"phone_number"];
-    NSString *website = [JSON objectForKey:@"website_url"];
-    NSString *iconDownloadURLSuffix = [JSON objectForKey:@"full"];
-    NSArray<NSString *> *banners = [JSON objectForKey:@"banners"];
+    NSString * name = [JSON objectForKey:@"name"];
+    NSNumber * identifier = [JSON objectForKey:@"id"];
+    NSString * cuisineType = [JSON objectForKey:@"cuisine_type"];
+    NSString * shortDescription = [JSON objectForKey:@"description"];
+    NSString * emailAddress = [JSON objectForKey:@"email_address"];
+    NSString * phoneNumber = [JSON objectForKey:@"phone_number"];
+    NSString * website = [JSON objectForKey:@"website_url"];
+    NSString * iconDownloadURLSuffix = [JSON objectForKey:@"full"];
+    NSArray<NSString *> * banners = [JSON objectForKey:@"banners"];
     
     return [self initWithIdentifier:identifier name:name cuisineType:cuisineType shortDescription:shortDescription emailAddress:emailAddress phoneNumber:phoneNumber website:website iconDownloadURLSuffix:iconDownloadURLSuffix banners:banners];
 }
@@ -48,7 +48,7 @@
 - (BOOL)isEqual:(id)object
 {
     if ([object class] == [Vendor class]) {
-        Vendor* comparedVendor = (Vendor*) object;
+        Vendor* comparedVendor = (Vendor *) object;
                 
         // Check if the vendors have the same identifier.
         return [comparedVendor.identifier isEqualToNumber:self.identifier];

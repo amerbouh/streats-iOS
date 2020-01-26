@@ -2,6 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>None</string>
+            <key>CFBundleURLName</key>
+            <string>auth0</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+            </array>
+        </dict>
+    </array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -25,7 +38,7 @@
 	<key>MKDirectionsApplicationSupportedModes</key>
 	<array/>
 	<key>NSCameraUsageDescription</key>
-	<string>We need to access your camera in order to allow you to take and share pictures of the vendors' menu.</string>
+	<string>We need to access your camera in order to allow you to take and share pictures of the vendors&apos; menu.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This allows you to find the nearest events and food trucks based on your current location.</string>
 	<key>UIApplicationShortcutItems</key>

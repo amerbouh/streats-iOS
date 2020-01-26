@@ -12,7 +12,8 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithIdentifier:(NSString *)identifier name:(NSString *)name price:(NSNumber *)price ingredients:(NSArray<NSString *> *)ingredients {
+- (instancetype)initWithIdentifier:(NSString *)identifier name:(NSString *)name price:(NSNumber *)price ingredients:(NSArray<NSString *> *)ingredients
+{
     self = [super init];
     if (self) {
         _identifier = identifier;
@@ -25,10 +26,10 @@
 
 - (instancetype)initWithJSON:(NSDictionary<NSString *,id> *)JSON
 {
-    NSString *identifier = [JSON objectForKey:@"id"];
-    NSString *name = [JSON objectForKey:@"name"];
-    NSNumber *price = [JSON objectForKey:@"price"];
-    NSArray<NSString *> *ingredients = [JSON objectForKey:@"ingredients"];
+    NSString * identifier = [JSON objectForKey:@"_id"];
+    NSString * name = [JSON objectForKey:@"name"];
+    NSNumber * price = [JSON objectForKey:@"price"];
+    NSArray<NSString *> * ingredients = [JSON objectForKey:@"ingredients"];
     
     return [self initWithIdentifier:identifier name:name price:price  ingredients:ingredients];
 }
