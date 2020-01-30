@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ErrorView.h"
+#import "ErrorViewDelegate.h"
+#import "EventsDataSourceDelegate.h"
 
 @class Vendor;
 
-@interface EventsListTableViewController : UITableViewController <ErrorViewDelegate>
+@interface EventsListTableViewController : UIViewController <UITableViewDelegate, ErrorViewDelegate, EventsDataSourceDelegate>
 
 - (instancetype)initWithVendor:(Vendor *)vendor;
 

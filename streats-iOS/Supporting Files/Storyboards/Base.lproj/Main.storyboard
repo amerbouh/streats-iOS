@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hT6-1o-e0d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hT6-1o-e0d">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -45,6 +45,7 @@
         <!--Menu Items List Table View Controller-->
         <scene sceneID="Kpl-2B-hqk">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9hA-aW-4je" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="MenuItemsListTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hg1-lw-mjx" customClass="MenuItemsListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6pw-vP-SfH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -59,7 +60,6 @@
                         <segue destination="5pJ-Wh-BFz" kind="presentation" identifier="ShowMenuItemDetailVCSegue" id="aa4-KY-Oxz"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9hA-aW-4je" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3009" y="506"/>
         </scene>
@@ -709,24 +709,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Dd-Xo-R0G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4626" y="-155"/>
-        </scene>
-        <!--Events List Table View Controller-->
-        <scene sceneID="kPC-WH-uT9">
-            <objects>
-                <tableViewController storyboardIdentifier="EventsListTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E0B-aJ-eSp" customClass="EventsListTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0Hz-V8-Lgv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <connections>
-                            <outlet property="dataSource" destination="E0B-aJ-eSp" id="W3K-j6-o6V"/>
-                            <outlet property="delegate" destination="E0B-aJ-eSp" id="n5V-0i-05Y"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QWa-4g-JcO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3009" y="1185"/>
         </scene>
         <!--Base Navigation Controller-->
         <scene sceneID="WqB-Fv-sy5">

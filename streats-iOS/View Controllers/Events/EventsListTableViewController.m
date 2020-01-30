@@ -7,23 +7,16 @@
 //
 
 #import "EventsListTableViewController.h"
-#import "EmptyTableBackgroundView.h"
-#import "EventTableViewCell.h"
-#import "ErrorView.h"
-#import "Event.h"
 #import "Vendor.h"
-#import "ServiceError.h"
-#import "VendorsService.h"
+#import "ErrorView.h"
+#import "EventsDataSource.h"
+#import "EmptyTableBackgroundView.h"
 
 @interface EventsListTableViewController ()
 
-// Properties
-
-@property(strong, nonatomic, nonnull) Vendor * vendor;
-@property(strong, nonatomic, nullable) NSArray<Event *> * events;
-
-/** Loads the events displayed by the table view. */
-- (void)loadEvents;
+@property (strong, nonatomic, nonnull) Vendor * vendor;
+@property (strong, nonatomic, nonnull) UITableView * tableView;
+@property (strong, nonatomic, nonnull) EventsDataSource * eventsDataSource;
 
 /** Configures the view's hierarchy to accomodate an activity indicator and displays it. */
 - (void)showActivityIndicator;
@@ -41,57 +34,52 @@
 
 @implementation EventsListTableViewController
 
-static const NSString *reuseIdentifier = @"EventTableViewCell";
+static NSString * reuseIdentifier = @"EventTableViewCell";
 
 #pragma mark - Initialization
 
-- (instancetype)initWithVendor:(Vendor *)vendor {
+- (instancetype)initWithVendor:(Vendor *)vendor
+{
     self = [super init];
     if (self) {
         _vendor = vendor;
+        _tableView = [UITableView new];
+        _eventsDataSource = [[EventsDataSource alloc] initWithVendorIdentifier:[vendor.identifier stringValue]];
+        
+        // Add the table view as a subview.
+        [self.view addSubview:_tableView];
+        
+        // Set the Events Data Source's delegate.
+        _eventsDataSource.delegate = self;
     }
     return self;
 }
 
 #pragma mark - View's lifecycle
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     // Register cell classes.
-    UINib *eventCellNib = [UINib nibWithNibName:@"EventTableViewCell" bundle:NULL];
-    [self.tableView registerNib:eventCellNib forCellReuseIdentifier:@"EventTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:reuseIdentifier bundle:NULL]
+                    forCellReuseIdentifier:reuseIdentifier];
     
-    // Do any additional setup before the view appears.
-    [self loadEvents];
+    // Do any additional setup after loading the view.
+    [self showActivityIndicator];
+    [self.tableView setDelegate:self];
+    [self.tableView setDataSource:self.eventsDataSource];
 }
 
 #pragma mark - Methods
 
-- (void)loadEvents {
-    [self showActivityIndicator];
-    
-    // Fetch the vendor's events.
-    [VendorsService getEventsForVendorWithIdentifier:[self.vendor.identifier stringValue] completionHandler:^(NSArray<Event *> * _Nullable events, ServiceError * _Nullable serviceError) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Hide the activity indicator.
-            [self hideActivityIndicator];
-            
-            if (serviceError != NULL) {
-                [self showErrorViewWithMessage:serviceError.detail];
-            } else {
-                if (events.count > 0) {
-                    [self setEvents:events];
-                    [self.tableView reloadData];
-                } else {
-                    [self showEmptyTableBackgroundView];
-                }
-            }
-        });
-    }];
+- (void)viewWillLayoutSubviews
+{
+    self.tableView.frame = self.view.bounds;
 }
 
-- (void)showActivityIndicator {
+- (void)showActivityIndicator
+{
     UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     
     [activityIndicator startAnimating];
@@ -102,12 +90,14 @@ static const NSString *reuseIdentifier = @"EventTableViewCell";
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
-- (void)hideActivityIndicator {
+- (void)hideActivityIndicator
+{
     [self.tableView setBackgroundView:NULL];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
 }
 
-- (void)showErrorViewWithMessage:(NSString *)message {
+- (void)showErrorViewWithMessage:(NSString *)message
+{
     ErrorView *errorView = [[ErrorView alloc] initWithMessage:message];
     [errorView setDelegate:self];
     
@@ -116,7 +106,8 @@ static const NSString *reuseIdentifier = @"EventTableViewCell";
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
-- (void)showEmptyTableBackgroundView {
+- (void)showEmptyTableBackgroundView
+{
     EmptyTableBackgroundView *backgroundView = [[EmptyTableBackgroundView alloc] initWithMessage:NSLocalizedString(@"noEvents", NULL) andDescription:NSLocalizedString(@"noEventsDescription", NULL)];
     
     // Set the background as the table view's background.
@@ -126,36 +117,39 @@ static const NSString *reuseIdentifier = @"EventTableViewCell";
 
 #pragma mark - Error view delegate
 
-- (void)tryAgainButtonTaped:(ErrorView * _Nonnull)errorView {
-    [self loadEvents];
+- (void)tryAgainButtonTaped:(ErrorView * _Nonnull)errorView
+{
+    [self showActivityIndicator];
+    [self.eventsDataSource loadVendorEvents];
 }
 
-#pragma mark - Table view data source
+#pragma mark - Events data source delegate
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+- (void)eventsDataSource:(EventsDataSource *)eventsDataSource onFetchFailedWithErrorMessage:(NSString *)message
+{
+    [self hideActivityIndicator];
+    [self showErrorViewWithMessage:message];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.events.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    EventTableViewCell *cell = (EventTableViewCell *) [tableView dequeueReusableCellWithIdentifier:@"EventTableViewCell" forIndexPath:indexPath];
+- (void)eventsDataSource:(EventsDataSource *)eventsDataSource onEventsFetched:(NSArray<Event *> *)fetchedEvents
+{
+    [self hideActivityIndicator];
     
-    // Configure the cell...
-    Event *event = [self.events objectAtIndex:indexPath.row];
-    
-    [cell populateWithEvent:event];
-    [cell setAccessoryType:UITableViewCellAccessoryNone];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    
-    return cell;
+    // Execute the appropriate block of code according to the fetched amount
+    // of events.
+    if (fetchedEvents.count > 0)
+    {
+        [self.tableView reloadData];
+    } /* if more than 0 events were returned by the fetch operation. */
+    else {
+        [self showEmptyTableBackgroundView];
+    } /* if 0 events were returned by the fetch operation. */
 }
 
 #pragma mark - Table view delegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return 60;
 }
 

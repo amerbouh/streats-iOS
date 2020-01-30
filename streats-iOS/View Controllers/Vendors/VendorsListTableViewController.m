@@ -20,6 +20,7 @@
 #import "VendorsService.h"
 #import "ImagesService.h"
 #import "TabBarItem.h"
+#import "ErrorView.h"
 
 @interface VendorsListTableViewController ()
 

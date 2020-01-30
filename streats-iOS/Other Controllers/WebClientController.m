@@ -50,11 +50,7 @@
     // Add the NSURLQueryItem to the NSURLComponents objects.
     NSURLComponents * components = [NSURLComponents componentsWithURL:requestURL resolvingAgainstBaseURL:NO];
     components.queryItems = [queryItems copy];
-    
-    #if DEBUG
-    NSLog(@"The URL used to make the request is : %@", components.URL.absoluteString);
-    #endif
-    
+        
     // Create the request.
     NSURLSessionDataTask * task = [NSURLSession.sharedSession dataTaskWithURL:components.URL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error != NULL) {

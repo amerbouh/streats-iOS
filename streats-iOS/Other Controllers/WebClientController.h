@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * @brief Loads the content of the given path.
+ *
  * @param path The path of the resource to load.
  * @param params The params to use when requesting the resource.
  * @param completionHandler The block which is invoked when the request finishes.
@@ -26,10 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)loadResourceForPath:(NSString * _Nonnull)path withParams:(NSDictionary<NSString *, id> * _Nullable)params completionHandler:(void (^_Nullable)(id _Nullable result, ServiceError * _Nullable serviceError))completionHandler;
 
 /**
-* Initializes and returns a Web Controller object using the provided parameters..
-*
-* @param baseURL A string that represents the host to which the requests will be sent.
-*/
+ * @brief Initializes and returns a Web Controller object using the provided parameters..
+ *
+ * @param baseURL A string that represents the host to which the requests will be sent.
+ */
 - (instancetype)initWithBaseURL:(NSString * _Nonnull)baseURL;
 
 @end

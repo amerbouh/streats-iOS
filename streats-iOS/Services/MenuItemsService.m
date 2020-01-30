@@ -17,11 +17,7 @@
 
 @end
 
-#define CURRENT_DATETIME_TIMESTAMP [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000]
-
-struct entite {
-    float x, y;
-};
+#define CURRENT_DATETIME_TIMESTAMP [NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970] * 1000]
 
 @implementation MenuItemsService
 
