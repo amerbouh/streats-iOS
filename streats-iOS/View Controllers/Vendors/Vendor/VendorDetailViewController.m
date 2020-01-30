@@ -7,7 +7,7 @@
 //
 
 #import "VendorDetailViewController.h"
-#import "EventsListTableViewController.h"
+#import "EventListViewController.h"
 #import "MenuItemsListTableViewController.h"
 #import "VendorInformationTableViewController.h"
 #import "Vendor.h"
@@ -15,7 +15,7 @@
 @interface VendorDetailViewController ()
 
 @property (strong, nonatomic, nonnull) Vendor *vendor;
-@property (strong, nonatomic, nonnull) EventsListTableViewController *eventsListViewController;
+@property (strong, nonatomic, nonnull) EventListViewController *eventsListViewController;
 @property (strong, nonatomic, nonnull) MenuItemsListTableViewController *menuItemsListViewController;
 @property (strong, nonatomic, nonnull) VendorInformationTableViewController *vendorInformationViewController;
 
@@ -28,7 +28,7 @@
 - (instancetype)initWithVendor:(Vendor *)vendor {
     if ((self = [super init])) {
         _vendor = vendor;
-        _eventsListViewController = [[EventsListTableViewController alloc] initWithVendor:vendor];
+        _eventsListViewController = [[EventListViewController alloc] initWithVendor:vendor];
         _menuItemsListViewController = [[MenuItemsListTableViewController alloc] initWithVendor:vendor];
         _vendorInformationViewController = [VendorInformationTableViewController instanciateFromStoryboard];
     }

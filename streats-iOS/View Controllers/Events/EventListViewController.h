@@ -1,5 +1,5 @@
 //
-//  EventsListTableViewController.h
+//  EventListViewController.h
 //  streats-iOS
 //
 //  Created by Anas Merbouh on 2019-05-20.
@@ -12,7 +12,7 @@
 
 @class Vendor;
 
-@interface EventsListTableViewController : UIViewController <UITableViewDelegate, ErrorViewDelegate, EventsDataSourceDelegate>
+@interface EventListViewController : UIViewController <UITableViewDelegate, ErrorViewDelegate, EventsDataSourceDelegate>
 
 - (instancetype)initWithVendor:(Vendor *)vendor;
 

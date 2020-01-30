@@ -24,7 +24,7 @@
 		BC5CCE96228DCB3200728E02 /* MenuItemDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5CCE95228DCB3200728E02 /* MenuItemDetailTableViewController.m */; };
 		BC61343B22AAF31E000E320D /* TabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC61343A22AAF31E000E320D /* TabViewController.m */; };
 		BC6B12AC22931BAA00286865 /* VendorDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6B12AB22931BAA00286865 /* VendorDescriptionViewController.m */; };
-		BC6B12B1229324E600286865 /* EventsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6B12B0229324E600286865 /* EventsListTableViewController.m */; };
+		BC6B12B1229324E600286865 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6B12B0229324E600286865 /* EventListViewController.m */; };
 		BC6B12B4229327C000286865 /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6B12B3229327C000286865 /* EventTableViewCell.m */; };
 		BC7D1E76228B74B800EB0299 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7D1E75228B74B800EB0299 /* ErrorView.xib */; };
 		BC7D1E79228B755200EB0299 /* ErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7D1E78228B755200EB0299 /* ErrorView.m */; };
@@ -116,8 +116,8 @@
 		BC61343A22AAF31E000E320D /* TabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabViewController.m; sourceTree = "<group>"; };
 		BC6B12AA22931BAA00286865 /* VendorDescriptionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VendorDescriptionViewController.h; sourceTree = "<group>"; };
 		BC6B12AB22931BAA00286865 /* VendorDescriptionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VendorDescriptionViewController.m; sourceTree = "<group>"; };
-		BC6B12AF229324E600286865 /* EventsListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventsListTableViewController.h; sourceTree = "<group>"; };
-		BC6B12B0229324E600286865 /* EventsListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventsListTableViewController.m; sourceTree = "<group>"; };
+		BC6B12AF229324E600286865 /* EventListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventListViewController.h; sourceTree = "<group>"; };
+		BC6B12B0229324E600286865 /* EventListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventListViewController.m; sourceTree = "<group>"; };
 		BC6B12B2229327C000286865 /* EventTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventTableViewCell.h; sourceTree = "<group>"; };
 		BC6B12B3229327C000286865 /* EventTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventTableViewCell.m; sourceTree = "<group>"; };
 		BC7D1E75228B74B800EB0299 /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
@@ -285,8 +285,8 @@
 			children = (
 				BC0240E823E27EA00026287A /* EventsDataSource.h */,
 				BC0240E923E27EA00026287A /* EventsDataSource.m */,
-				BC6B12AF229324E600286865 /* EventsListTableViewController.h */,
-				BC6B12B0229324E600286865 /* EventsListTableViewController.m */,
+				BC6B12AF229324E600286865 /* EventListViewController.h */,
+				BC6B12B0229324E600286865 /* EventListViewController.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -721,7 +721,7 @@
 				BCCB518E228A62130079A959 /* VendorsService.m in Sources */,
 				BCCB516C2289EC550079A959 /* main.m in Sources */,
 				BCD53ECA22AC4DB200676A6E /* HorizontalPageViewControllerManager.m in Sources */,
-				BC6B12B1229324E600286865 /* EventsListTableViewController.m in Sources */,
+				BC6B12B1229324E600286865 /* EventListViewController.m in Sources */,
 				BCF0714322A7762D00070B4D /* MenuItemsService.m in Sources */,
 				BCE2AB7122907058004A1146 /* Lot.m in Sources */,
 				BCCB5184228A05E00079A959 /* VendorTableViewCell.m in Sources */,

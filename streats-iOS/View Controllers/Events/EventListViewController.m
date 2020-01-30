@@ -1,18 +1,18 @@
 //
-//  EventsListTableViewController.m
+//  EventListViewController.m
 //  streats-iOS
 //
 //  Created by Anas Merbouh on 2019-05-20.
 //  Copyright © 2019 Anas Merbouh. All rights reserved.
 //
 
-#import "EventsListTableViewController.h"
+#import "EventListViewController.h"
 #import "Vendor.h"
 #import "ErrorView.h"
 #import "EventsDataSource.h"
 #import "EmptyTableBackgroundView.h"
 
-@interface EventsListTableViewController ()
+@interface EventListViewController ()
 
 @property (strong, nonatomic, nonnull) Vendor * vendor;
 @property (strong, nonatomic, nonnull) UITableView * tableView;
@@ -32,7 +32,7 @@
 
 @end
 
-@implementation EventsListTableViewController
+@implementation EventListViewController
 
 static NSString * reuseIdentifier = @"EventTableViewCell";
 

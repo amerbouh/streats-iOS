@@ -11,7 +11,7 @@
 #import "MenuItemsListTableViewController.h"
 #import "VendorInformationTableViewController.h"
 #import "MenuItemsListTableViewController.h"
-#import "EventsListTableViewController.h"
+#import "EventListViewController.h"
 #import "EmptyTableBackgroundView.h"
 #import "VendorTableViewCell.h"
 #import "Lot.h"
@@ -190,7 +190,7 @@
     // Get an instance of the necessary view controllers.
     VendorInformationTableViewController *vendorInformationVC = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL] instantiateViewControllerWithIdentifier:@"VendorInformationTableViewController"];
     MenuItemsListTableViewController *menuItemsListVC = [[MenuItemsListTableViewController alloc] initWithVendor:selectedVendor];
-    EventsListTableViewController *eventsListVC = [[EventsListTableViewController alloc] initWithVendor:selectedVendor];
+    EventListViewController *eventsListVC = [[EventListViewController alloc] initWithVendor:selectedVendor];
     
     // Configure the view controllers, if applicable.
     [vendorInformationVC setVendor:selectedVendor];
