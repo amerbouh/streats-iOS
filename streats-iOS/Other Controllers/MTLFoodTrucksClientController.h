@@ -9,18 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "Period.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @class Event;
 @class Vendor;
 @class ServiceError;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface MTLFoodTrucksClientController : NSObject
 
 /**
-* @brief Retrieves all the vendors for the given period.
-* @param period The time range from which the vendors will be fetched.
-* @param completionHandler The completion handler to call when the load request is complete.
+ * @brief Retrieves all the vendors for the given period.
+ * @param period The time range from which the vendors will be fetched.
+ * @param completionHandler The completion handler to call when the load request is complete.
 */
 - (void)getVendorsForPeriod:(Period)period withCompletionHandler:(void (^_Nullable)(NSArray<Vendor*> * _Nullable vendors, ServiceError * _Nullable error))completionHandler;
 

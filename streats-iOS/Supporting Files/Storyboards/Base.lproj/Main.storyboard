@@ -45,7 +45,6 @@
         <!--Menu Items List Table View Controller-->
         <scene sceneID="Kpl-2B-hqk">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9hA-aW-4je" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="MenuItemsListTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hg1-lw-mjx" customClass="MenuItemsListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6pw-vP-SfH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -60,6 +59,7 @@
                         <segue destination="5pJ-Wh-BFz" kind="presentation" identifier="ShowMenuItemDetailVCSegue" id="aa4-KY-Oxz"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9hA-aW-4je" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3009" y="506"/>
         </scene>
